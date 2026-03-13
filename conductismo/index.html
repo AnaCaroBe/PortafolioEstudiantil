@@ -1,1259 +1,568 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cartilla Digital — Conductismo</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portafolio · Psicología</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --ink:#1a1208; --paper:#f5f0e8; --cream:#ede8da;
-  --amber:#c9871c; --amber-deep:#8b5e0a;
-  --teal:#1a6b6b; --teal-light:#2d9e9e;
-  --rust:#9b3a1a; --sage:#5a7a52;
-  --lavender:#6b5b8a; --slate:#3a4a5c;
-  --gold:#e8c547; --muted:#7a6e5e; --border:#d4c9b0;
-  --font-display:'Playfair Display',serif;
-  --font-body:'DM Sans',sans-serif;
-  --font-mono:'DM Mono',monospace;
-  --gap:6rem;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0C0E1A;
+  --bg2:#131628;
+  --bg3:#1A1F36;
+  --violet:#7C5CFC;
+  --violet-lt:#A98BFD;
+  --cyan:#00D4C8;
+  --cyan-lt:#7EEEE9;
+  --pink:#F040A0;
+  --pink-lt:#F880C4;
+  --amber:#FFB830;
+  --green:#3DFFA0;
+  --text:#EEF0FF;
+  --muted:#8890B8;
+  --border:#272D4D;
+  --radius:16px;
 }
 html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4}
-#pb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--amber),var(--teal-light),var(--rust));width:0%;z-index:999;transition:width .1s}
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(245,240,232,.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--amber-deep);letter-spacing:.05em;text-transform:uppercase}
-.nav-links{display:flex;gap:1.5rem;list-style:none}
-.nav-links a{font-size:.72rem;font-weight:500;color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:.08em;transition:color .2s}
-.nav-links a:hover{color:var(--amber)}
-/* COVER */
-#cover{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden}
-.cover-left{background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:7rem 4rem 4rem;position:relative;overflow:visible}
-.cover-left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(201,135,28,.18) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(26,107,107,.15) 0%,transparent 50%)}
-.cover-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--amber);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards}
-.cover-title{font-family:var(--font-display);font-size:clamp(3.5rem,7vw,6rem);font-weight:900;color:var(--paper);line-height:1;letter-spacing:-.02em;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .4s forwards;word-break:break-word;overflow-wrap:break-word;max-width:100%}
-.cover-title em{color:var(--amber);font-style:italic}
-.cover-desc{font-size:.95rem;color:rgba(245,240,232,.65);max-width:400px;line-height:1.8;opacity:0;animation:fadeUp .8s .6s forwards}
-.cover-right{background:var(--cream);display:flex;flex-direction:column;justify-content:flex-end;padding:7rem 3rem 3rem;position:relative;overflow:hidden}
-.cover-right::before{content:'C';position:absolute;top:-.1em;right:-.05em;font-family:var(--font-display);font-size:40vw;font-weight:900;color:var(--border);line-height:1;opacity:.4;pointer-events:none}
-.cover-index{position:relative;z-index:1}
-.ci-title{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:1.2rem}
-.ci-item{display:flex;align-items:baseline;gap:1rem;padding:.6rem 0;border-top:1px solid var(--border);text-decoration:none;color:inherit;transition:all .2s}
-.ci-item:hover{padding-left:.5rem}
-.ci-item:hover .ci-label{color:var(--amber)}
-.ci-num{font-family:var(--font-mono);font-size:.68rem;color:var(--amber);min-width:1.8rem}
-.ci-label{font-family:var(--font-display);font-size:1.05rem;font-weight:700;transition:color .2s}
-.ci-dot{flex:1;height:1px;background:var(--border);margin:0 .5rem}
-/* SECTION */
-.sec{max-width:1100px;margin:0 auto;padding:var(--gap) 2rem}
-.eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
-.ey-num{font-family:var(--font-mono);font-size:.7rem;color:var(--amber);letter-spacing:.15em}
-.ey-rule{flex:1;height:1px;background:var(--border);max-width:60px}
-.ey-tag{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-.sec-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;margin-bottom:.5rem}
-.sec-sub{font-size:.95rem;color:var(--muted);font-style:italic;margin-bottom:2.5rem}
-/* INTRO */
-.intro-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:4rem;align-items:start}
-.intro-lead{font-family:var(--font-display);font-size:1.35rem;line-height:1.6;margin-bottom:1.5rem;font-weight:400;font-style:italic}
-.intro-body p{margin-bottom:1.2rem;font-size:.96rem;color:#3a3020}
-.intro-aside{display:flex;flex-direction:column;gap:1.5rem}
-.fact-card{background:var(--ink);color:var(--paper);padding:1.8rem;position:relative;overflow:hidden}
-.fact-card::after{content:'';position:absolute;bottom:0;right:0;width:60px;height:60px;background:var(--amber);clip-path:polygon(100% 0,100% 100%,0 100%)}
-.fn{font-family:var(--font-display);font-size:3rem;font-weight:900;color:var(--amber);line-height:1;margin-bottom:.3rem}
-.fl{font-size:.82rem;color:rgba(245,240,232,.7);text-transform:uppercase;letter-spacing:.08em}
-.pillar-strip{display:flex;margin-top:2.5rem}
-.pillar{flex:1;padding:1.5rem 1.2rem}
-.pillar:nth-child(1){background:var(--teal);color:white}
-.pillar:nth-child(2){background:var(--amber);color:var(--ink)}
-.pillar:nth-child(3){background:var(--rust);color:white}
-.pillar:nth-child(4){background:var(--slate);color:white}
-.pi{font-size:1.8rem;margin-bottom:.5rem;display:block}
-.pn{font-family:var(--font-display);font-size:.95rem;font-weight:700;margin-bottom:.3rem}
-.pd{font-size:.75rem;opacity:.85;line-height:1.5}
-/* OBJETO */
-#objeto{background:var(--ink);color:var(--paper);padding:6rem 0}
-.er-diagram{display:flex;align-items:center;justify-content:center;gap:0;margin:2.5rem 0;flex-wrap:wrap}
-.er-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:1.8rem 2rem;text-align:center;min-width:160px;transition:all .3s}
-.er-box:hover{background:rgba(255,255,255,.12);transform:translateY(-4px)}
-.er-box .erl{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;opacity:.5;margin-bottom:.4rem}
-.er-box .erm{font-family:var(--font-display);font-size:1.3rem;font-weight:700;margin-bottom:.4rem}
-.er-box.eb{border-color:var(--teal-light)}.er-box.eb .erm{color:var(--teal-light)}
-.er-box.rb{border-color:var(--amber)}.er-box.rb .erm{color:var(--amber)}
-.er-arrow{font-size:1.8rem;color:var(--amber);padding:0 .5rem}
-.erd{font-size:.78rem;opacity:.55;line-height:1.4}
-.ctable{width:100%;border-collapse:collapse;margin-top:2rem}
-.ctable th{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);padding:.8rem 1.2rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.1)}
-.ctable td{padding:1rem 1.2rem;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top}
-.ctable tr:hover td{background:rgba(255,255,255,.03)}
-.ct{font-family:var(--font-display);font-weight:700;color:var(--teal-light);font-size:1rem}
-/* REFLEXION */
-#reflexion{background:var(--cream)}
-.timeline{position:relative;padding-left:3rem;margin:2rem 0}
-.timeline::before{content:'';position:absolute;left:.85rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--amber),var(--teal),var(--rust),var(--lavender))}
-.tl-item{position:relative;margin-bottom:2.5rem;opacity:0;transform:translateX(-20px);transition:all .5s}
-.tl-item.visible{opacity:1;transform:translateX(0)}
-.tl-dot{position:absolute;left:-2.45rem;top:.3rem;width:14px;height:14px;border-radius:50%;border:2px solid var(--paper)}
-.tl-year{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--amber-deep);margin-bottom:.3rem}
-.tl-title{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:.3rem}
-.tl-body{font-size:.88rem;color:var(--muted);line-height:1.65}
-.phases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-.phase-card{border-top:4px solid;padding:2rem 1.5rem;background:white;box-shadow:0 2px 20px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
-.phase-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
-.phase-card:nth-child(1){border-color:var(--amber)}.phase-card:nth-child(1) .ph-name{color:var(--amber-deep)}
-.phase-card:nth-child(2){border-color:var(--teal)}.phase-card:nth-child(2) .ph-name{color:var(--teal)}
-.phase-card:nth-child(3){border-color:var(--rust)}.phase-card:nth-child(3) .ph-name{color:var(--rust)}
-.ph-period{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;color:var(--muted);margin-bottom:.5rem}
-.ph-name{font-family:var(--font-display);font-size:1.3rem;font-weight:900;margin-bottom:1rem;line-height:1.2}
-.ph-desc{font-size:.88rem;line-height:1.7;color:#4a4030}
-.ph-chips{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:1rem}
-.chip{font-family:var(--font-mono);font-size:.62rem;padding:.2rem .5rem;background:var(--cream);border:1px solid var(--border);color:var(--muted)}
-/* AUTHORS */
-#autores{background:var(--paper)}
-.authors-pair{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border)}
-.authors-pair:last-of-type{border-bottom:none}
-.avc{background:white;box-shadow:0 4px 24px rgba(0,0,0,.07);overflow:hidden;opacity:0;transform:translateY(28px);transition:opacity .6s,transform .6s;display:flex;flex-direction:column}
-.avc.visible{opacity:1;transform:translateY(0)}
-.aph{position:relative;height:230px;overflow:hidden;flex-shrink:0;background:#111}
-.aph svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .5s}
-.avc:hover .aph svg{transform:scale(1.03)}
-.aph-badge{position:absolute;bottom:.8rem;left:1rem;right:1rem;display:flex;align-items:flex-end;justify-content:space-between;z-index:2}
-.aph-name{font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:white;line-height:1.2}
-.aph-num{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.7);background:rgba(0,0,0,.35);padding:.2rem .4rem}
-.abar{height:5px;width:100%;flex-shrink:0}
-.avb{padding:1.4rem 1.5rem 1.5rem;flex:1;display:flex;flex-direction:column}
-.ameta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;flex-wrap:wrap;gap:.3rem}
-.adates{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em}
-.atheory{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border:1px solid;border-radius:2px}
-.aintro{font-family:var(--font-display);font-style:italic;font-size:.92rem;line-height:1.55;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);color:#3a3020}
-.apt{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
-.apl{list-style:none;display:flex;flex-direction:column;gap:.5rem;flex:1}
-.apl li{display:flex;gap:.6rem;font-size:.83rem;line-height:1.55;align-items:flex-start}
-.adot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:.45rem}
-.acont{margin-top:1rem;padding:.9rem 1rem;border-left:3px solid;background:var(--cream)}
-.acl{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.25rem;opacity:.6}
-.act{font-size:.82rem;line-height:1.55;font-style:italic}
-/* PLACEHOLDER photo */
-.aph-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.aph-placeholder span{font-family:var(--font-display);font-size:5rem;font-weight:900;color:rgba(255,255,255,.2)}
-/* CASO */
-#caso{background:var(--ink);color:var(--paper);padding:6rem 0}
-.caso-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:2.5rem;overflow:hidden}
-.caso-left{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:2.5rem}
-.caso-right{background:var(--amber);padding:2.5rem;color:var(--ink)}
-.caso-label{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:.8rem}
-.caso-stitle{font-family:var(--font-display);font-size:1.5rem;font-weight:900;margin-bottom:1rem;line-height:1.2}
-.cstep{display:flex;gap:1rem;margin-bottom:1.2rem;align-items:flex-start}
-.cstep-n{width:28px;height:28px;border-radius:50%;background:var(--teal);color:white;font-family:var(--font-mono);font-size:.7rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
-.cstep-t{font-size:.9rem;line-height:1.65}
-.cstep-t strong{display:block;margin-bottom:.15rem}
-.ctheory{background:rgba(255,255,255,.08);border-left:3px solid var(--teal-light);padding:1rem 1.2rem;margin-top:1.5rem}
-.cresult{margin-bottom:1.5rem}
-.cri{font-size:2.5rem;margin-bottom:.8rem;display:block}
-.crt{font-family:var(--font-display);font-size:1.2rem;font-weight:900;margin-bottom:.4rem}
-.crtext{font-size:.88rem;line-height:1.65;color:rgba(26,18,8,.8)}
-.cdiag{background:rgba(26,18,8,.12);padding:1.2rem;margin-top:1.5rem;font-family:var(--font-mono);font-size:.82rem}
-.cdr{display:flex;align-items:center;gap:.6rem;padding:.4rem 0}
-.cdrl{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6;min-width:50px}
-/* CONCLUSIONES */
-#conclusiones{background:var(--cream)}
-.concl-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:2rem}
-.concl-card{background:white;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,.06);position:relative;overflow:hidden;opacity:0;transform:translateY(24px);transition:all .6s}
-.concl-card.visible{opacity:1;transform:translateY(0)}
-.concl-card::before{content:attr(data-num);position:absolute;top:-.1em;right:.1em;font-family:var(--font-display);font-size:8rem;font-weight:900;line-height:1;opacity:.05;pointer-events:none}
-.cn{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.2em;color:var(--amber);margin-bottom:.8rem}
-.ct2{font-family:var(--font-display);font-size:1.35rem;font-weight:900;line-height:1.25;margin-bottom:1rem}
-.ctext{font-size:.91rem;line-height:1.8;color:#3a3020}
-.ctext p{margin-bottom:.8rem}
-.ctext p:last-child{margin-bottom:0}
-.chl{display:flex;gap:1rem;align-items:flex-start;background:var(--cream);padding:1rem;margin-top:1.2rem;border-left:3px solid var(--amber)}
-.chli{font-size:1.4rem;flex-shrink:0;margin-top:.1rem}
-.chlt{font-size:.85rem;line-height:1.6;font-style:italic;color:var(--muted)}
-/* QUOTE */
-.pull-quote{font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.9rem);font-style:italic;line-height:1.4;color:var(--ink);padding:2.5rem 3rem;border-left:5px solid var(--amber);background:rgba(201,135,28,.06);margin:3rem 0;position:relative}
-.pull-quote::before{content:'\201C';font-size:6rem;color:var(--amber);opacity:.25;position:absolute;top:-.2em;left:.2em;line-height:1;font-style:normal}
-.pull-quote cite{display:block;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;color:var(--muted);font-style:normal;margin-top:1rem}
-footer{background:var(--ink);color:var(--paper);padding:3rem 2rem;text-align:center}
-footer .ft{font-family:var(--font-display);font-size:1.5rem;font-weight:900;color:var(--amber);margin-bottom:.5rem}
-footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-/* ── HAMBURGER MENU ── */
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:200}
-.nav-hamburger span{display:block;width:24px;height:2px;background:var(--paper);border-radius:2px;transition:all .3s}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-hamburger.open span:nth-child(2){opacity:0}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* ── TABLET: 600–900px ── */
-@media(max-width:900px){
-  /* Nav */
-  nav{padding:.8rem 1.5rem}
-  nav .nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(18,14,10,.97);flex-direction:column;align-items:center;justify-content:center;gap:2rem;z-index:150}
-  nav .nav-links.open{display:flex}
-  nav .nav-links li a{font-size:1.2rem}
-  .nav-hamburger{display:flex}
-
-  /* Cover */
-  #cover{grid-template-columns:1fr}
-  .cover-left{padding:7rem 2rem 3rem}
-  .cover-title{font-size:clamp(2.8rem,10vw,5rem)}
-  .cover-right{padding:2.5rem 2rem;min-height:auto}
-  .cover-index{max-height:none}
-
-  /* Sections */
-  .sec{padding:4rem 1.5rem}
-  .sec-title{font-size:clamp(1.8rem,5vw,2.8rem)}
-
-  /* Intro */
-  .intro-grid{grid-template-columns:1fr}
-  .intro-pillars{grid-template-columns:1fr 1fr}
-  .intro-stats{grid-template-columns:1fr 1fr 1fr}
-
-  /* ER diagram */
-  .er-diagram{flex-direction:column;align-items:center;gap:1rem}
-  .er-arrow{transform:rotate(90deg)}
-  .er-box{width:100%;max-width:320px}
-
-  /* Table */
-  .ctable{font-size:.78rem}
-  .ctable th,.ctable td{padding:.6rem .8rem}
-
-  /* Phases */
-  .phases-grid{grid-template-columns:1fr}
-
-  /* Timeline */
-  .tl-list{padding-left:1.5rem}
-
-  /* Authors */
-  .authors-pair{grid-template-columns:1fr}
-  .avc{max-width:480px;margin:0 auto;width:100%}
-
-  /* Comparison section */
-  div[style*="grid-template-columns:1fr 1fr"]{display:block!important}
-  div[style*="grid-template-columns:1fr 1fr"] > div{margin-bottom:1.5rem}
-
-  /* Caso */
-  .caso-grid{grid-template-columns:1fr}
-  .caso-steps{grid-template-columns:1fr 1fr}
-
-  /* Conclusions */
-  .concl-grid{grid-template-columns:1fr}
-
-  /* Pull quote */
-  .pull-quote{padding:1.8rem 1.5rem;font-size:clamp(1rem,3vw,1.4rem)}
-
-  /* References */
-  div[style*="border-left:3px"]{padding:1rem 1.2rem!important}
-
-  /* Team */
-  div[style*="flex-wrap:nowrap"]{flex-wrap:wrap!important}
-  div[style*="flex-wrap:nowrap"] > div{flex:0 0 calc(50% - .6rem)!important;min-width:0}
-}
-
-/* ── MOBILE: ≤ 480px ── */
-@media(max-width:480px){
-  /* Nav */
-  nav{padding:.7rem 1rem}
-  .nav-logo{font-size:.9rem}
-
-  /* Cover */
-  .cover-left{padding:6rem 1.2rem 2.5rem}
-  .cover-title{font-size:clamp(2.2rem,11vw,3.8rem);letter-spacing:-.01em}
-  .cover-desc{font-size:.85rem}
-  .cover-right{padding:2rem 1.2rem}
-  .ci-item{font-size:.75rem;gap:.5rem}
-
-  /* Sections */
-  .sec{padding:3rem 1.2rem}
-  .eyebrow{gap:.6rem}
-  .ey-num{font-size:1rem}
-
-  /* Intro */
-  .intro-pillars{grid-template-columns:1fr}
-  .intro-stats{grid-template-columns:1fr}
-  .stat-num{font-size:2.5rem}
-
-  /* ER boxes */
-  .er-box{padding:1rem}
-  .erm{font-size:1.1rem}
-
-  /* Table: scroll horizontal */
-  .ctable-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .ctable{min-width:520px}
-
-  /* Authors */
-  .aph{height:180px}
-  .avc-body{padding:1.2rem}
-  .avc-name{font-size:1.1rem}
-  .avc-dates{font-size:.7rem}
-  .tag-theory{font-size:.6rem;padding:.2rem .6rem}
-
-  /* Caso steps */
-  .caso-steps{grid-template-columns:1fr}
-  .caso-step{padding:1.2rem}
-
-  /* Conclusions */
-  .concl-card{padding:1.5rem}
-  .ct2{font-size:1rem}
-
-  /* Pull quote */
-  .pull-quote{padding:1.4rem 1.2rem;font-size:.95rem}
-  .pull-quote::before{font-size:4rem;top:-.15em;left:.15em}
-
-  /* References */
-  div[style*="border-left:3px"] p{font-size:.8rem!important}
-
-  /* Team: 1 column on very small screens */
-  div[style*="flex-wrap:nowrap"] > div{flex:0 0 100%!important}
-
-  /* Comparison table scroll */
-  section#comparacion table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
-  section#comparacion table td,
-  section#comparacion table th{min-width:140px;white-space:normal}
-
-  /* Comparison cards */
-  section#comparacion div[style*="border:1px"]{padding:1.5rem 1.2rem!important}
-
-  /* Footer */
-  footer{padding:2.5rem 1.2rem}
-}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.5}
+nav{position:sticky;top:0;z-index:100;background:rgba(12,14,26,0.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;background:linear-gradient(90deg,var(--violet-lt),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.01em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:0.85rem;font-weight:400;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:500;color:#fff;background:var(--violet);padding:7px 18px;border-radius:100px;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(4rem,8vw,6rem);min-height:90vh}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,252,0.18) 0%,rgba(0,212,200,0.07) 40%,transparent 70%);top:-200px;right:-150px;pointer-events:none}
+.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(240,64,160,0.12) 0%,transparent 70%);bottom:-100px;left:-100px;pointer-events:none}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(124,92,252,0.08);color:var(--violet-lt);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:1.75rem}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.5rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-0.02em}
+h1 .line-2{background:linear-gradient(90deg,var(--violet-lt),var(--cyan-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1 .line-3{background:linear-gradient(90deg,var(--pink-lt),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(0.9rem,1.8vw,1.05rem);color:var(--muted);font-weight:300;max-width:440px;margin-bottom:2.5rem;line-height:1.8}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;padding:13px 28px;border-radius:100px;background:linear-gradient(135deg,var(--violet),var(--cyan) 200%);color:#fff;text-decoration:none;border:none;cursor:pointer;transition:opacity .2s,transform .15s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{opacity:0.88;transform:translateY(-2px)}
+.btn-ghost{font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:400;padding:13px 28px;border-radius:100px;background:transparent;color:var(--muted);border:1px solid var(--border);text-decoration:none;cursor:pointer;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--violet);color:var(--text)}
+.hero-art{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+.hero-art svg{width:100%;max-width:480px;filter:drop-shadow(0 0 50px rgba(124,92,252,0.22))}
+.stats-bar{display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
+.stat-item{flex:1;padding:1.5rem clamp(1rem,3vw,2rem);text-align:center;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--violet-lt),var(--cyan-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:0.72rem;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:0.06em;text-transform:uppercase}
+.section{padding:clamp(4rem,7vw,6rem) clamp(1.5rem,5vw,4rem)}
+.section-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
+.section-eyebrow{font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--text)}
+.section-count{font-size:0.8rem;color:var(--muted);background:var(--bg3);border:1px solid var(--border);padding:5px 14px;border-radius:100px}
+#projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:1rem}
+.project-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,background .2s;animation:fadeUp .4s ease both;position:relative;overflow:hidden}
+.project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,92,252,0.05),rgba(0,212,200,0.02));opacity:0;transition:opacity .2s;pointer-events:none}
+.project-card:hover{border-color:var(--violet);transform:translateY(-4px);background:var(--bg3)}
+.project-card:hover::before{opacity:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.project-card-top{display:flex;align-items:flex-start;justify-content:flex-start;gap:.5rem}
+.project-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.icon-violet{background:rgba(124,92,252,0.15);border:1px solid rgba(124,92,252,0.25)}
+.icon-cyan{background:rgba(0,212,200,0.12);border:1px solid rgba(0,212,200,0.25)}
+.icon-pink{background:rgba(240,64,160,0.12);border:1px solid rgba(240,64,160,0.25)}
+.icon-amber{background:rgba(255,184,48,0.12);border:1px solid rgba(255,184,48,0.2)}
+.icon-green{background:rgba(61,255,160,0.1);border:1px solid rgba(61,255,160,0.2)}
+.project-arrow{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s,color .2s,border-color .2s;flex-shrink:0}
+.project-card:hover .project-arrow{background:var(--violet);color:#fff;border-color:var(--violet)}
+.project-arrow svg{width:12px;height:12px}
+.project-card-footer{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.25rem}
+.project-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:600;color:var(--text);line-height:1.3}
+.project-desc{font-size:0.83rem;color:var(--muted);font-weight:300;line-height:1.6;flex:1}
+.project-tag{display:inline-block;font-size:0.7rem;font-weight:500;padding:3px 10px;border-radius:100px;letter-spacing:.04em}
+.tag-violet{background:rgba(124,92,252,0.15);color:var(--violet-lt);border:1px solid rgba(124,92,252,0.2)}
+.tag-cyan{background:rgba(0,212,200,0.12);color:var(--cyan-lt);border:1px solid rgba(0,212,200,0.2)}
+.tag-pink{background:rgba(240,64,160,0.12);color:var(--pink-lt);border:1px solid rgba(240,64,160,0.2)}
+.tag-amber{background:rgba(255,184,48,0.12);color:var(--amber);border:1px solid rgba(255,184,48,0.2)}
+.tag-green{background:rgba(61,255,160,0.1);color:var(--green);border:1px solid rgba(61,255,160,0.15)}
+.add-card{border:1.5px dashed var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;min-height:168px;cursor:pointer;background:transparent;transition:border-color .2s,background .2s;color:var(--muted);font-family:'Inter',sans-serif;font-size:.875rem}
+.add-card:hover{border-color:var(--violet);background:rgba(124,92,252,0.05);color:var(--violet-lt)}
+.add-icon{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.3rem;transition:border-color .2s,background .2s}
+.add-card:hover .add-icon{border-color:var(--violet);background:rgba(124,92,252,0.15)}
+.about-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;padding:clamp(4rem,7vw,6rem) clamp(1.5rem,5vw,4rem)}
+.about-eyebrow{font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--pink-lt);margin-bottom:.5rem}
+.about-text h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--text);margin-bottom:1.1rem}
+.about-text p{font-size:.95rem;color:var(--muted);font-weight:300;line-height:1.85;margin-bottom:.9rem}
+.about-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
+.apill{font-size:.78rem;font-weight:400;padding:5px 14px;border-radius:100px;border:1px solid var(--border);color:var(--muted);cursor:default;transition:border-color .2s,color .2s}
+.apill:hover{border-color:var(--cyan);color:var(--cyan-lt)}
+.about-visual{display:flex;align-items:center;justify-content:center}
+.about-visual svg{width:100%;max-width:360px}
+footer{padding:clamp(2rem,4vw,3rem) clamp(1.5rem,5vw,4rem);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-name{font-family:'Syne',sans-serif;font-size:.9rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--violet-lt)}
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(6,8,18,.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:clamp(1.5rem,4vw,2.5rem);width:min(100%,500px);transform:translateY(20px) scale(0.97);transition:transform .22s}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:1.5rem}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+.field label{font-size:.72rem;font-weight:500;color:var(--muted);letter-spacing:.09em;text-transform:uppercase}
+.field input,.field select,.field textarea{border:1px solid var(--border);background:var(--bg3);border-radius:10px;padding:10px 14px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--text);outline:none;transition:border-color .2s;width:100%}
+.field textarea{resize:vertical;min-height:76px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--violet)}
+.field select{cursor:pointer}
+.field select option{background:var(--bg3)}
+.emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.emoji-opt{aspect-ratio:1;font-size:1.05rem;background:var(--bg3);border:1.5px solid transparent;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s}
+.emoji-opt:hover{background:var(--bg);border-color:var(--border)}
+.emoji-opt.selected{border-color:var(--violet);background:rgba(124,92,252,0.15)}
+.color-row{display:flex;gap:8px;flex-wrap:wrap}
+.color-dot{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s}
+.color-dot.selected{border-color:#fff;transform:scale(1.18)}
+.modal-actions{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.5rem;flex-wrap:wrap}
+.mbtn{font-family:'Inter',sans-serif;font-size:.875rem;font-weight:500;padding:10px 22px;border-radius:100px;cursor:pointer;border:none;transition:background .2s,transform .1s}
+.mbtn:active{transform:scale(.97)}
+.mbtn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.mbtn-ghost:hover{background:var(--bg3)}
+.mbtn-primary{background:linear-gradient(135deg,var(--violet),#9B78FF);color:#fff}
+.mbtn-primary:hover{opacity:.88}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--bg3);border:1px solid var(--violet);color:var(--violet-lt);font-size:.85rem;padding:10px 20px;border-radius:100px;z-index:300;transform:translateY(20px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+.delete-btn{width:28px;height:28px;border-radius:50%;background:transparent;border:1px solid transparent;color:var(--muted);cursor:pointer;display:none;align-items:center;justify-content:center;transition:background .2s,border-color .2s,color .2s;padding:0;flex-shrink:0}
+.delete-btn svg{width:13px;height:13px;pointer-events:none}
+.editor-mode .delete-btn{display:flex}
+.delete-btn:hover{background:rgba(240,64,160,0.2);border-color:rgba(240,64,160,0.45);color:var(--pink-lt)}
+.add-card{display:none}
+.editor-mode .add-card{display:flex}
+.editor-badge{display:none;align-items:center;gap:6px;font-size:0.72rem;font-weight:500;color:var(--cyan);background:rgba(0,212,200,0.08);border:1px solid rgba(0,212,200,0.2);padding:4px 12px;border-radius:100px;cursor:pointer;transition:background .2s}
+.editor-badge:hover{background:rgba(0,212,200,0.15)}
+.editor-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.editor-mode .editor-badge{display:flex}
+.pin-overlay{position:fixed;inset:0;z-index:400;background:rgba(6,8,18,.85);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.pin-overlay.open{opacity:1;pointer-events:all}
+.pin-box{background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:2.5rem;width:min(100%,360px);text-align:center;transform:translateY(16px) scale(.97);transition:transform .2s}
+.pin-overlay.open .pin-box{transform:translateY(0) scale(1)}
+.pin-lock-icon{font-size:2rem;margin-bottom:1rem}
+.pin-box h3{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.pin-box p{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+.pin-input{width:100%;text-align:center;font-size:1.5rem;letter-spacing:.4em;border:1px solid var(--border);background:var(--bg3);border-radius:12px;padding:12px;color:var(--text);outline:none;transition:border-color .2s;font-family:'Syne',sans-serif}
+.pin-input:focus{border-color:var(--violet)}
+.pin-input.error{border-color:var(--pink);animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pin-hint{font-size:.75rem;color:var(--pink-lt);margin-top:.5rem;min-height:1rem;transition:opacity .2s}
+.pin-actions{display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem}
+.lock-btn{background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:.75rem;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s}
+.lock-btn:hover{color:var(--pink-lt);border-color:rgba(240,64,160,.4)}
+.confirm-overlay{position:fixed;inset:0;z-index:300;background:rgba(6,8,18,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.confirm-overlay.open{opacity:1;pointer-events:all}
+.confirm-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2rem;width:min(100%,400px);text-align:center;transform:translateY(16px) scale(.97);transition:transform .2s}
+.confirm-overlay.open .confirm-box{transform:translateY(0) scale(1)}
+.confirm-icon{width:52px;height:52px;border-radius:50%;background:rgba(240,64,160,0.12);border:1px solid rgba(240,64,160,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.4rem}
+.confirm-box h3{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.confirm-box p{font-size:.875rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6}
+.confirm-title-text{color:var(--violet-lt);font-weight:500}
+.confirm-actions{display:flex;gap:.75rem;justify-content:center}
+.mbtn-danger{background:linear-gradient(135deg,#c0185a,var(--pink));color:#fff}
+.mbtn-danger:hover{opacity:.88}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:auto}.hero-art{display:none}.stats-bar{flex-wrap:wrap}.stat-item{flex:1 1 45%;border-right:none;border-bottom:1px solid var(--border)}.about-inner{grid-template-columns:1fr}.about-visual{display:none}.nav-links{display:none}}
+@media(max-width:480px){.modal-actions{flex-direction:column-reverse}.mbtn{width:100%;text-align:center}.emoji-grid{grid-template-columns:repeat(6,1fr)}}
 </style>
 </head>
 <body>
-<div id="pb"></div>
+
 <nav>
-  <div class="nav-logo">Conductismo</div>
-  <button class="nav-hamburger" id="hamburger" aria-label="Menú">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#intro">Introducción</a></li>
-    <li><a href="#objeto">Objeto</a></li>
-    <li><a href="#reflexion">Reflexión</a></li>
-    <li><a href="#comparacion">Comparación</a></li>
-    <li><a href="#autores">Autores</a></li>
-    <li><a href="#caso">Caso Real</a></li>
-    <li><a href="#conclusiones">Conclusiones</a></li>
-    <li><a href="#referencias">Referencias</a></li>
-    <li><a href="#equipo">Equipo</a></li>
-  </ul>
+  <span class="nav-logo">psiqué · portafolio</span>
+  <div class="nav-links">
+    <a href="#proyectos">Proyectos</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="/cdn-cgi/l/email-protection#bdd5d2d1dcfdd8d7d8d0cdd1d293ded2d0">Contacto</a>
+  </div>
+  <a href="#proyectos" class="nav-cta">Ver trabajo</a>
 </nav>
 
-<!-- COVER -->
-<section id="cover">
-  <div class="cover-left">
-    <div class="cover-tag">Cartilla Digital</div>
-    <h1 class="cover-title">Con<em>duc</em>tismo</h1>
-    <p class="cover-desc">Una exploración profunda de la corriente que transformó la psicología al poner la conducta observable en el centro de la ciencia. Desde Thorndike hasta Bandura.</p>
-  </div>
-  <div class="cover-right">
-    <div class="cover-index">
-      <div class="ci-title">Contenido</div>
-      <a href="#intro" class="ci-item"><span class="ci-num">01</span><span class="ci-label">Introducción</span><span class="ci-dot"></span></a>
-      <a href="#objeto" class="ci-item"><span class="ci-num">02</span><span class="ci-label">Objeto de Estudio</span><span class="ci-dot"></span></a>
-      <a href="#reflexion" class="ci-item"><span class="ci-num">03</span><span class="ci-label">Reflexión Histórica</span><span class="ci-dot"></span></a>
-      <a href="#comparacion" class="ci-item"><span class="ci-num">04</span><span class="ci-label">Comparación de Autores</span><span class="ci-dot"></span></a>
-      <a href="#autores" class="ci-item"><span class="ci-num">05</span><span class="ci-label">Los 11 Autores</span><span class="ci-dot"></span></a>
-      <a href="#caso" class="ci-item"><span class="ci-num">06</span><span class="ci-label">Caso Real</span><span class="ci-dot"></span></a>
-      <a href="#conclusiones" class="ci-item"><span class="ci-num">07</span><span class="ci-label">Conclusiones</span><span class="ci-dot"></span></a>
-      <a href="#referencias" class="ci-item"><span class="ci-num">08</span><span class="ci-label">Referencias</span><span class="ci-dot"></span></a>
-      <a href="#equipo" class="ci-item"><span class="ci-num">09</span><span class="ci-label">Equipo de Trabajo</span><span class="ci-dot"></span></a>
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Psicología · Portafolio académico</div>
+    <h1>Explorando<br/><span class="line-2">la mente</span><br/><span class="line-3">humana</span></h1>
+    <p class="hero-sub">Investigaciones, prácticas y proyectos que construyen mi camino como psicóloga. Cada proyecto es una ventana al comportamiento humano.</p>
+    <div class="hero-btns">
+      <a href="#proyectos" class="btn-primary">
+        Ver proyectos
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+      </a>
+      <a href="#sobre-mi" class="btn-ghost">Sobre mí</a>
     </div>
+  </div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bgr" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1A1F3A"/><stop offset="100%" stop-color="#0C0E1A"/></radialGradient>
+        <radialGradient id="hr" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#2A2060"/><stop offset="100%" stop-color="#0F1128"/></radialGradient>
+      </defs>
+      <circle cx="240" cy="240" r="228" fill="url(#bgr)" opacity="0.65"/>
+      <ellipse cx="240" cy="240" rx="210" ry="210" fill="none" stroke="#7C5CFC" stroke-width="0.6" stroke-dasharray="4 8" opacity="0.3"/>
+      <ellipse cx="240" cy="240" rx="168" ry="168" fill="none" stroke="#00D4C8" stroke-width="0.6" stroke-dasharray="2 6" opacity="0.28"/>
+      <ellipse cx="240" cy="240" rx="124" ry="124" fill="none" stroke="#F040A0" stroke-width="0.6" stroke-dasharray="3 7" opacity="0.28"/>
+      <!-- brain shape -->
+      <path d="M178 195 C163 180 153 162 160 146 C167 132 182 126 196 131 C193 120 200 110 212 108 C224 106 234 114 235 124 C238 120 244 114 252 114 C260 114 267 120 267 129 C274 114 289 108 301 114 C313 120 318 134 312 146 C324 146 333 157 331 169 C329 181 318 188 307 186 C313 196 311 210 302 216 C293 222 281 220 276 211 C271 224 258 230 246 225 C234 220 228 209 230 199 C222 206 212 205 206 199 C197 192 195 181 200 173 C189 171 181 163 181 152 C181 143 186 135 193 131" fill="url(#hr)" stroke="#534AB7" stroke-width="1.3"/>
+      <!-- folds -->
+      <path d="M200 172 C208 165 219 169 223 178 C227 187 222 196 214 198" fill="none" stroke="#7C5CFC" stroke-width="1.1" opacity="0.55"/>
+      <path d="M258 162 C267 159 276 165 276 174 C276 183 267 190 258 188" fill="none" stroke="#7C5CFC" stroke-width="1.1" opacity="0.55"/>
+      <path d="M230 144 C239 140 250 145 252 154" fill="none" stroke="#00D4C8" stroke-width="0.9" opacity="0.5"/>
+      <path d="M244 194 C252 191 261 195 263 204" fill="none" stroke="#F040A0" stroke-width="0.9" opacity="0.48"/>
+      <line x1="240" y1="120" x2="240" y2="218" stroke="#7C5CFC" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.38"/>
+      <!-- glow -->
+      <ellipse cx="240" cy="165" rx="58" ry="50" fill="#7C5CFC" opacity="0.06"/>
+      <!-- orbs -->
+      <circle cx="143" cy="172" r="7" fill="#7C5CFC" opacity="0.85"/>
+      <circle cx="143" cy="172" r="12" fill="none" stroke="#7C5CFC" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="340" cy="188" r="6" fill="#00D4C8" opacity="0.85"/>
+      <circle cx="340" cy="188" r="11" fill="none" stroke="#00D4C8" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="188" cy="305" r="5" fill="#F040A0" opacity="0.85"/>
+      <circle cx="188" cy="305" r="10" fill="none" stroke="#F040A0" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="312" cy="300" r="5.5" fill="#FFB830" opacity="0.85"/>
+      <circle cx="312" cy="300" r="10" fill="none" stroke="#FFB830" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="240" cy="338" r="4.5" fill="#3DFFA0" opacity="0.85"/>
+      <circle cx="240" cy="338" r="9" fill="none" stroke="#3DFFA0" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="128" cy="268" r="3" fill="#A98BFD" opacity="0.7"/>
+      <circle cx="362" cy="148" r="3" fill="#7EEEE9" opacity="0.7"/>
+      <circle cx="158" cy="128" r="2.5" fill="#F880C4" opacity="0.7"/>
+      <!-- synapses -->
+      <line x1="143" y1="172" x2="180" y2="185" stroke="#7C5CFC" stroke-width="0.7" opacity="0.4"/>
+      <line x1="340" y1="188" x2="304" y2="192" stroke="#00D4C8" stroke-width="0.7" opacity="0.4"/>
+      <line x1="188" y1="305" x2="220" y2="264" stroke="#F040A0" stroke-width="0.7" opacity="0.38"/>
+      <line x1="312" y1="300" x2="274" y2="260" stroke="#FFB830" stroke-width="0.7" opacity="0.38"/>
+      <line x1="188" y1="305" x2="240" y2="338" stroke="#F040A0" stroke-width="0.5" opacity="0.28"/>
+      <line x1="312" y1="300" x2="240" y2="338" stroke="#FFB830" stroke-width="0.5" opacity="0.28"/>
+      <line x1="128" y1="268" x2="143" y2="172" stroke="#A98BFD" stroke-width="0.5" opacity="0.28"/>
+      <line x1="362" y1="148" x2="340" y2="188" stroke="#7EEEE9" stroke-width="0.5" opacity="0.28"/>
+      <!-- labels -->
+      <rect x="46" y="212" width="86" height="24" rx="12" fill="rgba(124,92,252,0.16)" stroke="#7C5CFC" stroke-width="0.8"/>
+      <text x="89" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#A98BFD">Cognición</text>
+      <rect x="352" y="212" width="82" height="24" rx="12" fill="rgba(0,212,200,0.13)" stroke="#00D4C8" stroke-width="0.8"/>
+      <text x="393" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#7EEEE9">Emoción</text>
+      <rect x="150" y="348" width="80" height="24" rx="12" fill="rgba(240,64,160,0.13)" stroke="#F040A0" stroke-width="0.8"/>
+      <text x="190" y="364" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#F880C4">Conducta</text>
+      <rect x="262" y="348" width="92" height="24" rx="12" fill="rgba(255,184,48,0.12)" stroke="#FFB830" stroke-width="0.8"/>
+      <text x="308" y="364" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#FFB830">Percepción</text>
+      <line x1="132" y1="224" x2="143" y2="218" stroke="#7C5CFC" stroke-width="0.6" opacity="0.45"/>
+      <line x1="352" y1="224" x2="340" y2="212" stroke="#00D4C8" stroke-width="0.6" opacity="0.45"/>
+      <line x1="190" y1="348" x2="192" y2="315" stroke="#F040A0" stroke-width="0.6" opacity="0.45"/>
+      <line x1="308" y1="348" x2="308" y2="310" stroke="#FFB830" stroke-width="0.6" opacity="0.45"/>
+    </svg>
   </div>
 </section>
 
-<!-- 01 INTRO -->
-<section id="intro"><div class="sec">
-  <div class="eyebrow"><span class="ey-num">01</span><span class="ey-rule"></span><span class="ey-tag">Introducción</span></div>
-  <h2 class="sec-title">¿Qué es el<br>Conductismo?</h2>
-  <p class="sec-sub">El giro hacia la ciencia objetiva de la conducta</p>
-  <div class="intro-grid">
-    <div class="intro-body">
-      <p class="intro-lead">El conductismo surgió a principios del siglo XX como una corriente dentro de la psicología científica, enfocada en el estudio objetivo y medible de la <strong>conducta externa</strong>.</p>
-      <p>Como señalan Sáiz, M. y Anguera, B. (2013), este enfoque buscaba posicionar la psicología como una ciencia positiva centrada en la actividad públicamente observable; sin embargo, la psicología actual ha evolucionado hacia una visión más integral, interesada no solo en la conducta externa, sino también en los procesos mentales y la cognición humana.</p>
-      <p>Esta transición ha llevado a hablar de una psicología de la mente y la conducta. En esta cartilla se explora el origen y desarrollo del conductismo, destacando las atribuciones clave de autores como Watson y Skinner, quienes sentaron sus bases; Bandura, que lo vinculó al aprendizaje social; Béjterev, con su psicología objetiva apoyada en respuestas fisiológicas; Spence, que amplió el enfoque de Hull; y Hull, Guthrie, Tolman, Thorndike y Pavlov, cada uno con aportes únicos al estudio del aprendizaje y la conducta.</p>
-      <p>El documento se centra en el objeto de estudio del conductismo, analiza el origen y evolución de la corriente —pasando por el neoconductismo y el conductismo transicional—, examina las principales teorías de los autores mencionados, y concluye con una reflexión sobre el impacto actual del conductismo en la psicología.</p>
-      <div class="pillar-strip">
-        <div class="pillar"><span class="pi">🔬</span><div class="pn">Objetividad</div><div class="pd">Método experimental como base del saber</div></div>
-        <div class="pillar"><span class="pi">👁️</span><div class="pn">Observabilidad</div><div class="pd">Solo la conducta externa es objeto válido</div></div>
-        <div class="pillar"><span class="pi">⚙️</span><div class="pn">Determinismo</div><div class="pd">Toda conducta responde a causas identificables</div></div>
-        <div class="pillar"><span class="pi">🔄</span><div class="pn">Plasticidad</div><div class="pd">El comportamiento puede modificarse</div></div>
-      </div>
-    </div>
-    <div class="intro-aside">
-      <div class="fact-card"><div class="fn">1913</div><div class="fl">Año del manifiesto conductista de Watson</div></div>
-      <div class="fact-card" style="background:var(--teal);"><div class="fn" style="color:var(--gold);">11</div><div class="fl">Teóricos que construyeron esta corriente</div></div>
-      <div class="fact-card" style="background:var(--rust);"><div class="fn" style="color:white;">+80</div><div class="fl">Años de desarrollo y evolución teórica</div></div>
-    </div>
-  </div>
-  <blockquote class="pull-quote">"Este enfoque buscaba posicionar la psicología como una ciencia positiva centrada en la actividad públicamente observable; sin embargo, la psicología actual ha evolucionado hacia una visión más integral, interesada no solo en la conducta externa, sino también en los procesos mentales y la cognición humana."<cite>— Sáiz, M. y Anguera, B. (2013). Historia de la psicología. Editorial UOC. (p. 24)</cite></blockquote>
-</div></section>
-
-<!-- 02 OBJETO -->
-<section id="objeto"><div class="sec" style="padding-top:0;padding-bottom:0;">
-  <div class="eyebrow"><span class="ey-num" style="color:var(--teal-light);">02</span><span class="ey-rule" style="background:rgba(255,255,255,.15);"></span><span class="ey-tag" style="color:rgba(245,240,232,.4);">Objeto de Estudio</span></div>
-  <h2 class="sec-title" style="color:var(--paper);">La Conducta<br>Observable</h2>
-  <p class="sec-sub" style="color:rgba(245,240,232,.55);">Definición argumentada y aporte al estudio de la mente y la conducta humana</p>
-
-  <!-- Argued definition block -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem;">
-    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:2rem;">
-      <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.15em;color:var(--amber);margin-bottom:.8rem;">DEFINICIÓN DEL OBJETO</div>
-      <p style="font-size:.92rem;line-height:1.8;color:rgba(245,240,232,.82);">El objeto de estudio del conductismo es la <strong style="color:white;">conducta observable y medible</strong> del organismo en relación con su entorno. Según Töpf (2020), la conducta es toda actividad del organismo susceptible de ser registrada objetivamente, excluyendo estados mentales que no puedan ser directamente verificados.</p>
-      <p style="font-size:.92rem;line-height:1.8;color:rgba(245,240,232,.82);margin-top:.8rem;">Esta delimitación fue radical: Watson (1913, citado en Sáiz y Anguera, 2013) afirmó que la psicología debía abandonar la introspección y centrarse exclusivamente en las relaciones entre estímulos del ambiente y las respuestas del organismo.</p>
-    </div>
-    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:2rem;">
-      <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.15em;color:var(--teal-light);margin-bottom:.8rem;">APORTE A LA PSICOLOGÍA</div>
-      <p style="font-size:.92rem;line-height:1.8;color:rgba(245,240,232,.82);">El aporte del conductismo al estudio de la mente y la conducta humana es triple. En primer lugar, <strong style="color:white;">metodológico</strong>: instituyó el experimento controlado como estándar científico. En segundo lugar, <strong style="color:white;">conceptual</strong>: demostró que el aprendizaje obedece a leyes universales que pueden describirse, predecirse y modificarse.</p>
-      <p style="font-size:.92rem;line-height:1.8;color:rgba(245,240,232,.82);margin-top:.8rem;">En tercer lugar, <strong style="color:white;">aplicado</strong>: los principios conductistas son la base de la terapia cognitivo-conductual, el análisis aplicado del comportamiento y las tecnologías educativas actuales (Pérez, 2023).</p>
-    </div>
-  </div>
-
-  <div class="er-diagram">
-    <div class="er-box eb"><div class="erl">Entrada</div><div class="erm">Estímulo</div><div class="erd">Evento del entorno<br>que provoca reacción</div></div>
-    <div class="er-arrow">→</div>
-    <div class="er-box"><div class="erl">Mediador</div><div class="erm">Organismo</div><div class="erd">"Caja negra" o<br>variables intermedias</div></div>
-    <div class="er-arrow">→</div>
-    <div class="er-box rb"><div class="erl">Salida</div><div class="erm">Respuesta</div><div class="erd">Comportamiento<br>observable y medible</div></div>
-  </div>
-  <p style="color:rgba(245,240,232,.7);font-size:.92rem;max-width:700px;margin:0 auto 2.5rem;text-align:center;line-height:1.8;">El modelo <strong style="color:var(--amber);">E–R</strong> es la unidad básica de análisis. El neoconductismo amplió el esquema a <strong style="color:var(--amber);">E–O–R</strong>, reconociendo variables internas que median la conducta (Pérez Álvarez, 2021).</p>
-
-  <div class="ctable-wrap"><table class="ctable">
-    <thead><tr><th>Concepto</th><th>Definición</th><th>Ejemplo cotidiano</th><th>Referencia</th></tr></thead>
-    <tbody>
-      <tr><td><span class="ct">Estímulo (E)</span></td><td>Evento del ambiente que activa una respuesta en el organismo</td><td>Sonido de una campana</td><td style="color:rgba(245,240,232,.5)">Pavlov (1927)</td></tr>
-      <tr><td><span class="ct">Respuesta (R)</span></td><td>Reacción observable y medible ante el estímulo</td><td>Salivación del perro</td><td style="color:rgba(245,240,232,.5)">Watson (1913)</td></tr>
-      <tr><td><span class="ct">Condicionamiento</span></td><td>Aprendizaje por asociación repetida entre E y R</td><td>Campana → salivación</td><td style="color:rgba(245,240,232,.5)">Pavlov (1927)</td></tr>
-      <tr><td><span class="ct">Reforzamiento</span></td><td>Consecuencia que aumenta la probabilidad de repetición de una conducta</td><td>Calificación positiva tras estudio</td><td style="color:rgba(245,240,232,.5)">Thorndike (1898); Skinner (1938)</td></tr>
-      <tr><td><span class="ct">Extinción</span></td><td>Reducción de una respuesta al retirar el reforzador</td><td>Ignorar sistemáticamente una rabieta</td><td style="color:rgba(245,240,232,.5)">Pavlov (1927)</td></tr>
-      <tr><td><span class="ct">Moldeamiento</span></td><td>Reforzamiento progresivo de aproximaciones a la conducta meta</td><td>Aprender a escribir paso a paso</td><td style="color:rgba(245,240,232,.5)">Skinner (1953)</td></tr>
-    </tbody>
-  </table></div>
-
-<!-- 03 REFLEXIÓN -->
-<section id="reflexion"><div class="sec">
-  <div class="eyebrow"><span class="ey-num">03</span><span class="ey-rule"></span><span class="ey-tag">Reflexión Histórica</span></div>
-  <h2 class="sec-title">Evolución del<br>Conductismo</h2>
-  <p class="sec-sub">Del surgimiento al neoconductismo y la apertura cognitiva</p>
-  <p style="max-width:750px;margin-bottom:2.5rem;font-size:.96rem;line-height:1.8;">El conductismo atravesó más de ochenta años de debates y reformulaciones. Identificamos tres grandes momentos:</p>
-  <div class="phases-grid">
-    <div class="phase-card">
-      <div class="ph-period">1890 — 1930</div><div class="ph-name">Conductismo Clásico</div>
-      <div class="ph-desc">Watson formaliza el conductismo en 1913, con raíces en Thorndike y Pavlov. El esquema E→R se convierte en la unidad de análisis. Se rechaza toda referencia a la mente.</div>
-      <div class="ph-chips"><span class="chip">Thorndike</span><span class="chip">Pavlov</span><span class="chip">Béjterev</span><span class="chip">Watson</span></div>
-    </div>
-    <div class="phase-card">
-      <div class="ph-period">1930 — 1960</div><div class="ph-name">Neoconductismo</div>
-      <div class="ph-desc">Skinner, Hull, Guthrie, Tolman, Spence y Miller amplían el paradigma. Se introducen variables intervinientes y se formaliza el condicionamiento operante.</div>
-      <div class="ph-chips"><span class="chip">Skinner</span><span class="chip">Guthrie</span><span class="chip">Tolman</span><span class="chip">Hull</span><span class="chip">Spence</span><span class="chip">N. Miller</span></div>
-    </div>
-    <div class="phase-card">
-      <div class="ph-period">1960 — presente</div><div class="ph-name">Conductismo Social</div>
-      <div class="ph-desc">Bandura demuestra el aprendizaje observacional e introduce variables cognitivas como la autoeficacia. El conductismo se abre definitivamente al interior del organismo.</div>
-      <div class="ph-chips"><span class="chip">Bandura</span><span class="chip">Terapia TCC</span></div>
-    </div>
-  </div>
-  <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;margin:4rem 0 2rem;">Línea del Tiempo</h3>
-  <div class="timeline">
-    <div class="tl-item"><div class="tl-dot" style="background:var(--amber)"></div><div class="tl-year">1898 – 1905</div><div class="tl-title">Thorndike — Conexionismo</div><div class="tl-body">Primeros experimentos con animales en cajas problema. Formula la Ley del Efecto como base empírica del reforzamiento.</div></div>
-    <div class="tl-item"><div class="tl-dot" style="background:var(--teal)"></div><div class="tl-year">1897 – 1927</div><div class="tl-title">Pavlov y Béjterev — Reflejo condicionado</div><div class="tl-body">Pavlov descubre el condicionamiento clásico. Béjterev desarrolla la reflexología objetiva en Rusia de forma independiente.</div></div>
-    <div class="tl-item"><div class="tl-dot" style="background:var(--rust)"></div><div class="tl-year">1913</div><div class="tl-title">Watson — El Manifiesto</div><div class="tl-body">"La psicología como la ve el conductista" define el programa científico. Experimento del Pequeño Alberto (1920).</div></div>
-    <div class="tl-item"><div class="tl-dot" style="background:var(--lavender)"></div><div class="tl-year">1930 – 1950</div><div class="tl-title">Skinner, Hull, Guthrie, Tolman — Neoconductismo</div><div class="tl-body">Condicionamiento operante, teoría matemática del aprendizaje, mapas cognitivos y aprendizaje por contigüidad.</div></div>
-    <div class="tl-item"><div class="tl-dot" style="background:var(--sage)"></div><div class="tl-year">1940 – 1960</div><div class="tl-title">Spence y Neal Miller — Refinamiento</div><div class="tl-body">Spence refina el modelo de Hull. Miller demuestra el condicionamiento del SNA y establece las bases del biofeedback.</div></div>
-    <div class="tl-item"><div class="tl-dot" style="background:var(--rust)"></div><div class="tl-year">1963 – 1977</div><div class="tl-title">Bandura — Aprendizaje Social</div><div class="tl-body">El experimento del Muñeco Bobo demuestra el aprendizaje observacional. La autoeficacia abre el conductismo a la cognición.</div></div>
-  </div>
-</div></section>
-
-<!-- COMPARACIÓN DOS AUTORES -->
-<section id="comparacion" style="background:var(--ink);color:var(--paper);padding:6rem 0;">
-<div class="sec" style="padding-top:0;padding-bottom:0;">
-  <div class="eyebrow">
-    <span class="ey-num" style="color:var(--amber);">03b</span>
-    <span class="ey-rule" style="background:rgba(255,255,255,.15);"></span>
-    <span class="ey-tag" style="color:rgba(245,240,232,.4);">Análisis Comparativo</span>
-  </div>
-  <h2 class="sec-title" style="color:var(--paper);">Skinner y Bandura:<br>Comparación y Aplicaciones</h2>
-  <p class="sec-sub" style="color:rgba(245,240,232,.55);">Fundamentos teóricos, diferencias y vigencia en la psicología contemporánea</p>
-
-  <!-- Comparison cards side by side -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:2.5rem;overflow:hidden;">
-
-    <div style="background:rgba(58,74,92,.4);border:1px solid rgba(58,74,92,.6);padding:2.5rem;">
-      <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;color:#6a8aac;margin-bottom:.5rem;">AUTOR 01 · NEOCONDUCTISMO</div>
-      <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;color:white;margin-bottom:.3rem;">B.F. Skinner</div>
-      <div style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem;">1904–1990 · Condicionamiento Operante</div>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#6a8aac;margin-bottom:.6rem;">PLANTEAMIENTO CENTRAL</div>
-      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.8);margin-bottom:1.2rem;">Para Skinner (1938, citado en Pérez Álvarez, 2021), la conducta es función de sus consecuencias. El organismo opera sobre el ambiente y las consecuencias —refuerzo o castigo— determinan si la conducta se repetirá o se extinguirá. El ambiente es el agente causal absoluto; los estados internos son irrelevantes para la explicación científica.</p>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#6a8aac;margin-bottom:.6rem;">SUPUESTOS FUNDAMENTALES</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem;">
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#6a8aac;margin-top:.2rem;">▸</span>La conducta es totalmente determinada por el entorno</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#6a8aac;margin-top:.2rem;">▸</span>Los reforzadores positivos son más efectivos que el castigo</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#6a8aac;margin-top:.2rem;">▸</span>El moldeamiento permite adquirir conductas complejas gradualmente</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#6a8aac;margin-top:.2rem;">▸</span>Los programas de reforzamiento variable son los más resistentes a la extinción</li>
-      </ul>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#6a8aac;margin-bottom:.6rem;">APLICACIONES ACTUALES</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Análisis Aplicado de la Conducta (ABA) en autismo</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Sistemas de economía de fichas en aulas y clínicas</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Gamificación en aplicaciones educativas (Duolingo, Kahoot)</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Modificación de conducta en psicología organizacional</li>
-      </ul>
-    </div>
-
-    <div style="background:rgba(139,26,42,.25);border:1px solid rgba(139,26,42,.5);padding:2.5rem;">
-      <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;color:#cc6a7a;margin-bottom:.5rem;">AUTOR 02 · CONDUCTISMO SOCIAL</div>
-      <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;color:white;margin-bottom:.3rem;">Albert Bandura</div>
-      <div style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem;">1925–2021 · Aprendizaje Social y Cognitivo</div>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#cc6a7a;margin-bottom:.6rem;">PLANTEAMIENTO CENTRAL</div>
-      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.8);margin-bottom:1.2rem;">Bandura (1977, citado en López Cruz, 2021) propuso que el aprendizaje no requiere reforzamiento directo: basta con observar a un modelo. Las personas aprenden anticipando consecuencias y regulando su conducta según sus creencias de autoeficacia. El determinismo es recíproco: persona, conducta y ambiente se influyen mutuamente.</p>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#cc6a7a;margin-bottom:.6rem;">SUPUESTOS FUNDAMENTALES</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem;">
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#cc6a7a;margin-top:.2rem;">▸</span>El aprendizaje ocurre por observación e imitación de modelos</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#cc6a7a;margin-top:.2rem;">▸</span>La autoeficacia determina el esfuerzo, la persistencia y el logro</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#cc6a7a;margin-top:.2rem;">▸</span>El reforzamiento vicario (ver que otro es recompensado) motiva la imitación</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#cc6a7a;margin-top:.2rem;">▸</span>Los procesos cognitivos (atención, retención, reproducción) median el aprendizaje</li>
-      </ul>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#cc6a7a;margin-bottom:.6rem;">APLICACIONES ACTUALES</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Terapia cognitivo-conductual (TCC) para ansiedad y depresión</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Programas de autoeficacia en salud (adherencia a tratamientos)</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Formación docente mediante modelado y práctica reflexiva</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Prevención de violencia escolar y familiar a través de modelos prosociales</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Comparison table -->
-  <div style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;color:var(--amber);margin-bottom:1rem;">TABLA COMPARATIVA DIRECTA</div>
-  <table style="width:100%;border-collapse:collapse;background:rgba(255,255,255,.03);">
-    <thead>
-      <tr style="background:rgba(255,255,255,.06);">
-        <th style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;color:var(--amber);padding:.9rem 1.2rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);">Dimensión</th>
-        <th style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;color:#6a8aac;padding:.9rem 1.2rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);">Skinner</th>
-        <th style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;color:#cc6a7a;padding:.9rem 1.2rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);">Bandura</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);font-size:.7rem;">Unidad de análisis</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Conducta operante (E→R→Consecuencia)</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Aprendizaje observacional (Modelo→Observador)</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);">Rol del organismo</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Pasivo — responde a contingencias del ambiente</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Activo — selecciona, anticipa, se autorregula</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);">Papel del reforzamiento</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Indispensable para el aprendizaje</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">No es indispensable; puede ser vicario o anticipado</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);">Procesos internos</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Excluidos del análisis científico</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Centrales: autoeficacia, expectativas, cognición</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);">Método principal</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Análisis experimental de la conducta individual</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Experimentación social y autoinforme</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);font-family:var(--font-mono);">Vigencia clínica</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);">ABA, economía de fichas, biofeedback</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);">TCC, entrenamiento en autoeficacia, modelado</td></tr>
-    </tbody>
-  </table>
-
-  <blockquote class="pull-quote" style="margin-top:2.5rem;border-color:var(--amber);background:rgba(201,135,28,.08);">
-    "Skinner nos dio las herramientas para modificar la conducta; Bandura nos enseñó que el ser humano también puede modificarse a sí mismo a través de lo que observa y de lo que cree capaz de hacer."
-    <cite>— Síntesis comparativa. En: Pérez Álvarez, M. (2021). Papeles del Psicólogo, 42(1), 10–20.</cite>
-  </blockquote>
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num" id="stat-projects">0</div><div class="stat-label">Proyectos</div></div>
+  <div class="stat-item"><div class="stat-num">5°</div><div class="stat-label">Semestre</div></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Áreas de interés</div></div>
+  <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Curiosidad</div></div>
 </div>
-</section>
 
-<!-- 04 AUTORES -->
-<section id="autores"><div class="sec">
-  <div class="eyebrow"><span class="ey-num">04</span><span class="ey-rule"></span><span class="ey-tag">Teorías Principales</span></div>
-  <h2 class="sec-title">Los 11 Autores<br>del Conductismo</h2>
-  <p class="sec-sub">Dos por sección — postulados, contribuciones e imagen de cada teórico</p>
-
-  <!-- helper macro as HTML repetition -->
-
-  <!-- PAR 1 -->
-  <div class="authors-pair">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#5a3a08"/>
-          <rect width="400" height="230" fill="url(#g1)"/>
-          <defs><radialGradient id="g1" cx="30%" cy="40%"><stop offset="0%" stop-color="#c9871c" stop-opacity=".5"/><stop offset="100%" stop-color="#1a0e00" stop-opacity=".8"/></radialGradient></defs>
-          <!-- grid lines -->
-          <line x1="0" y1="46" x2="400" y2="46" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="0" y1="92" x2="400" y2="92" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="0" y1="138" x2="400" y2="138" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="0" y1="184" x2="400" y2="184" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="80" y1="0" x2="80" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="160" y1="0" x2="160" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="240" y1="0" x2="240" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="320" y1="0" x2="320" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <!-- cage/box motif -->
-          <rect x="220" y="40" width="140" height="110" rx="4" fill="none" stroke="rgba(201,135,28,.35)" stroke-width="2"/>
-          <rect x="235" y="55" width="110" height="80" rx="2" fill="none" stroke="rgba(201,135,28,.2)" stroke-width="1.5"/>
-          <!-- bars -->
-          <line x1="255" y1="55" x2="255" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
-          <line x1="275" y1="55" x2="275" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
-          <line x1="295" y1="55" x2="295" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
-          <line x1="315" y1="55" x2="315" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
-          <!-- cat silhouette -->
-          <ellipse cx="110" cy="155" rx="38" ry="28" fill="rgba(255,255,255,.07)"/>
-          <ellipse cx="110" cy="118" rx="22" ry="24" fill="rgba(255,255,255,.07)"/>
-          <ellipse cx="100" cy="100" rx="6" ry="9" fill="rgba(255,255,255,.07)" transform="rotate(-15,100,100)"/>
-          <ellipse cx="122" cy="98" rx="6" ry="9" fill="rgba(255,255,255,.07)" transform="rotate(15,122,98)"/>
-          <!-- E→R arrow -->
-          <text x="20" y="210" font-family="monospace" font-size="11" fill="rgba(201,135,28,.6)" letter-spacing="3">E ──── R</text>
-          <!-- big initial -->
-          <text x="330" y="210" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.05)" text-anchor="middle">T</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Edward Thorndike</div><span class="aph-num">01 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#c9871c"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1874 – 1949 · Estadounidense</span><span class="atheory" style="color:#8b5e0a;border-color:#c9871c">Conexionismo</span></div>
-        <p class="aintro">Precursor del conductismo, primero en aplicar el método experimental al aprendizaje animal con sus famosas <em>cajas problema</em>.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley del Efecto:</strong> las respuestas satisfactorias se fortalecen; las molestas se debilitan.</div></li>
-          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley del Ejercicio:</strong> la práctica repetida fortalece las conexiones E-R.</div></li>
-          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley de la Disposición:</strong> la predisposición del organismo influye en el aprendizaje.</div></li>
-          <li><span class="adot" style="background:#c9871c"></span><div>El aprendizaje es la formación de <strong>conexiones neuronales</strong> entre E y R.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#c9871c"><div class="acl">Aporte</div><div class="act">Sentó las bases empíricas del reforzamiento antes de que el conductismo existiera formalmente.</div></div>
-      </div>
+<section class="section" id="proyectos">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Portafolio</div>
+      <h2 class="section-title">Proyectos académicos</h2>
     </div>
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#0d3d3d"/>
-          <defs><radialGradient id="g2" cx="70%" cy="30%"><stop offset="0%" stop-color="#2d9e9e" stop-opacity=".6"/><stop offset="100%" stop-color="#040f0f" stop-opacity=".9"/></radialGradient></defs>
-          <rect width="400" height="230" fill="url(#g2)"/>
-          <!-- wave/bell pattern -->
-          <path d="M0,115 Q50,75 100,115 Q150,155 200,115 Q250,75 300,115 Q350,155 400,115" fill="none" stroke="rgba(45,158,158,.4)" stroke-width="2"/>
-          <path d="M0,135 Q50,95 100,135 Q150,175 200,135 Q250,95 300,135 Q350,175 400,135" fill="none" stroke="rgba(45,158,158,.2)" stroke-width="1.5"/>
-          <path d="M0,95 Q50,55 100,95 Q150,135 200,95 Q250,55 300,95 Q350,135 400,95" fill="none" stroke="rgba(45,158,158,.15)" stroke-width="1"/>
-          <!-- bell icon -->
-          <path d="M185,50 Q185,35 200,35 Q215,35 215,50 L222,85 Q225,92 230,95 L170,95 Q175,92 178,85 Z" fill="none" stroke="rgba(45,158,158,.5)" stroke-width="2"/>
-          <ellipse cx="200" cy="98" rx="12" ry="5" fill="none" stroke="rgba(45,158,158,.5)" stroke-width="2"/>
-          <line x1="200" y1="35" x2="200" y2="28" stroke="rgba(45,158,158,.5)" stroke-width="2"/>
-          <!-- dog silhouette simplified -->
-          <ellipse cx="80" cy="160" rx="45" ry="22" fill="rgba(255,255,255,.06)"/>
-          <ellipse cx="110" cy="140" rx="18" ry="20" fill="rgba(255,255,255,.06)"/>
-          <line x1="55" y1="182" x2="50" y2="200" stroke="rgba(255,255,255,.06)" stroke-width="6" stroke-linecap="round"/>
-          <line x1="70" y1="183" x2="68" y2="202" stroke="rgba(255,255,255,.06)" stroke-width="6" stroke-linecap="round"/>
-          <line x1="95" y1="183" x2="93" y2="202" stroke="rgba(255,255,255,.06)" stroke-width="6" stroke-linecap="round"/>
-          <line x1="110" y1="182" x2="112" y2="200" stroke="rgba(255,255,255,.06)" stroke-width="6" stroke-linecap="round"/>
-          <!-- drip = salivation -->
-          <circle cx="120" cy="155" r="3" fill="rgba(45,158,158,.5)"/>
-          <ellipse cx="121" cy="164" rx="2" ry="4" fill="rgba(45,158,158,.4)"/>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(45,158,158,.6)" letter-spacing="2">EC ──→ RC</text>
-          <text x="330" y="215" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">P</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Iván Pavlov</div><span class="aph-num">02 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#1a6b6b"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1849 – 1936 · Ruso · Nobel 1904</span><span class="atheory" style="color:#1a6b6b;border-color:#1a6b6b">Cond. Clásico</span></div>
-        <p class="aintro">Fisiólogo que descubrió accidentalmente el reflejo condicionado estudiando la digestión en perros, sentando el paradigma del aprendizaje asociativo.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#1a6b6b"></span><div><strong>EI → RI:</strong> el estímulo incondicionado produce respuesta natural automática.</div></li>
-          <li><span class="adot" style="background:#1a6b6b"></span><div><strong>EC → RC:</strong> estímulo neutro asociado al EI adquiere poder de respuesta.</div></li>
-          <li><span class="adot" style="background:#1a6b6b"></span><div><strong>Extinción:</strong> la RC desaparece si el EC se presenta sin el EI.</div></li>
-          <li><span class="adot" style="background:#1a6b6b"></span><div><strong>Recuperación espontánea:</strong> la RC puede reaparecer tras descanso.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#1a6b6b"><div class="acl">Aporte</div><div class="act">Estableció el paradigma del condicionamiento clásico como modelo universal del aprendizaje asociativo.</div></div>
-      </div>
-    </div>
+    <span class="section-count" id="project-count">Sin proyectos aún</span>
   </div>
-
-  <!-- PAR 2 -->
-  <div class="authors-pair">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#283d24"/>
-          <defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#5a7a52" stop-opacity=".7"/><stop offset="100%" stop-color="#0e1a0c" stop-opacity=".9"/></linearGradient></defs>
-          <rect width="400" height="230" fill="url(#g3)"/>
-          <!-- neural network nodes -->
-          <circle cx="60" cy="80" r="8" fill="none" stroke="rgba(90,122,82,.7)" stroke-width="1.5"/>
-          <circle cx="60" cy="120" r="8" fill="none" stroke="rgba(90,122,82,.7)" stroke-width="1.5"/>
-          <circle cx="60" cy="160" r="8" fill="none" stroke="rgba(90,122,82,.7)" stroke-width="1.5"/>
-          <circle cx="140" cy="60" r="8" fill="none" stroke="rgba(90,122,82,.6)" stroke-width="1.5"/>
-          <circle cx="140" cy="100" r="8" fill="none" stroke="rgba(90,122,82,.6)" stroke-width="1.5"/>
-          <circle cx="140" cy="140" r="8" fill="none" stroke="rgba(90,122,82,.6)" stroke-width="1.5"/>
-          <circle cx="140" cy="180" r="8" fill="none" stroke="rgba(90,122,82,.6)" stroke-width="1.5"/>
-          <circle cx="220" cy="80" r="8" fill="none" stroke="rgba(90,122,82,.7)" stroke-width="1.5"/>
-          <circle cx="220" cy="130" r="8" fill="none" stroke="rgba(90,122,82,.7)" stroke-width="1.5"/>
-          <circle cx="220" cy="170" r="8" fill="none" stroke="rgba(90,122,82,.7)" stroke-width="1.5"/>
-          <!-- connections -->
-          <line x1="68" y1="80" x2="132" y2="60" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="68" y1="80" x2="132" y2="100" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="68" y1="120" x2="132" y2="100" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="68" y1="120" x2="132" y2="140" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="68" y1="160" x2="132" y2="140" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="68" y1="160" x2="132" y2="180" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="148" y1="60" x2="212" y2="80" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="148" y1="100" x2="212" y2="80" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="148" y1="140" x2="212" y2="130" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <line x1="148" y1="180" x2="212" y2="170" stroke="rgba(90,122,82,.3)" stroke-width="1"/>
-          <!-- brain outline -->
-          <path d="M280,80 Q310,55 340,70 Q370,85 365,115 Q375,145 355,160 Q335,175 310,165 Q285,175 275,155 Q260,135 270,110 Q265,90 280,80Z" fill="none" stroke="rgba(90,122,82,.4)" stroke-width="1.5"/>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(90,122,82,.7)" letter-spacing="2">REFLEJO ASOCIATIVO</text>
-          <text x="370" y="215" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">B</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Vladímir Béjterev</div><span class="aph-num">03 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#5a7a52"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1857 – 1927 · Ruso</span><span class="atheory" style="color:#5a7a52;border-color:#5a7a52">Reflexología</span></div>
-        <p class="aintro">Neurólogo que desarrolló la reflexología como ciencia objetiva de la conducta, de forma paralela e independiente a Pavlov.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#5a7a52"></span><div>Toda actividad psíquica se reduce a <strong>reflejos observables</strong> del SN.</div></li>
-          <li><span class="adot" style="background:#5a7a52"></span><div>La psicología debe emplear exclusivamente <strong>métodos objetivos</strong>.</div></li>
-          <li><span class="adot" style="background:#5a7a52"></span><div>Los <strong>reflejos asociativos</strong> son la unidad básica del aprendizaje.</div></li>
-          <li><span class="adot" style="background:#5a7a52"></span><div>La energía nerviosa puede transferirse y asociarse con nuevos estímulos.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#5a7a52"><div class="acl">Aporte</div><div class="act">Aportó perspectiva neurológica al objetivismo y anticipó postulados del conductismo americano.</div></div>
-      </div>
-    </div>
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#4a1a08"/>
-          <defs><radialGradient id="g4" cx="50%" cy="50%"><stop offset="0%" stop-color="#9b3a1a" stop-opacity=".7"/><stop offset="100%" stop-color="#0d0500" stop-opacity=".95"/></radialGradient></defs>
-          <rect width="400" height="230" fill="url(#g4)"/>
-          <!-- manifesto lines -->
-          <line x1="30" y1="50" x2="180" y2="50" stroke="rgba(200,80,30,.3)" stroke-width="1"/>
-          <line x1="30" y1="62" x2="160" y2="62" stroke="rgba(200,80,30,.25)" stroke-width="1"/>
-          <line x1="30" y1="74" x2="175" y2="74" stroke="rgba(200,80,30,.25)" stroke-width="1"/>
-          <line x1="30" y1="86" x2="140" y2="86" stroke="rgba(200,80,30,.2)" stroke-width="1"/>
-          <line x1="30" y1="98" x2="165" y2="98" stroke="rgba(200,80,30,.2)" stroke-width="1"/>
-          <!-- 1913 year big -->
-          <text x="240" y="130" font-family="Georgia,serif" font-size="60" font-weight="900" fill="rgba(155,58,26,.4)">1913</text>
-          <!-- megaphone/manifesto icon -->
-          <path d="M40,130 L40,170 L60,170 L60,130 Z" fill="rgba(200,80,30,.4)"/>
-          <path d="M60,120 L110,100 L110,200 L60,180 Z" fill="rgba(200,80,30,.35)"/>
-          <path d="M110,120 Q130,115 130,130 Q130,145 110,140 Z" fill="none" stroke="rgba(200,80,30,.4)" stroke-width="2"/>
-          <!-- Albert baby motif (small Alberto) -->
-          <circle cx="320" cy="90" r="20" fill="none" stroke="rgba(200,80,30,.3)" stroke-width="1.5"/>
-          <text x="316" y="96" font-family="monospace" font-size="11" fill="rgba(200,80,30,.5)">:)</text>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(200,80,30,.6)" letter-spacing="2">BEHAVIOURISM · 1913</text>
-          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">W</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">John B. Watson</div><span class="aph-num">04 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#9b3a1a"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1878 – 1958 · Estadounidense</span><span class="atheory" style="color:#9b3a1a;border-color:#9b3a1a">Cond. Clásico</span></div>
-        <p class="aintro">Fundador oficial del conductismo. Su artículo de 1913 redefinió la psicología como ciencia de la conducta observable.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#9b3a1a"></span><div>La psicología es una <strong>ciencia natural objetiva</strong>; su único objeto es la conducta.</div></li>
-          <li><span class="adot" style="background:#9b3a1a"></span><div>Las emociones son <strong>respuestas aprendidas</strong> a estímulos del ambiente.</div></li>
-          <li><span class="adot" style="background:#9b3a1a"></span><div>El desarrollo es producto del <strong>ambiente</strong>, no de la herencia.</div></li>
-          <li><span class="adot" style="background:#9b3a1a"></span><div>Exp. <strong>Pequeño Alberto</strong> (1920): condicionamiento del miedo en humanos.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#9b3a1a"><div class="acl">Aporte</div><div class="act">Fundó formalmente el conductismo y demostró empíricamente el condicionamiento en humanos.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAR 3 -->
-  <div class="authors-pair">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#1a2230"/>
-          <defs><linearGradient id="g5" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0d1520" stop-opacity="1"/><stop offset="100%" stop-color="#3a4a5c" stop-opacity=".8"/></linearGradient></defs>
-          <rect width="400" height="230" fill="url(#g5)"/>
-          <!-- Skinner box lever -->
-          <rect x="50" y="60" width="180" height="120" rx="4" fill="none" stroke="rgba(100,130,160,.4)" stroke-width="2"/>
-          <rect x="60" y="70" width="160" height="100" rx="2" fill="rgba(255,255,255,.03)"/>
-          <!-- lever -->
-          <rect x="170" y="90" width="40" height="8" rx="4" fill="rgba(100,130,160,.5)"/>
-          <rect x="205" y="70" width="8" height="32" rx="3" fill="rgba(100,130,160,.4)"/>
-          <!-- food dispenser -->
-          <rect x="80" y="140" width="24" height="20" rx="2" fill="rgba(100,130,160,.35)"/>
-          <!-- rat -->
-          <ellipse cx="130" cy="130" rx="18" ry="10" fill="rgba(255,255,255,.1)"/>
-          <circle cx="148" cy="122" r="8" fill="rgba(255,255,255,.1)"/>
-          <!-- reinforcement bars chart -->
-          <rect x="270" y="160" width="14" height="40" fill="rgba(100,130,160,.35)"/>
-          <rect x="290" y="140" width="14" height="60" fill="rgba(100,130,160,.4)"/>
-          <rect x="310" y="110" width="14" height="90" fill="rgba(100,130,160,.5)"/>
-          <rect x="330" y="85" width="14" height="115" fill="rgba(100,130,160,.6)"/>
-          <rect x="350" y="65" width="14" height="135" fill="rgba(100,130,160,.7)"/>
-          <line x1="265" y1="200" x2="370" y2="200" stroke="rgba(100,130,160,.5)" stroke-width="1.5"/>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(100,130,160,.7)" letter-spacing="2">OPERANT CONDITIONING</text>
-          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">S</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">B.F. Skinner</div><span class="aph-num">05 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#3a4a5c"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1904 – 1990 · Estadounidense</span><span class="atheory" style="color:#3a4a5c;border-color:#3a4a5c">Cond. Operante</span></div>
-        <p class="aintro">El conductista más influyente del siglo XX. Desarrolló el condicionamiento operante y un sistema que abarcó desde la psicología básica hasta la organización social.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Cond. operante:</strong> la conducta es controlada por sus consecuencias.</div></li>
-          <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Refuerzo +/−:</strong> aumentan la conducta por adición o remoción de estímulos.</div></li>
-          <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Programas de reforzamiento:</strong> razón e intervalo fijos o variables.</div></li>
-          <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Moldeamiento:</strong> reforzamiento de aproximaciones sucesivas.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#3a4a5c"><div class="acl">Aporte</div><div class="act">Creó el marco más sistemático del conductismo; base del análisis aplicado del comportamiento.</div></div>
-      </div>
-    </div>
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#243318"/>
-          <defs><linearGradient id="g6" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#5c7a3e" stop-opacity=".7"/><stop offset="100%" stop-color="#0c1508" stop-opacity=".95"/></linearGradient></defs>
-          <rect width="400" height="230" fill="url(#g6)"/>
-          <!-- single flash / one-shot motif -->
-          <path d="M200,30 L175,115 L195,115 L165,200 L220,105 L198,105 Z" fill="rgba(92,122,62,.5)" stroke="rgba(92,122,62,.7)" stroke-width="1"/>
-          <!-- circular arrows = habit loop -->
-          <path d="M80,115 A55,55 0 1,1 80,114" fill="none" stroke="rgba(92,122,62,.4)" stroke-width="2" stroke-dasharray="6,4"/>
-          <polygon points="78,60 85,72 70,70" fill="rgba(92,122,62,.5)"/>
-          <!-- E-R instant connection -->
-          <circle cx="310" cy="80" r="16" fill="none" stroke="rgba(92,122,62,.5)" stroke-width="1.5"/>
-          <text x="305" y="86" font-family="monospace" font-size="12" fill="rgba(92,122,62,.7)">E</text>
-          <line x1="326" y1="80" x2="355" y2="80" stroke="rgba(92,122,62,.5)" stroke-width="1.5" stroke-dasharray="4,2"/>
-          <circle cx="370" cy="80" r="16" fill="none" stroke="rgba(92,122,62,.5)" stroke-width="1.5"/>
-          <text x="366" y="86" font-family="monospace" font-size="12" fill="rgba(92,122,62,.7)">R</text>
-          <text x="310" y="108" font-family="monospace" font-size="8" fill="rgba(92,122,62,.5)">1 ensayo</text>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(92,122,62,.7)" letter-spacing="2">CONTIGÜIDAD · 1 ENSAYO</text>
-          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">G</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Edwin Ray Guthrie</div><span class="aph-num">06 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#5c7a3e"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1886 – 1959 · Estadounidense</span><span class="atheory" style="color:#5c7a3e;border-color:#5c7a3e">Contigüidad</span></div>
-        <p class="aintro">Propuso una teoría minimalista del aprendizaje basada en un único principio: la contigüidad temporal entre estímulo y respuesta.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#5c7a3e"></span><div><strong>Contigüidad:</strong> E asociado a R tenderá a elicitar esa R en el futuro.</div></li>
-          <li><span class="adot" style="background:#5c7a3e"></span><div><strong>Aprendizaje en un ensayo:</strong> ocurre en el primer emparejamiento E-R.</div></li>
-          <li><span class="adot" style="background:#5c7a3e"></span><div>El olvido es reemplazo: nuevos E se asocian a nuevas R.</div></li>
-          <li><span class="adot" style="background:#5c7a3e"></span><div>El reforzamiento <strong>no es necesario</strong>; solo importa la contigüidad temporal.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#5c7a3e"><div class="acl">Aporte</div><div class="act">Demostró que el aprendizaje puede explicarse con un principio único y parsimonioso.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAR 4 -->
-  <div class="authors-pair">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#2d2340"/>
-          <defs><radialGradient id="g7" cx="60%" cy="40%"><stop offset="0%" stop-color="#6b5b8a" stop-opacity=".7"/><stop offset="100%" stop-color="#0d0920" stop-opacity=".95"/></radialGradient></defs>
-          <rect width="400" height="230" fill="url(#g7)"/>
-          <!-- maze / map pattern -->
-          <rect x="30" y="30" width="200" height="160" rx="2" fill="none" stroke="rgba(107,91,138,.5)" stroke-width="1.5"/>
-          <!-- maze inner walls -->
-          <line x1="30" y1="80" x2="110" y2="80" stroke="rgba(107,91,138,.4)" stroke-width="1.5"/>
-          <line x1="110" y1="30" x2="110" y2="80" stroke="rgba(107,91,138,.4)" stroke-width="1.5"/>
-          <line x1="80" y1="80" x2="80" y2="130" stroke="rgba(107,91,138,.4)" stroke-width="1.5"/>
-          <line x1="80" y1="130" x2="170" y2="130" stroke="rgba(107,91,138,.4)" stroke-width="1.5"/>
-          <line x1="170" y1="80" x2="170" y2="130" stroke="rgba(107,91,138,.4)" stroke-width="1.5"/>
-          <line x1="140" y1="130" x2="140" y2="190" stroke="rgba(107,91,138,.4)" stroke-width="1.5"/>
-          <!-- rat path dotted -->
-          <path d="M35,190 L35,85 L115,85 L115,35 L175,35 L175,125 L145,125 L145,190" fill="none" stroke="rgba(200,180,240,.5)" stroke-width="2" stroke-dasharray="5,3"/>
-          <!-- destination star -->
-          <text x="148" y="185" font-family="serif" font-size="16" fill="rgba(200,180,240,.7)">★</text>
-          <!-- cognitive map label -->
-          <text x="250" y="70" font-family="monospace" font-size="9" fill="rgba(107,91,138,.7)" letter-spacing="1">MAPA</text>
-          <text x="250" y="85" font-family="monospace" font-size="9" fill="rgba(107,91,138,.7)" letter-spacing="1">COGNITIVO</text>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(107,91,138,.8)" letter-spacing="2">COGNITIVE MAPS · 1948</text>
-          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">T</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Edward C. Tolman</div><span class="aph-num">07 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#6b5b8a"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1886 – 1959 · Estadounidense</span><span class="atheory" style="color:#6b5b8a;border-color:#6b5b8a">Propositivo</span></div>
-        <p class="aintro">El "conductista disidente". Introdujo variables cognitivas en el análisis conductual y anticipó la psicología cognitiva con sus mapas mentales.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#6b5b8a"></span><div><strong>Conducta propositiva:</strong> el organismo actúa orientado hacia metas.</div></li>
-          <li><span class="adot" style="background:#6b5b8a"></span><div><strong>Aprendizaje latente:</strong> se aprende sin reforzamiento, solo por exploración.</div></li>
-          <li><span class="adot" style="background:#6b5b8a"></span><div><strong>Mapas cognitivos:</strong> representaciones internas del espacio y el ambiente.</div></li>
-          <li><span class="adot" style="background:#6b5b8a"></span><div>El reforzamiento no es condición necesaria para el aprendizaje.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#6b5b8a"><div class="acl">Aporte</div><div class="act">Puente fundamental entre conductismo y cognitivismo; el mapa cognitivo revolucionó la psicología del aprendizaje.</div></div>
-      </div>
-    </div>
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#3a1a08"/>
-          <defs><linearGradient id="g8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#8b4a1a" stop-opacity=".7"/><stop offset="100%" stop-color="#0a0400" stop-opacity=".95"/></linearGradient></defs>
-          <rect width="400" height="230" fill="url(#g8)"/>
-          <!-- formula E=HxD big -->
-          <text x="30" y="110" font-family="Georgia,serif" font-size="55" font-weight="900" fill="rgba(139,74,26,.5)">E=H×D</text>
-          <!-- coordinate axes -->
-          <line x1="260" y1="200" x2="260" y2="50" stroke="rgba(139,74,26,.5)" stroke-width="1.5"/>
-          <line x1="260" y1="200" x2="390" y2="200" stroke="rgba(139,74,26,.5)" stroke-width="1.5"/>
-          <!-- curve -->
-          <path d="M262,198 Q280,190 300,170 Q320,145 340,115 Q360,85 380,60" fill="none" stroke="rgba(200,120,60,.6)" stroke-width="2"/>
-          <!-- axis labels -->
-          <text x="370" y="215" font-family="monospace" font-size="9" fill="rgba(139,74,26,.6)">D</text>
-          <text x="248" y="48" font-family="monospace" font-size="9" fill="rgba(139,74,26,.6)">E</text>
-          <!-- postulate marks -->
-          <line x1="30" y1="130" x2="220" y2="130" stroke="rgba(139,74,26,.25)" stroke-width="1" stroke-dasharray="3,3"/>
-          <line x1="30" y1="150" x2="200" y2="150" stroke="rgba(139,74,26,.25)" stroke-width="1" stroke-dasharray="3,3"/>
-          <line x1="30" y1="170" x2="215" y2="170" stroke="rgba(139,74,26,.25)" stroke-width="1" stroke-dasharray="3,3"/>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(139,74,26,.7)" letter-spacing="2">HYP-DEDUCTIVE · E=H×D</text>
-          <text x="380" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">H</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Clark Leonard Hull</div><span class="aph-num">08 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#8b4a1a"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1884 – 1952 · Estadounidense</span><span class="atheory" style="color:#8b4a1a;border-color:#8b4a1a">Hip-Deductivo</span></div>
-        <p class="aintro">Intentó matematizar el conductismo construyendo un sistema formal de postulados para predecir la conducta con precisión cuantitativa.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#8b4a1a"></span><div><strong>Fuerza del hábito (sHr):</strong> se incrementa con el número de reforzamientos.</div></li>
-          <li><span class="adot" style="background:#8b4a1a"></span><div><strong>Drive (D):</strong> estado motivacional que energiza la conducta.</div></li>
-          <li><span class="adot" style="background:#8b4a1a"></span><div><strong>E = H × D</strong> (Potencial excitatorio = Hábito × Drive).</div></li>
-          <li><span class="adot" style="background:#8b4a1a"></span><div><strong>Reducción del impulso:</strong> el reforzamiento reduce estados de necesidad.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#8b4a1a"><div class="acl">Aporte</div><div class="act">Primer intento formal de matematizar el aprendizaje; influyó en décadas de investigación sobre motivación.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAR 5 -->
-  <div class="authors-pair">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#0d2830"/>
-          <defs><radialGradient id="g9" cx="40%" cy="60%"><stop offset="0%" stop-color="#2a5c6a" stop-opacity=".8"/><stop offset="100%" stop-color="#040c10" stop-opacity=".95"/></radialGradient></defs>
-          <rect width="400" height="230" fill="url(#g9)"/>
-          <!-- formula E=HxDxK -->
-          <text x="30" y="95" font-family="Georgia,serif" font-size="38" font-weight="900" fill="rgba(42,92,106,.6)">E=H×D×K</text>
-          <!-- anxiety curve -->
-          <path d="M30,180 Q80,180 100,160 Q120,140 140,100 Q160,60 180,50 Q200,40 220,60 Q240,80 260,120 Q280,160 300,175 Q330,185 380,185" fill="none" stroke="rgba(45,158,158,.5)" stroke-width="2"/>
-          <!-- performance axis -->
-          <line x1="25" y1="185" x2="385" y2="185" stroke="rgba(42,92,106,.4)" stroke-width="1"/>
-          <line x1="25" y1="185" x2="25" y2="40" stroke="rgba(42,92,106,.4)" stroke-width="1"/>
-          <text x="180" y="210" font-family="monospace" font-size="8" fill="rgba(42,92,106,.6)">ANSIEDAD (D)</text>
-          <text x="2" y="110" font-family="monospace" font-size="8" fill="rgba(42,92,106,.6)" transform="rotate(-90,10,110)">RENDIMIENTO</text>
-          <text x="20" y="222" font-family="monospace" font-size="10" fill="rgba(42,92,106,.7)" letter-spacing="2">HULL-SPENCE · E=H×D×K</text>
-          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">S</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Kenneth Spence</div><span class="aph-num">09 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#2a5c6a"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1907 – 1967 · Estadounidense</span><span class="atheory" style="color:#2a5c6a;border-color:#2a5c6a">Hull-Spence</span></div>
-        <p class="aintro">Colaborador y refinador de la teoría de Hull. Distinguió con precisión entre aprendizaje y motivación e incorporó el incentivo al modelo formal.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#2a5c6a"></span><div>Distinción formal entre <strong>aprendizaje (H)</strong> y <strong>motivación (D)</strong>.</div></li>
-          <li><span class="adot" style="background:#2a5c6a"></span><div><strong>Incentivo (K):</strong> el valor del reforzador contribuye multiplicativamente.</div></li>
-          <li><span class="adot" style="background:#2a5c6a"></span><div><strong>E = H × D × K</strong> — fórmula extendida de Hull-Spence.</div></li>
-          <li><span class="adot" style="background:#2a5c6a"></span><div>La <strong>ansiedad</strong> actúa como drive emocional que modula el aprendizaje.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#2a5c6a"><div class="acl">Aporte</div><div class="act">Refinó el modelo de Hull y conectó el conductismo con el estudio científico de la ansiedad.</div></div>
-      </div>
-    </div>
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#2a1230"/>
-          <defs><radialGradient id="g10" cx="50%" cy="50%"><stop offset="0%" stop-color="#6a3a6a" stop-opacity=".75"/><stop offset="100%" stop-color="#0d0515" stop-opacity=".95"/></radialGradient></defs>
-          <rect width="400" height="230" fill="url(#g10)"/>
-          <!-- conflict diagram approach-avoidance -->
-          <line x1="200" y1="30" x2="200" y2="200" stroke="rgba(106,58,106,.5)" stroke-width="1" stroke-dasharray="4,3"/>
-          <!-- goal at top -->
-          <circle cx="200" cy="40" r="14" fill="none" stroke="rgba(200,120,200,.5)" stroke-width="2"/>
-          <text x="194" y="46" font-family="serif" font-size="12" fill="rgba(200,120,200,.6)">★</text>
-          <!-- approach gradient line -->
-          <line x1="60" y1="130" x2="190" y2="70" stroke="rgba(100,220,100,.4)" stroke-width="2"/>
-          <text x="40" y="135" font-family="monospace" font-size="8" fill="rgba(100,220,100,.6)">Aprox.</text>
-          <!-- avoidance gradient line -->
-          <line x1="60" y1="100" x2="190" y2="65" stroke="rgba(220,80,80,.4)" stroke-width="2"/>
-          <text x="40" y="95" font-family="monospace" font-size="8" fill="rgba(220,80,80,.6)">Evit.</text>
-          <!-- heartbeat / biofeedback wave -->
-          <path d="M220,150 L240,150 L250,110 L260,185 L270,130 L285,130 L290,150 L370,150" fill="none" stroke="rgba(106,58,106,.7)" stroke-width="2"/>
-          <text x="230" y="175" font-family="monospace" font-size="8" fill="rgba(106,58,106,.7)">BIOFEEDBACK</text>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(106,58,106,.7)" letter-spacing="2">CONFLICTO · BIOFEEDBACK</text>
-          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">M</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Neal Miller</div><span class="aph-num">10 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#6a3a6a"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1909 – 2002 · Estadounidense</span><span class="atheory" style="color:#6a3a6a;border-color:#6a3a6a">Cond. Aplicado</span></div>
-        <p class="aintro">Amplió el conductismo hacia el conflicto motivacional, el aprendizaje del SNA y sentó las bases del biofeedback clínico moderno.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#6a3a6a"></span><div><strong>Conflicto motivacional:</strong> aproximación-evitación explica dilemas conductuales.</div></li>
-          <li><span class="adot" style="background:#6a3a6a"></span><div>El <strong>miedo</strong> es una pulsión aprendida que puede condicionar nuevas respuestas.</div></li>
-          <li><span class="adot" style="background:#6a3a6a"></span><div>El <strong>SNA</strong> puede condicionarse (frecuencia cardíaca, presión arterial).</div></li>
-          <li><span class="adot" style="background:#6a3a6a"></span><div><strong>Biofeedback:</strong> control voluntario de funciones fisiológicas involuntarias.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#6a3a6a"><div class="acl">Aporte</div><div class="act">Conectó el conductismo con la psicofisiología y abrió nuevas fronteras en la medicina conductual.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAR 6: Bandura solo -->
-  <div class="authors-pair" style="grid-template-columns:1fr 1fr">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#3a0a14"/>
-          <defs><radialGradient id="g11" cx="35%" cy="35%"><stop offset="0%" stop-color="#8b1a2a" stop-opacity=".7"/><stop offset="100%" stop-color="#0d0205" stop-opacity=".95"/></radialGradient></defs>
-          <rect width="400" height="230" fill="url(#g11)"/>
-          <!-- observer figure -->
-          <circle cx="80" cy="90" r="16" fill="rgba(200,60,80,.2)" stroke="rgba(200,60,80,.4)" stroke-width="1.5"/>
-          <line x1="80" y1="106" x2="80" y2="150" stroke="rgba(200,60,80,.3)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="80" y1="120" x2="55" y2="138" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="80" y1="120" x2="105" y2="138" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="80" y1="150" x2="62" y2="180" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="80" y1="150" x2="98" y2="180" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- eyes looking right -->
-          <line x1="96" y1="92" x2="155" y2="100" stroke="rgba(200,60,80,.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <!-- model figure (larger) -->
-          <circle cx="200" cy="80" r="20" fill="rgba(200,60,80,.25)" stroke="rgba(200,60,80,.5)" stroke-width="1.5"/>
-          <line x1="200" y1="100" x2="200" y2="155" stroke="rgba(200,60,80,.4)" stroke-width="4" stroke-linecap="round"/>
-          <line x1="200" y1="120" x2="170" y2="142" stroke="rgba(200,60,80,.4)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="200" y1="120" x2="230" y2="135" stroke="rgba(200,60,80,.4)" stroke-width="3" stroke-linecap="round"/>
-          <!-- imitator figure -->
-          <circle cx="320" cy="90" r="14" fill="rgba(200,60,80,.15)" stroke="rgba(200,60,80,.35)" stroke-width="1.5"/>
-          <line x1="320" y1="104" x2="320" y2="145" stroke="rgba(200,60,80,.25)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="320" y1="118" x2="300" y2="135" stroke="rgba(200,60,80,.25)" stroke-width="2" stroke-linecap="round"/>
-          <line x1="320" y1="118" x2="340" y2="130" stroke="rgba(200,60,80,.25)" stroke-width="2" stroke-linecap="round"/>
-          <!-- arrow observer→model-->
-          <text x="130" y="70" font-family="monospace" font-size="10" fill="rgba(200,60,80,.5)">observa</text>
-          <!-- Bobo doll -->
-          <ellipse cx="210" cy="185" rx="15" ry="20" fill="rgba(200,60,80,.2)" stroke="rgba(200,60,80,.4)" stroke-width="1"/>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(200,60,80,.6)" letter-spacing="2">BOBO DOLL · 1961</text>
-          <text x="380" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">B</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Albert Bandura</div><span class="aph-num">11 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#8b1a2a"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1925 – 2021 · Canadiense</span><span class="atheory" style="color:#8b1a2a;border-color:#8b1a2a">Aprend. Social</span></div>
-        <p class="aintro">Figura de cierre y puente histórico. Demostró que se puede aprender observando modelos sin reforzamiento directo, integrando cognición y conducta.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Aprendizaje observacional:</strong> se aprende viendo la conducta de otros.</div></li>
-          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Exp. Bobo Doll (1961-63):</strong> imitación de agresión sin refuerzo directo.</div></li>
-          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Autoeficacia:</strong> la creencia en la propia capacidad determina la conducta.</div></li>
-          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Determinismo recíproco:</strong> persona, conducta y ambiente se influyen mutuamente.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#8b1a2a"><div class="acl">Aporte</div><div class="act">Base teórica de la terapia cognitivo-conductual y del estudio moderno de la autoeficacia y la motivación.</div></div>
-      </div>
-    </div>
-    <!-- Cierre visual -->
-    <div style="background:var(--ink);display:flex;align-items:center;justify-content:center;padding:3rem;min-height:300px">
-      <div style="text-align:center">
-        <div style="font-family:var(--font-display);font-size:5rem;font-weight:900;color:var(--amber);line-height:1">11</div>
-        <div style="font-family:var(--font-mono);font-size:.68rem;letter-spacing:.2em;color:rgba(245,240,232,.5);text-transform:uppercase;margin:.6rem 0">Teóricos del Conductismo</div>
-        <div style="width:40px;height:2px;background:var(--amber);margin:.8rem auto"></div>
-        <div style="font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.7;max-width:200px">Cada autor amplió la comprensión científica de la conducta humana y animal.</div>
-      </div>
-    </div>
-  </div>
-
-</div></section>
-
-<!-- 05 CASO REAL -->
-<section id="caso"><div class="sec" style="padding-top:0;padding-bottom:0">
-  <div class="eyebrow"><span class="ey-num" style="color:var(--teal-light)">05</span><span class="ey-rule" style="background:rgba(255,255,255,.15)"></span><span class="ey-tag" style="color:rgba(245,240,232,.4)">Aplicación Práctica</span></div>
-  <h2 class="sec-title" style="color:var(--paper)">Caso Real:<br>El Aula de Clases</h2>
-  <p class="sec-sub" style="color:rgba(245,240,232,.55)">Condicionamiento operante (Skinner) + Aprendizaje social (Bandura) aplicados a la educación</p>
-  <div class="caso-grid">
-    <div class="caso-left">
-      <div class="caso-label">Situación</div>
-      <div class="caso-stitle">Un estudiante no participa en clase por miedo a equivocarse</div>
-      <p style="font-size:.9rem;color:rgba(245,240,232,.7);margin-bottom:1.5rem;line-height:1.75">Sofía, 10 años, es inteligente pero permanece en silencio. Cuando intentó responder una vez fue corregida abruptamente. Desde entonces evita participar. Su silencio es una conducta de <em>evitación</em> mantenida por reforzamiento negativo.</p>
-      <div class="cstep"><div class="cstep-n">1</div><div class="cstep-t"><strong>Identificación de la conducta</strong>La evitación es reforzada negativamente: al no responder, Sofía evita el malestar de equivocarse públicamente, lo que fortalece el silencio.</div></div>
-      <div class="cstep"><div class="cstep-n">2</div><div class="cstep-t"><strong>Intervención — Moldeamiento (Skinner)</strong>La docente diseña un plan: cada pequeño acercamiento a la participación (levantar la mano, responder en voz baja) se refuerza positivamente con elogios específicos.</div></div>
-      <div class="cstep"><div class="cstep-n">3</div><div class="cstep-t"><strong>Programa de razón variable</strong>Sofía no sabe cuándo recibirá el reconocimiento, lo que mantiene alta la tasa de respuesta. Se elimina el castigo para no reinstaurar la evitación.</div></div>
-      <div class="cstep"><div class="cstep-n">4</div><div class="cstep-t"><strong>Modelado y refuerzo vicario (Bandura)</strong>La docente refuerza visiblemente a otros estudiantes cuando participan, permitiendo que Sofía observe que equivocarse es aceptado.</div></div>
-      <div class="ctheory">
-        <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.15em;color:var(--teal-light);margin-bottom:.4rem">Marco Teórico</div>
-        <div style="font-size:.87rem;color:rgba(245,240,232,.8);line-height:1.65">Integra el <strong style="color:white">condicionamiento operante</strong> de Skinner (refuerzo positivo, moldeamiento, programas de reforzamiento) con el <strong style="color:white">aprendizaje observacional</strong> de Bandura (modelado, refuerzo vicario, autoeficacia).</div>
-      </div>
-    </div>
-    <div class="caso-right">
-      <div class="caso-label" style="color:rgba(26,18,8,.55)">Resultados semana a semana</div>
-      <div class="cresult"><span class="cri">📈</span><div class="crt">Semana 1–2</div><div class="crtext">Sofía comienza a levantar la mano ocasionalmente. Cada intento recibe refuerzo positivo inmediato. La conducta de evitación disminuye gradualmente.</div></div>
-      <div class="cresult"><span class="cri">🗣️</span><div class="crt">Semana 3–4</div><div class="crtext">Sofía responde en voz audible. El moldeamiento progresivo hizo posible este avance sin forzarla. Compañeros también participan más (efecto observacional).</div></div>
-      <div class="cresult"><span class="cri">⭐</span><div class="crt">Mes 2</div><div class="crtext">Sofía participa activamente. Su autoeficacia se ha incrementado: cree en su propia capacidad. La conducta se generalizó a otras asignaturas.</div></div>
-      <div class="cdiag">
-        <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.15em;color:rgba(26,18,8,.55);margin-bottom:.6rem">Esquema E-O-R Aplicado</div>
-        <div class="cdr"><span class="cdrl" style="color:rgba(26,18,8,.5)">E</span><span style="background:rgba(26,18,8,.1);padding:.2rem .6rem;font-size:.8rem">Pregunta de la docente</span></div>
-        <div class="cdr" style="padding-left:50px">→</div>
-        <div class="cdr"><span class="cdrl" style="color:rgba(26,18,8,.5)">O</span><span style="background:rgba(26,18,8,.1);padding:.2rem .6rem;font-size:.8rem">Expectativa de éxito (autoeficacia)</span></div>
-        <div class="cdr" style="padding-left:50px">→</div>
-        <div class="cdr"><span class="cdrl" style="color:rgba(26,18,8,.5)">R</span><span style="background:rgba(26,18,8,.1);padding:.2rem .6rem;font-size:.8rem">Participación activa en clase</span></div>
-        <div class="cdr" style="padding-left:50px">↓</div>
-        <div class="cdr"><span class="cdrl" style="color:rgba(26,18,8,.5)">RF+</span><span style="background:rgba(26,18,8,.15);padding:.2rem .6rem;font-size:.8rem;font-weight:600">Elogio específico → fortalece la conducta</span></div>
-      </div>
-    </div>
-  </div>
-</div></section>
-
-<!-- 06 CONCLUSIONES -->
-<section id="conclusiones"><div class="sec">
-  <div class="eyebrow"><span class="ey-num">07</span><span class="ey-rule"></span><span class="ey-tag">Conclusiones</span></div>
-  <h2 class="sec-title">Dos Conclusiones<br>Fundamentales</h2>
-  <p class="sec-sub">Síntesis argumentada del aporte conductista a la psicología científica</p>
-  <div class="concl-grid">
-    <div class="concl-card" data-num="1">
-      <div class="cn">CONCLUSIÓN 01</div>
-      <div class="ct2">El conductismo consolidó la psicología como ciencia objetiva y sus principios siguen vigentes</div>
-      <div class="ctext">
-        <p>El conductismo representó una ruptura epistemológica fundamental: al definir la conducta observable como único objeto legítimo de estudio, transformó la psicología en una disciplina experimental rigurosa. Como señalan Sáiz y Anguera (2013), este enfoque "buscaba posicionar la psicología como una ciencia positiva centrada en la actividad públicamente observable" (p. 24), lo cual fue determinante para su reconocimiento entre las ciencias naturales.</p>
-        <p>Los principios del condicionamiento operante de Skinner (1938) y del aprendizaje observacional de Bandura (1977) no son meros constructos históricos: hoy fundamentan el Análisis Aplicado de la Conducta (ABA), la terapia cognitivo-conductual, los sistemas de economía de fichas y las tecnologías educativas digitales (Pérez Álvarez, 2021).</p>
-        <p>El conductismo no fue el destino final de la psicología, pero sí estableció los estándares metodológicos —experimento controlado, operacionalización de variables, replicabilidad— que toda la psicología científica contemporánea sigue respetando.</p>
-      </div>
-      <div class="chl"><span class="chli">🔬</span><span class="chlt">"El legado del conductismo no está en sus limitaciones sino en el rigor que impuso: la psicología no pudo volver a ser meramente especulativa después de Watson, Skinner y Bandura." (Pérez, 2023)</span></div>
-    </div>
-    <div class="concl-card" data-num="2" style="transition-delay:.15s">
-      <div class="cn">CONCLUSIÓN 02</div>
-      <div class="ct2">La evolución conductista revela que mente y conducta son inseparables en el estudio del ser humano</div>
-      <div class="ctext">
-        <p>La mayor enseñanza de la historia interna del conductismo es que su propio desarrollo lo llevó a superar sus supuestos originales. Fueron los conductistas mismos —Tolman con los mapas cognitivos, Hull con el drive, Miller con el biofeedback y Bandura con la autoeficacia— quienes demostraron que el organismo no es una "caja negra" vacía, sino un sistema activo que representa, anticipa y se autorregula (López Cruz, 2021).</p>
-        <p>Esta apertura gradual al mundo interno del organismo no representó una traición al programa científico sino su maduración necesaria. Como plantea Töpf (2020), la conducta humana solo puede comprenderse cabalmente cuando se consideran tanto los determinantes ambientales como los procesos psicológicos que median la relación del sujeto con su entorno.</p>
-        <p>La psicología del siglo XXI —cognitiva, neurobiológica, social y cultural— es deudora directa de esta tensión productiva entre la objetividad conductual y la complejidad del organismo que aprende, siente y se transforma.</p>
-      </div>
-      <div class="chl"><span class="chli">🧠</span><span class="chlt">"El conductismo nos enseñó a medir la conducta; la evolución del propio conductismo nos enseñó que sin considerar al organismo, la medición no basta." (Töpf, 2020)</span></div>
-    </div>
-  </div>
-  <blockquote class="pull-quote" style="margin-top:3rem">"El conductismo nos enseñó a mirar la conducta; el neoconductismo nos enseñó que detrás de la conducta hay un organismo; y Bandura nos recordó que ese organismo vive en un mundo social que también aprende y que también observa."<cite>— Síntesis integradora. Referencias: Sáiz y Anguera (2013); Pérez Álvarez (2021); López Cruz (2021); Töpf (2020); Pérez (2023)</cite></blockquote>
-</div></section>
-
-<!-- REFERENCIAS -->
-<section id="referencias" style="background:var(--ink);color:var(--paper);padding:5rem 0;">
-  <div class="sec" style="padding-top:0;padding-bottom:0;">
-    <div class="eyebrow">
-      <span class="ey-num" style="color:var(--teal-light);">07</span>
-      <span class="ey-rule" style="background:rgba(255,255,255,.15);"></span>
-      <span class="ey-tag" style="color:rgba(245,240,232,.4);">Bibliografía</span>
-    </div>
-    <h2 class="sec-title" style="color:var(--paper);">Referencias<br>Bibliográficas</h2>
-
-    <div style="display:flex;flex-direction:column;gap:1.2rem;margin-top:1rem;">
-
-      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--amber);align-items:flex-start;">
-        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--amber);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">01</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">López Cruz, D. (2021). Edward Lee Thorndike y John Broadus Watson: dos explicaciones del aprendizaje. <em>Educere: Revista Venezolana de Educación, 81</em>, 647–656. <span style="color:var(--teal-light);word-break:break-all;">https://research-ebsco-com.bibliotecavirtual.unad.edu.co/linkprocessor/v2-external?opid=qcagk4&amp;recordId=6azduuaior&amp;url=https%3A%2F%2Fdialnet.unirioja.es%2Fservlet%2Fcatart%3Fcodigo%3D8485441</span></p>
-      </div>
-
-      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--teal-light);align-items:flex-start;">
-        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--teal-light);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">02</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">Pérez Álvarez, M. (2021). ¿Qué nos importa Skinner, treinta años después? <em>Papeles del Psicólogo, 42</em>(1), 10–20. <span style="color:var(--teal-light);">https://doi.org/10.23923/pap.psicol2020.2940</span></p>
-      </div>
-
-      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--rust);align-items:flex-start;">
-        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--rust);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">03</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">Pérez, E. (2023). <em>El conductismo: enfoque clásico de la psicología</em> [Objeto virtual de aprendizaje OVA]. Repositorio Institucional UNAD. <span style="color:var(--teal-light);">https://repository.unad.edu.co/handle/10596/54778</span></p>
-      </div>
-
-      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--lavender);align-items:flex-start;">
-        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--lavender);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">04</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">Sáiz, M. y Anguera, B. (2013). <em>Historia de la psicología</em>. Editorial UOC. <span style="color:var(--teal-light);word-break:break-all;">https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/56425%20?page=1</span></p>
-      </div>
-
-      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--sage);align-items:flex-start;">
-        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--sage);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">05</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">Töpf, J. (2020). <em>Psicología: la conducta humana</em> (ed.). Eudeba. <span style="color:var(--teal-light);word-break:break-all;">https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/153600?page=93</span></p>
-      </div>
-
-    </div>
+  <div id="projects-grid">
+    <button class="add-card" onclick="openModal()">
+      <div class="add-icon">+</div>
+      <span>Agregar proyecto</span>
+    </button>
   </div>
 </section>
 
-<!-- EQUIPO -->
-<section id="equipo" style="background:var(--cream);padding:5rem 0;">
-  <div class="sec" style="padding-top:0;padding-bottom:0;">
-    <div class="eyebrow">
-      <span class="ey-num">08</span>
-      <span class="ey-rule"></span>
-      <span class="ey-tag">Elaborado por</span>
+<section class="about-section" id="sobre-mi">
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="about-eyebrow">Sobre mí</div>
+      <h2>Mente curiosa,<br/>corazón empático</h2>
+      <p>Soy estudiante de psicología apasionada por entender los procesos mentales que nos hacen humanos. Me interesan la psicología clínica, las neurociencias y la investigación del comportamiento.</p>
+      <p>Este portafolio es un mapa en construcción: cada proyecto refleja mi aprendizaje y mi compromiso con una disciplina que transforma vidas.</p>
+      <div class="about-pills">
+        <span class="apill">Psicología Clínica</span>
+        <span class="apill">Neurociencias</span>
+        <span class="apill">Investigación</span>
+        <span class="apill">Psicometría</span>
+        <span class="apill">Salud Mental</span>
+        <span class="apill">Psicología Social</span>
+      </div>
     </div>
-    <h2 class="sec-title">Equipo de<br>Trabajo</h2>
-
-    <div style="display:flex;gap:1.2rem;margin-top:2rem;flex-wrap:nowrap;">
-
-      <div style="flex:1;background:white;padding:1.8rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border-top:4px solid var(--amber);display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;">
-        <div style="width:50px;height:50px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <span style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:white;">A</span>
-        </div>
-        <div style="font-family:var(--font-display);font-size:.88rem;font-weight:700;line-height:1.35;color:var(--ink);">Ana Carolina<br>Bedoya Cardona</div>
-      </div>
-
-      <div style="flex:1;background:white;padding:1.8rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border-top:4px solid var(--teal);display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;">
-        <div style="width:50px;height:50px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <span style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:white;">G</span>
-        </div>
-        <div style="font-family:var(--font-display);font-size:.88rem;font-weight:700;line-height:1.35;color:var(--ink);">Gloria Patricia<br>Valencia Ormaza</div>
-      </div>
-
-      <div style="flex:1;background:white;padding:1.8rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border-top:4px solid var(--rust);display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;">
-        <div style="width:50px;height:50px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <span style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:white;">L</span>
-        </div>
-        <div style="font-family:var(--font-display);font-size:.88rem;font-weight:700;line-height:1.35;color:var(--ink);">Luz Elena<br>Hinestroza Román</div>
-      </div>
-
-      <div style="flex:1;background:white;padding:1.8rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border-top:4px solid var(--lavender);display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;">
-        <div style="width:50px;height:50px;border-radius:50%;background:var(--lavender);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <span style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:white;">A</span>
-        </div>
-        <div style="font-family:var(--font-display);font-size:.88rem;font-weight:700;line-height:1.35;color:var(--ink);">Alejandro<br>Zapata Palacio</div>
-      </div>
-
-      <div style="flex:1;background:white;padding:1.8rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.06);border-top:4px solid var(--slate);display:flex;flex-direction:column;align-items:center;text-align:center;gap:.8rem;">
-        <div style="width:50px;height:50px;border-radius:50%;background:var(--slate);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <span style="font-family:var(--font-display);font-size:1.3rem;font-weight:900;color:white;">L</span>
-        </div>
-        <div style="font-family:var(--font-display);font-size:.88rem;font-weight:700;line-height:1.35;color:var(--ink);">Lina Katerine<br>Quintero Rodríguez</div>
-      </div>
-
+    <div class="about-visual">
+      <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="180" cy="180" r="170" fill="#131628"/>
+        <circle cx="180" cy="180" r="160" fill="none" stroke="#272D4D" stroke-width="1"/>
+        <path d="M80 180 A100 100 0 0 1 280 180" fill="none" stroke="#7C5CFC" stroke-width="1.5" opacity="0.5"/>
+        <path d="M100 180 A80 80 0 0 1 260 180" fill="none" stroke="#00D4C8" stroke-width="1.2" opacity="0.45"/>
+        <path d="M120 180 A60 60 0 0 1 240 180" fill="none" stroke="#F040A0" stroke-width="1" opacity="0.4"/>
+        <circle cx="180" cy="80" r="5" fill="#7C5CFC"/>
+        <circle cx="280" cy="180" r="5" fill="#00D4C8"/>
+        <circle cx="180" cy="280" r="5" fill="#F040A0"/>
+        <circle cx="80" cy="180" r="5" fill="#FFB830"/>
+        <line x1="180" y1="20" x2="180" y2="340" stroke="#272D4D" stroke-width="0.8"/>
+        <line x1="20" y1="180" x2="340" y2="180" stroke="#272D4D" stroke-width="0.8"/>
+        <line x1="60" y1="60" x2="300" y2="300" stroke="#272D4D" stroke-width="0.5" opacity="0.5"/>
+        <line x1="300" y1="60" x2="60" y2="300" stroke="#272D4D" stroke-width="0.5" opacity="0.5"/>
+        <circle cx="180" cy="180" r="18" fill="rgba(124,92,252,0.2)" stroke="#7C5CFC" stroke-width="1.5"/>
+        <circle cx="180" cy="180" r="6" fill="#7C5CFC"/>
+        <circle cx="130" cy="120" r="3" fill="#A98BFD" opacity="0.7"/>
+        <circle cx="240" cy="130" r="3" fill="#7EEEE9" opacity="0.7"/>
+        <circle cx="250" cy="240" r="3" fill="#F880C4" opacity="0.7"/>
+        <circle cx="120" cy="250" r="3" fill="#FFB830" opacity="0.7"/>
+        <line x1="180" y1="162" x2="180" y2="80" stroke="#7C5CFC" stroke-width="0.8" opacity="0.4"/>
+        <line x1="198" y1="180" x2="280" y2="180" stroke="#00D4C8" stroke-width="0.8" opacity="0.4"/>
+        <line x1="180" y1="198" x2="180" y2="280" stroke="#F040A0" stroke-width="0.8" opacity="0.4"/>
+        <line x1="162" y1="180" x2="80" y2="180" stroke="#FFB830" stroke-width="0.8" opacity="0.4"/>
+      </svg>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="ft">Conductismo</div>
-  <p style="margin-top:.8rem;font-size:.72rem;opacity:.3">Thorndike · Pavlov · Béjterev · Watson · Skinner · Guthrie · Tolman · Hull · Spence · Neal Miller · Bandura</p>
+  <span class="footer-name">María García · Psicología © 2025</span>
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+    <div class="editor-badge" id="editor-badge" onclick="lockEditor()">
+      <span>Modo editor</span>
+      <span style="font-size:0.65rem;opacity:.7">· salir</span>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:hola@ejemplo.com">Email</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Universidad</a>
+      <button class="lock-btn" id="lock-btn" onclick="openPinModal()" title="Acceso editor">✦</button>
+    </div>
+  </div>
 </footer>
 
+<!-- PIN MODAL -->
+<div class="pin-overlay" id="pin-overlay" onclick="handlePinOverlay(event)">
+  <div class="pin-box">
+    <div class="pin-lock-icon">🔐</div>
+    <h3>Modo editor</h3>
+    <p>Ingresa tu PIN para activar<br/>el modo de edición</p>
+    <input class="pin-input" id="pin-input" type="password" maxlength="8" placeholder="····" autocomplete="off" oninput="clearPinError()" onkeydown="if(event.key==='Enter')verifyPin()"/>
+    <div class="pin-hint" id="pin-hint"></div>
+    <div class="pin-actions">
+      <button class="mbtn mbtn-ghost" onclick="closePinModal()">Cancelar</button>
+      <button class="mbtn mbtn-primary" onclick="verifyPin()">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <h2>Nuevo proyecto</h2>
+    <div class="field">
+      <label>Ícono</label>
+      <div class="emoji-grid" id="emoji-grid"></div>
+    </div>
+    <div class="field">
+      <label>Color del ícono</label>
+      <div class="color-row">
+        <div class="color-dot selected" data-color="violet" style="background:#7C5CFC" onclick="selectColor(this)"></div>
+        <div class="color-dot" data-color="cyan" style="background:#00D4C8" onclick="selectColor(this)"></div>
+        <div class="color-dot" data-color="pink" style="background:#F040A0" onclick="selectColor(this)"></div>
+        <div class="color-dot" data-color="amber" style="background:#FFB830" onclick="selectColor(this)"></div>
+        <div class="color-dot" data-color="green" style="background:#3DFFA0" onclick="selectColor(this)"></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Título del proyecto *</label>
+      <input type="text" id="input-title" placeholder="Ej: Estudio sobre cognición social" maxlength="70"/>
+    </div>
+    <div class="field">
+      <label>Descripción breve</label>
+      <textarea id="input-desc" placeholder="Resumen en 1-2 oraciones..." maxlength="160"></textarea>
+    </div>
+    <div class="field">
+      <label>Área temática</label>
+      <select id="input-tag">
+        <option value="Clínica">Clínica</option>
+        <option value="Investigación">Investigación</option>
+        <option value="Educativa">Educativa</option>
+        <option value="Social">Social</option>
+        <option value="Neurociencias">Neurociencias</option>
+        <option value="Psicometría">Psicometría</option>
+        <option value="Comunitaria">Comunitaria</option>
+        <option value="Laboral">Laboral</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Enlace (URL)</label>
+      <input type="url" id="input-url" placeholder="https://drive.google.com/..."/>
+    </div>
+    <div class="modal-actions">
+      <button class="mbtn mbtn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="mbtn mbtn-primary" onclick="addProject()">Agregar proyecto</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div class="confirm-overlay" id="confirm-overlay" onclick="handleConfirmOverlay(event)">
+  <div class="confirm-box">
+    <div class="confirm-icon">🗑️</div>
+    <h3>Eliminar proyecto</h3>
+    <p>¿Segura que quieres eliminar<br/><span class="confirm-title-text" id="confirm-project-name"></span>?<br/>Esta acción no se puede deshacer.</p>
+    <div class="confirm-actions">
+      <button class="mbtn mbtn-ghost" onclick="closeConfirm()">Cancelar</button>
+      <button class="mbtn mbtn-danger" onclick="confirmDelete()">Sí, eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">¡Proyecto agregado!</div>
+
 <script>
-window.addEventListener('scroll',()=>{
-  const pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
-  document.getElementById('pb').style.width=pct+'%';
-});
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:.1});
-document.querySelectorAll('.tl-item,.avc,.concl-card').forEach((el,i)=>{
-  if(el.classList.contains('tl-item'))el.style.transitionDelay=(i*.08)+'s';
-  obs.observe(el);
-});
-// Hamburger menu
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navLinks.classList.toggle('open');
-});
-// Close menu when a link is clicked
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navLinks.classList.remove('open');
+const EMOJIS=['📄','🧠','💬','📊','🔬','📝','🌱','💡','🫂','📚','🎯','📋','🧩','💭','🔍','❤️','🌿','⚡','📌','🏥','🧪','🎓','🤝','✨'];
+const TAG_COLOR={'Clínica':'violet','Investigación':'cyan','Educativa':'amber','Social':'pink','Neurociencias':'cyan','Psicometría':'violet','Comunitaria':'green','Laboral':'amber','Otro':'violet'};
+
+/* ── PIN: SHA-256 de tu PIN. El valor abajo = hash de "1234"
+   Para cambiarlo: https://emn178.github.io/online-tools/sha256.html
+   Escribe tu PIN, copia el hash y pégalo aquí abajo ── */
+const PIN_HASH='03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
+
+let selectedEmoji=EMOJIS[0],selectedColor='violet',projects=[],pendingDeleteIdx=-1,editorActive=false;
+
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+function setEditorMode(on){
+  editorActive=on;
+  document.body.classList.toggle('editor-mode',on);
+  renderProjects();
+}
+function lockEditor(){setEditorMode(false)}
+
+function openPinModal(){
+  document.getElementById('pin-input').value='';
+  document.getElementById('pin-hint').textContent='';
+  document.getElementById('pin-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('pin-input').focus(),200);
+}
+function closePinModal(){document.getElementById('pin-overlay').classList.remove('open')}
+function handlePinOverlay(e){if(e.target===document.getElementById('pin-overlay'))closePinModal()}
+function clearPinError(){
+  document.getElementById('pin-input').classList.remove('error');
+  document.getElementById('pin-hint').textContent='';
+}
+async function verifyPin(){
+  const val=document.getElementById('pin-input').value;
+  if(!val)return;
+  const hash=await sha256(val);
+  if(hash===PIN_HASH){
+    closePinModal();
+    setEditorMode(true);
+    showToast('¡Modo editor activado! ✏️');
+  } else {
+    const inp=document.getElementById('pin-input');
+    inp.classList.add('error');
+    inp.value='';
+    document.getElementById('pin-hint').textContent='PIN incorrecto, intenta de nuevo';
+    setTimeout(()=>inp.classList.remove('error'),400);
+  }
+}
+
+function initEmojis(){
+  const g=document.getElementById('emoji-grid');g.innerHTML='';
+  EMOJIS.forEach(e=>{
+    const b=document.createElement('button');
+    b.className='emoji-opt'+(e===selectedEmoji?' selected':'');
+    b.textContent=e;b.type='button';
+    b.onclick=()=>{selectedEmoji=e;document.querySelectorAll('.emoji-opt').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')};
+    g.appendChild(b);
   });
+}
+function selectColor(el){document.querySelectorAll('.color-dot').forEach(d=>d.classList.remove('selected'));el.classList.add('selected');selectedColor=el.dataset.color}
+function openModal(){
+  if(!editorActive)return;
+  selectedEmoji=EMOJIS[0];selectedColor='violet';
+  ['input-title','input-desc','input-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('input-tag').value='Clínica';
+  document.querySelectorAll('.color-dot').forEach(d=>d.classList.remove('selected'));
+  document.querySelector('.color-dot[data-color="violet"]').classList.add('selected');
+  initEmojis();
+  document.getElementById('modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('input-title').focus(),200);
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('open')}
+function handleOverlayClick(e){if(e.target===document.getElementById('modal-overlay'))closeModal()}
+
+function askDelete(idx,e){
+  e.preventDefault();e.stopPropagation();
+  pendingDeleteIdx=idx;
+  const t=projects[idx].title;
+  document.getElementById('confirm-project-name').textContent=t.length>40?t.slice(0,40)+'…':t;
+  document.getElementById('confirm-overlay').classList.add('open');
+}
+function closeConfirm(){document.getElementById('confirm-overlay').classList.remove('open');pendingDeleteIdx=-1}
+function handleConfirmOverlay(e){if(e.target===document.getElementById('confirm-overlay'))closeConfirm()}
+function confirmDelete(){
+  if(pendingDeleteIdx<0)return;
+  projects.splice(pendingDeleteIdx,1);
+  closeConfirm();renderProjects();showToast('Proyecto eliminado 🗑️');
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();closeConfirm();closePinModal()}
 });
+
+function addProject(){
+  const title=document.getElementById('input-title').value.trim();
+  if(!title){const i=document.getElementById('input-title');i.style.borderColor='#F040A0';i.focus();setTimeout(()=>i.style.borderColor='',2000);return}
+  const tag=document.getElementById('input-tag').value;
+  projects.push({icon:selectedEmoji,color:selectedColor,title,desc:document.getElementById('input-desc').value.trim(),tag,tagColor:TAG_COLOR[tag]||'violet',url:document.getElementById('input-url').value.trim()||'#'});
+  renderProjects();closeModal();showToast('¡Proyecto agregado! ✨');
+}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function renderProjects(){
+  const grid=document.getElementById('projects-grid');
+  grid.innerHTML='';
+  projects.forEach((p,i)=>{
+    const card=document.createElement('a');
+    card.href=p.url;card.target=p.url!=='#'?'_blank':'_self';card.rel='noopener noreferrer';
+    card.className='project-card';card.style.position='relative';card.style.animationDelay=(i*0.07)+'s';
+    card.innerHTML=`<div class="project-card-top"><div class="project-icon icon-${p.color}">${p.icon}</div></div><div class="project-title">${esc(p.title)}</div>${p.desc?`<div class="project-desc">${esc(p.desc)}</div>`:''}<div class="project-card-footer"><span class="project-tag tag-${p.tagColor}">${esc(p.tag)}</span><div style="display:flex;align-items:center;gap:6px"></div></div>`;
+    const footer=card.querySelector('.project-card-footer > div');
+    const del=document.createElement('button');
+    del.className='delete-btn';del.title='Eliminar proyecto';
+    del.innerHTML=`<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 12,4"/><path d="M5 4V3a1 1 0 011-1h2a1 1 0 011 1v1"/><path d="M3 4l.8 8a1 1 0 001 .9h4.4a1 1 0 001-.9L11 4"/></svg>`;
+    del.onclick=(e)=>askDelete(i,e);
+    const arrow=document.createElement('div');
+    arrow.className='project-arrow';
+    arrow.innerHTML=`<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6 2l4 4-4 4"/></svg>`;
+    footer.appendChild(del);
+    footer.appendChild(arrow);
+    grid.appendChild(card);
+  });
+  if(editorActive){
+    const btn=document.createElement('button');btn.className='add-card';btn.onclick=openModal;
+    btn.innerHTML='<div class="add-icon">+</div><span>Agregar proyecto</span>';
+    grid.appendChild(btn);
+  }
+  const n=projects.length;
+  document.getElementById('project-count').textContent=n===0?'Sin proyectos aún':n===1?'1 proyecto':n+' proyectos';
+  document.getElementById('stat-projects').textContent=n;
+}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+renderProjects();
 </script>
-</body>
-</html>
+
