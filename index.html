@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portafolio · Psicología</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0C0E1A;
+  --bg2:#131628;
+  --bg3:#1A1F36;
+  --violet:#7C5CFC;
+  --violet-lt:#A98BFD;
+  --cyan:#00D4C8;
+  --cyan-lt:#7EEEE9;
+  --pink:#F040A0;
+  --pink-lt:#F880C4;
+  --amber:#FFB830;
+  --green:#3DFFA0;
+  --text:#EEF0FF;
+  --muted:#8890B8;
+  --border:#272D4D;
+  --radius:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:0.5}
+nav{position:sticky;top:0;z-index:100;background:rgba(12,14,26,0.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;background:linear-gradient(90deg,var(--violet-lt),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.01em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:0.85rem;font-weight:400;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{font-family:'Inter',sans-serif;font-size:0.8rem;font-weight:500;color:#fff;background:var(--violet);padding:7px 18px;border-radius:100px;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:3rem;padding:clamp(5rem,10vw,8rem) clamp(1.5rem,5vw,4rem) clamp(4rem,8vw,6rem);min-height:90vh}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(124,92,252,0.18) 0%,rgba(0,212,200,0.07) 40%,transparent 70%);top:-200px;right:-150px;pointer-events:none}
+.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(240,64,160,0.12) 0%,transparent 70%);bottom:-100px;left:-100px;pointer-events:none}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:rgba(124,92,252,0.08);color:var(--violet-lt);font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:1.75rem}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+h1{font-family:'Syne',sans-serif;font-size:clamp(2.6rem,5.5vw,4.5rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-0.02em}
+h1 .line-2{background:linear-gradient(90deg,var(--violet-lt),var(--cyan-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h1 .line-3{background:linear-gradient(90deg,var(--pink-lt),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(0.9rem,1.8vw,1.05rem);color:var(--muted);font-weight:300;max-width:440px;margin-bottom:2.5rem;line-height:1.8}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:500;padding:13px 28px;border-radius:100px;background:linear-gradient(135deg,var(--violet),var(--cyan) 200%);color:#fff;text-decoration:none;border:none;cursor:pointer;transition:opacity .2s,transform .15s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{opacity:0.88;transform:translateY(-2px)}
+.btn-ghost{font-family:'Inter',sans-serif;font-size:0.9rem;font-weight:400;padding:13px 28px;border-radius:100px;background:transparent;color:var(--muted);border:1px solid var(--border);text-decoration:none;cursor:pointer;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--violet);color:var(--text)}
+.hero-art{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+.hero-art svg{width:100%;max-width:480px;filter:drop-shadow(0 0 50px rgba(124,92,252,0.22))}
+.stats-bar{display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
+.stat-item{flex:1;padding:1.5rem clamp(1rem,3vw,2rem);text-align:center;border-right:1px solid var(--border)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;background:linear-gradient(135deg,var(--violet-lt),var(--cyan-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:0.72rem;color:var(--muted);font-weight:400;margin-top:2px;letter-spacing:0.06em;text-transform:uppercase}
+.section{padding:clamp(4rem,7vw,6rem) clamp(1.5rem,5vw,4rem)}
+.section-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem}
+.section-eyebrow{font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--text)}
+.section-count{font-size:0.8rem;color:var(--muted);background:var(--bg3);border:1px solid var(--border);padding:5px 14px;border-radius:100px}
+#projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:1rem}
+.project-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s,background .2s;animation:fadeUp .4s ease both;position:relative;overflow:hidden}
+.project-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,92,252,0.05),rgba(0,212,200,0.02));opacity:0;transition:opacity .2s;pointer-events:none}
+.project-card:hover{border-color:var(--violet);transform:translateY(-4px);background:var(--bg3)}
+.project-card:hover::before{opacity:1}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.project-card-top{display:flex;align-items:flex-start;justify-content:flex-start;gap:.5rem}
+.project-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.icon-violet{background:rgba(124,92,252,0.15);border:1px solid rgba(124,92,252,0.25)}
+.icon-cyan{background:rgba(0,212,200,0.12);border:1px solid rgba(0,212,200,0.25)}
+.icon-pink{background:rgba(240,64,160,0.12);border:1px solid rgba(240,64,160,0.25)}
+.icon-amber{background:rgba(255,184,48,0.12);border:1px solid rgba(255,184,48,0.2)}
+.icon-green{background:rgba(61,255,160,0.1);border:1px solid rgba(61,255,160,0.2)}
+.project-arrow{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:background .2s,color .2s,border-color .2s;flex-shrink:0}
+.project-card:hover .project-arrow{background:var(--violet);color:#fff;border-color:var(--violet)}
+.project-arrow svg{width:12px;height:12px}
+.project-card-footer{display:flex;align-items:center;justify-content:space-between;gap:.5rem;margin-top:.25rem}
+.project-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:600;color:var(--text);line-height:1.3}
+.project-desc{font-size:0.83rem;color:var(--muted);font-weight:300;line-height:1.6;flex:1}
+.project-tag{display:inline-block;font-size:0.7rem;font-weight:500;padding:3px 10px;border-radius:100px;letter-spacing:.04em}
+.tag-violet{background:rgba(124,92,252,0.15);color:var(--violet-lt);border:1px solid rgba(124,92,252,0.2)}
+.tag-cyan{background:rgba(0,212,200,0.12);color:var(--cyan-lt);border:1px solid rgba(0,212,200,0.2)}
+.tag-pink{background:rgba(240,64,160,0.12);color:var(--pink-lt);border:1px solid rgba(240,64,160,0.2)}
+.tag-amber{background:rgba(255,184,48,0.12);color:var(--amber);border:1px solid rgba(255,184,48,0.2)}
+.tag-green{background:rgba(61,255,160,0.1);color:var(--green);border:1px solid rgba(61,255,160,0.15)}
+.add-card{border:1.5px dashed var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;min-height:168px;cursor:pointer;background:transparent;transition:border-color .2s,background .2s;color:var(--muted);font-family:'Inter',sans-serif;font-size:.875rem}
+.add-card:hover{border-color:var(--violet);background:rgba(124,92,252,0.05);color:var(--violet-lt)}
+.add-icon{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.3rem;transition:border-color .2s,background .2s}
+.add-card:hover .add-icon{border-color:var(--violet);background:rgba(124,92,252,0.15)}
+.about-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;padding:clamp(4rem,7vw,6rem) clamp(1.5rem,5vw,4rem)}
+.about-eyebrow{font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--pink-lt);margin-bottom:.5rem}
+.about-text h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--text);margin-bottom:1.1rem}
+.about-text p{font-size:.95rem;color:var(--muted);font-weight:300;line-height:1.85;margin-bottom:.9rem}
+.about-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem}
+.apill{font-size:.78rem;font-weight:400;padding:5px 14px;border-radius:100px;border:1px solid var(--border);color:var(--muted);cursor:default;transition:border-color .2s,color .2s}
+.apill:hover{border-color:var(--cyan);color:var(--cyan-lt)}
+.about-visual{display:flex;align-items:center;justify-content:center}
+.about-visual svg{width:100%;max-width:360px}
+footer{padding:clamp(2rem,4vw,3rem) clamp(1.5rem,5vw,4rem);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-name{font-family:'Syne',sans-serif;font-size:.9rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--violet-lt)}
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(6,8,18,.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:clamp(1.5rem,4vw,2.5rem);width:min(100%,500px);transform:translateY(20px) scale(0.97);transition:transform .22s}
+.modal-overlay.open .modal{transform:translateY(0) scale(1)}
+.modal h2{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:700;color:var(--text);margin-bottom:1.5rem}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+.field label{font-size:.72rem;font-weight:500;color:var(--muted);letter-spacing:.09em;text-transform:uppercase}
+.field input,.field select,.field textarea{border:1px solid var(--border);background:var(--bg3);border-radius:10px;padding:10px 14px;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--text);outline:none;transition:border-color .2s;width:100%}
+.field textarea{resize:vertical;min-height:76px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--violet)}
+.field select{cursor:pointer}
+.field select option{background:var(--bg3)}
+.emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+.emoji-opt{aspect-ratio:1;font-size:1.05rem;background:var(--bg3);border:1.5px solid transparent;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s,background .15s}
+.emoji-opt:hover{background:var(--bg);border-color:var(--border)}
+.emoji-opt.selected{border-color:var(--violet);background:rgba(124,92,252,0.15)}
+.color-row{display:flex;gap:8px;flex-wrap:wrap}
+.color-dot{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:transform .15s,border-color .15s}
+.color-dot.selected{border-color:#fff;transform:scale(1.18)}
+.modal-actions{display:flex;gap:.75rem;justify-content:flex-end;margin-top:1.5rem;flex-wrap:wrap}
+.mbtn{font-family:'Inter',sans-serif;font-size:.875rem;font-weight:500;padding:10px 22px;border-radius:100px;cursor:pointer;border:none;transition:background .2s,transform .1s}
+.mbtn:active{transform:scale(.97)}
+.mbtn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted)}
+.mbtn-ghost:hover{background:var(--bg3)}
+.mbtn-primary{background:linear-gradient(135deg,var(--violet),#9B78FF);color:#fff}
+.mbtn-primary:hover{opacity:.88}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--bg3);border:1px solid var(--violet);color:var(--violet-lt);font-size:.85rem;padding:10px 20px;border-radius:100px;z-index:300;transform:translateY(20px);opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+.delete-btn{width:28px;height:28px;border-radius:50%;background:transparent;border:1px solid transparent;color:var(--muted);cursor:pointer;display:none;align-items:center;justify-content:center;transition:background .2s,border-color .2s,color .2s;padding:0;flex-shrink:0}
+.delete-btn svg{width:13px;height:13px;pointer-events:none}
+.editor-mode .delete-btn{display:flex}
+.delete-btn:hover{background:rgba(240,64,160,0.2);border-color:rgba(240,64,160,0.45);color:var(--pink-lt)}
+.add-card{display:none}
+.editor-mode .add-card{display:flex}
+.editor-badge{display:none;align-items:center;gap:6px;font-size:0.72rem;font-weight:500;color:var(--cyan);background:rgba(0,212,200,0.08);border:1px solid rgba(0,212,200,0.2);padding:4px 12px;border-radius:100px;cursor:pointer;transition:background .2s}
+.editor-badge:hover{background:rgba(0,212,200,0.15)}
+.editor-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.editor-mode .editor-badge{display:flex}
+.pin-overlay{position:fixed;inset:0;z-index:400;background:rgba(6,8,18,.85);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.pin-overlay.open{opacity:1;pointer-events:all}
+.pin-box{background:var(--bg2);border:1px solid var(--border);border-radius:24px;padding:2.5rem;width:min(100%,360px);text-align:center;transform:translateY(16px) scale(.97);transition:transform .2s}
+.pin-overlay.open .pin-box{transform:translateY(0) scale(1)}
+.pin-lock-icon{font-size:2rem;margin-bottom:1rem}
+.pin-box h3{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.pin-box p{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem}
+.pin-input{width:100%;text-align:center;font-size:1.5rem;letter-spacing:.4em;border:1px solid var(--border);background:var(--bg3);border-radius:12px;padding:12px;color:var(--text);outline:none;transition:border-color .2s;font-family:'Syne',sans-serif}
+.pin-input:focus{border-color:var(--violet)}
+.pin-input.error{border-color:var(--pink);animation:shake .3s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pin-hint{font-size:.75rem;color:var(--pink-lt);margin-top:.5rem;min-height:1rem;transition:opacity .2s}
+.pin-actions{display:flex;gap:.75rem;justify-content:center;margin-top:1.25rem}
+.lock-btn{background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:.75rem;font-family:'Inter',sans-serif;padding:4px 10px;border-radius:100px;border:1px solid var(--border);transition:color .2s,border-color .2s}
+.lock-btn:hover{color:var(--pink-lt);border-color:rgba(240,64,160,.4)}
+.confirm-overlay{position:fixed;inset:0;z-index:300;background:rgba(6,8,18,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.confirm-overlay.open{opacity:1;pointer-events:all}
+.confirm-box{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2rem;width:min(100%,400px);text-align:center;transform:translateY(16px) scale(.97);transition:transform .2s}
+.confirm-overlay.open .confirm-box{transform:translateY(0) scale(1)}
+.confirm-icon{width:52px;height:52px;border-radius:50%;background:rgba(240,64,160,0.12);border:1px solid rgba(240,64,160,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-size:1.4rem}
+.confirm-box h3{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.confirm-box p{font-size:.875rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6}
+.confirm-title-text{color:var(--violet-lt);font-weight:500}
+.confirm-actions{display:flex;gap:.75rem;justify-content:center}
+.mbtn-danger{background:linear-gradient(135deg,#c0185a,var(--pink));color:#fff}
+.mbtn-danger:hover{opacity:.88}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:auto}.hero-art{display:none}.stats-bar{flex-wrap:wrap}.stat-item{flex:1 1 45%;border-right:none;border-bottom:1px solid var(--border)}.about-inner{grid-template-columns:1fr}.about-visual{display:none}.nav-links{display:none}}
+@media(max-width:480px){.modal-actions{flex-direction:column-reverse}.mbtn{width:100%;text-align:center}.emoji-grid{grid-template-columns:repeat(6,1fr)}}
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">psiqué · portafolio</span>
+  <div class="nav-links">
+    <a href="#proyectos">Proyectos</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="/cdn-cgi/l/email-protection#bdd5d2d1dcfdd8d7d8d0cdd1d293ded2d0">Contacto</a>
+  </div>
+  <a href="#proyectos" class="nav-cta">Ver trabajo</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Psicología · Portafolio académico</div>
+    <h1>Explorando<br/><span class="line-2">la mente</span><br/><span class="line-3">humana</span></h1>
+    <p class="hero-sub">Investigaciones, prácticas y proyectos que construyen mi camino como psicóloga. Cada proyecto es una ventana al comportamiento humano.</p>
+    <div class="hero-btns">
+      <a href="#proyectos" class="btn-primary">
+        Ver proyectos
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+      </a>
+      <a href="#sobre-mi" class="btn-ghost">Sobre mí</a>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bgr" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#1A1F3A"/><stop offset="100%" stop-color="#0C0E1A"/></radialGradient>
+        <radialGradient id="hr" cx="40%" cy="35%" r="60%"><stop offset="0%" stop-color="#2A2060"/><stop offset="100%" stop-color="#0F1128"/></radialGradient>
+      </defs>
+      <circle cx="240" cy="240" r="228" fill="url(#bgr)" opacity="0.65"/>
+      <ellipse cx="240" cy="240" rx="210" ry="210" fill="none" stroke="#7C5CFC" stroke-width="0.6" stroke-dasharray="4 8" opacity="0.3"/>
+      <ellipse cx="240" cy="240" rx="168" ry="168" fill="none" stroke="#00D4C8" stroke-width="0.6" stroke-dasharray="2 6" opacity="0.28"/>
+      <ellipse cx="240" cy="240" rx="124" ry="124" fill="none" stroke="#F040A0" stroke-width="0.6" stroke-dasharray="3 7" opacity="0.28"/>
+      <!-- brain shape -->
+      <path d="M178 195 C163 180 153 162 160 146 C167 132 182 126 196 131 C193 120 200 110 212 108 C224 106 234 114 235 124 C238 120 244 114 252 114 C260 114 267 120 267 129 C274 114 289 108 301 114 C313 120 318 134 312 146 C324 146 333 157 331 169 C329 181 318 188 307 186 C313 196 311 210 302 216 C293 222 281 220 276 211 C271 224 258 230 246 225 C234 220 228 209 230 199 C222 206 212 205 206 199 C197 192 195 181 200 173 C189 171 181 163 181 152 C181 143 186 135 193 131" fill="url(#hr)" stroke="#534AB7" stroke-width="1.3"/>
+      <!-- folds -->
+      <path d="M200 172 C208 165 219 169 223 178 C227 187 222 196 214 198" fill="none" stroke="#7C5CFC" stroke-width="1.1" opacity="0.55"/>
+      <path d="M258 162 C267 159 276 165 276 174 C276 183 267 190 258 188" fill="none" stroke="#7C5CFC" stroke-width="1.1" opacity="0.55"/>
+      <path d="M230 144 C239 140 250 145 252 154" fill="none" stroke="#00D4C8" stroke-width="0.9" opacity="0.5"/>
+      <path d="M244 194 C252 191 261 195 263 204" fill="none" stroke="#F040A0" stroke-width="0.9" opacity="0.48"/>
+      <line x1="240" y1="120" x2="240" y2="218" stroke="#7C5CFC" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.38"/>
+      <!-- glow -->
+      <ellipse cx="240" cy="165" rx="58" ry="50" fill="#7C5CFC" opacity="0.06"/>
+      <!-- orbs -->
+      <circle cx="143" cy="172" r="7" fill="#7C5CFC" opacity="0.85"/>
+      <circle cx="143" cy="172" r="12" fill="none" stroke="#7C5CFC" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="340" cy="188" r="6" fill="#00D4C8" opacity="0.85"/>
+      <circle cx="340" cy="188" r="11" fill="none" stroke="#00D4C8" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="188" cy="305" r="5" fill="#F040A0" opacity="0.85"/>
+      <circle cx="188" cy="305" r="10" fill="none" stroke="#F040A0" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="312" cy="300" r="5.5" fill="#FFB830" opacity="0.85"/>
+      <circle cx="312" cy="300" r="10" fill="none" stroke="#FFB830" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="240" cy="338" r="4.5" fill="#3DFFA0" opacity="0.85"/>
+      <circle cx="240" cy="338" r="9" fill="none" stroke="#3DFFA0" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="128" cy="268" r="3" fill="#A98BFD" opacity="0.7"/>
+      <circle cx="362" cy="148" r="3" fill="#7EEEE9" opacity="0.7"/>
+      <circle cx="158" cy="128" r="2.5" fill="#F880C4" opacity="0.7"/>
+      <!-- synapses -->
+      <line x1="143" y1="172" x2="180" y2="185" stroke="#7C5CFC" stroke-width="0.7" opacity="0.4"/>
+      <line x1="340" y1="188" x2="304" y2="192" stroke="#00D4C8" stroke-width="0.7" opacity="0.4"/>
+      <line x1="188" y1="305" x2="220" y2="264" stroke="#F040A0" stroke-width="0.7" opacity="0.38"/>
+      <line x1="312" y1="300" x2="274" y2="260" stroke="#FFB830" stroke-width="0.7" opacity="0.38"/>
+      <line x1="188" y1="305" x2="240" y2="338" stroke="#F040A0" stroke-width="0.5" opacity="0.28"/>
+      <line x1="312" y1="300" x2="240" y2="338" stroke="#FFB830" stroke-width="0.5" opacity="0.28"/>
+      <line x1="128" y1="268" x2="143" y2="172" stroke="#A98BFD" stroke-width="0.5" opacity="0.28"/>
+      <line x1="362" y1="148" x2="340" y2="188" stroke="#7EEEE9" stroke-width="0.5" opacity="0.28"/>
+      <!-- labels -->
+      <rect x="46" y="212" width="86" height="24" rx="12" fill="rgba(124,92,252,0.16)" stroke="#7C5CFC" stroke-width="0.8"/>
+      <text x="89" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#A98BFD">Cognición</text>
+      <rect x="352" y="212" width="82" height="24" rx="12" fill="rgba(0,212,200,0.13)" stroke="#00D4C8" stroke-width="0.8"/>
+      <text x="393" y="228" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#7EEEE9">Emoción</text>
+      <rect x="150" y="348" width="80" height="24" rx="12" fill="rgba(240,64,160,0.13)" stroke="#F040A0" stroke-width="0.8"/>
+      <text x="190" y="364" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#F880C4">Conducta</text>
+      <rect x="262" y="348" width="92" height="24" rx="12" fill="rgba(255,184,48,0.12)" stroke="#FFB830" stroke-width="0.8"/>
+      <text x="308" y="364" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#FFB830">Percepción</text>
+      <line x1="132" y1="224" x2="143" y2="218" stroke="#7C5CFC" stroke-width="0.6" opacity="0.45"/>
+      <line x1="352" y1="224" x2="340" y2="212" stroke="#00D4C8" stroke-width="0.6" opacity="0.45"/>
+      <line x1="190" y1="348" x2="192" y2="315" stroke="#F040A0" stroke-width="0.6" opacity="0.45"/>
+      <line x1="308" y1="348" x2="308" y2="310" stroke="#FFB830" stroke-width="0.6" opacity="0.45"/>
+    </svg>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num" id="stat-projects">0</div><div class="stat-label">Proyectos</div></div>
+  <div class="stat-item"><div class="stat-num">5°</div><div class="stat-label">Semestre</div></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Áreas de interés</div></div>
+  <div class="stat-item"><div class="stat-num">∞</div><div class="stat-label">Curiosidad</div></div>
+</div>
+
+<section class="section" id="proyectos">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Portafolio</div>
+      <h2 class="section-title">Proyectos académicos</h2>
+    </div>
+    <span class="section-count" id="project-count">Sin proyectos aún</span>
+  </div>
+  <div id="projects-grid">
+    <button class="add-card" onclick="openModal()">
+      <div class="add-icon">+</div>
+      <span>Agregar proyecto</span>
+    </button>
+  </div>
+</section>
+
+<section class="about-section" id="sobre-mi">
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="about-eyebrow">Sobre mí</div>
+      <h2>Mente curiosa,<br/>corazón empático</h2>
+      <p>Soy estudiante de psicología apasionada por entender los procesos mentales que nos hacen humanos. Me interesan la psicología clínica, las neurociencias y la investigación del comportamiento.</p>
+      <p>Este portafolio es un mapa en construcción: cada proyecto refleja mi aprendizaje y mi compromiso con una disciplina que transforma vidas.</p>
+      <div class="about-pills">
+        <span class="apill">Psicología Clínica</span>
+        <span class="apill">Neurociencias</span>
+        <span class="apill">Investigación</span>
+        <span class="apill">Psicometría</span>
+        <span class="apill">Salud Mental</span>
+        <span class="apill">Psicología Social</span>
+      </div>
+    </div>
+    <div class="about-visual">
+      <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="180" cy="180" r="170" fill="#131628"/>
+        <circle cx="180" cy="180" r="160" fill="none" stroke="#272D4D" stroke-width="1"/>
+        <path d="M80 180 A100 100 0 0 1 280 180" fill="none" stroke="#7C5CFC" stroke-width="1.5" opacity="0.5"/>
+        <path d="M100 180 A80 80 0 0 1 260 180" fill="none" stroke="#00D4C8" stroke-width="1.2" opacity="0.45"/>
+        <path d="M120 180 A60 60 0 0 1 240 180" fill="none" stroke="#F040A0" stroke-width="1" opacity="0.4"/>
+        <circle cx="180" cy="80" r="5" fill="#7C5CFC"/>
+        <circle cx="280" cy="180" r="5" fill="#00D4C8"/>
+        <circle cx="180" cy="280" r="5" fill="#F040A0"/>
+        <circle cx="80" cy="180" r="5" fill="#FFB830"/>
+        <line x1="180" y1="20" x2="180" y2="340" stroke="#272D4D" stroke-width="0.8"/>
+        <line x1="20" y1="180" x2="340" y2="180" stroke="#272D4D" stroke-width="0.8"/>
+        <line x1="60" y1="60" x2="300" y2="300" stroke="#272D4D" stroke-width="0.5" opacity="0.5"/>
+        <line x1="300" y1="60" x2="60" y2="300" stroke="#272D4D" stroke-width="0.5" opacity="0.5"/>
+        <circle cx="180" cy="180" r="18" fill="rgba(124,92,252,0.2)" stroke="#7C5CFC" stroke-width="1.5"/>
+        <circle cx="180" cy="180" r="6" fill="#7C5CFC"/>
+        <circle cx="130" cy="120" r="3" fill="#A98BFD" opacity="0.7"/>
+        <circle cx="240" cy="130" r="3" fill="#7EEEE9" opacity="0.7"/>
+        <circle cx="250" cy="240" r="3" fill="#F880C4" opacity="0.7"/>
+        <circle cx="120" cy="250" r="3" fill="#FFB830" opacity="0.7"/>
+        <line x1="180" y1="162" x2="180" y2="80" stroke="#7C5CFC" stroke-width="0.8" opacity="0.4"/>
+        <line x1="198" y1="180" x2="280" y2="180" stroke="#00D4C8" stroke-width="0.8" opacity="0.4"/>
+        <line x1="180" y1="198" x2="180" y2="280" stroke="#F040A0" stroke-width="0.8" opacity="0.4"/>
+        <line x1="162" y1="180" x2="80" y2="180" stroke="#FFB830" stroke-width="0.8" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">María García · Psicología © 2025</span>
+  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
+    <div class="editor-badge" id="editor-badge" onclick="lockEditor()">
+      <span>Modo editor</span>
+      <span style="font-size:0.65rem;opacity:.7">· salir</span>
+    </div>
+    <div class="footer-links">
+      <a href="mailto:hola@ejemplo.com">Email</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Universidad</a>
+      <button class="lock-btn" id="lock-btn" onclick="openPinModal()" title="Acceso editor">✦</button>
+    </div>
+  </div>
+</footer>
+
+<!-- PIN MODAL -->
+<div class="pin-overlay" id="pin-overlay" onclick="handlePinOverlay(event)">
+  <div class="pin-box">
+    <div class="pin-lock-icon">🔐</div>
+    <h3>Modo editor</h3>
+    <p>Ingresa tu PIN para activar<br/>el modo de edición</p>
+    <input class="pin-input" id="pin-input" type="password" maxlength="8" placeholder="····" autocomplete="off" oninput="clearPinError()" onkeydown="if(event.key==='Enter')verifyPin()"/>
+    <div class="pin-hint" id="pin-hint"></div>
+    <div class="pin-actions">
+      <button class="mbtn mbtn-ghost" onclick="closePinModal()">Cancelar</button>
+      <button class="mbtn mbtn-primary" onclick="verifyPin()">Entrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal">
+    <h2>Nuevo proyecto</h2>
+    <div class="field">
+      <label>Ícono</label>
+      <div class="emoji-grid" id="emoji-grid"></div>
+    </div>
+    <div class="field">
+      <label>Color del ícono</label>
+      <div class="color-row">
+        <div class="color-dot selected" data-color="violet" style="background:#7C5CFC" onclick="selectColor(this)"></div>
+        <div class="color-dot" data-color="cyan" style="background:#00D4C8" onclick="selectColor(this)"></div>
+        <div class="color-dot" data-color="pink" style="background:#F040A0" onclick="selectColor(this)"></div>
+        <div class="color-dot" data-color="amber" style="background:#FFB830" onclick="selectColor(this)"></div>
+        <div class="color-dot" data-color="green" style="background:#3DFFA0" onclick="selectColor(this)"></div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Título del proyecto *</label>
+      <input type="text" id="input-title" placeholder="Ej: Estudio sobre cognición social" maxlength="70"/>
+    </div>
+    <div class="field">
+      <label>Descripción breve</label>
+      <textarea id="input-desc" placeholder="Resumen en 1-2 oraciones..." maxlength="160"></textarea>
+    </div>
+    <div class="field">
+      <label>Área temática</label>
+      <select id="input-tag">
+        <option value="Clínica">Clínica</option>
+        <option value="Investigación">Investigación</option>
+        <option value="Educativa">Educativa</option>
+        <option value="Social">Social</option>
+        <option value="Neurociencias">Neurociencias</option>
+        <option value="Psicometría">Psicometría</option>
+        <option value="Comunitaria">Comunitaria</option>
+        <option value="Laboral">Laboral</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Enlace (URL)</label>
+      <input type="url" id="input-url" placeholder="https://drive.google.com/..."/>
+    </div>
+    <div class="modal-actions">
+      <button class="mbtn mbtn-ghost" onclick="closeModal()">Cancelar</button>
+      <button class="mbtn mbtn-primary" onclick="addProject()">Agregar proyecto</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div class="confirm-overlay" id="confirm-overlay" onclick="handleConfirmOverlay(event)">
+  <div class="confirm-box">
+    <div class="confirm-icon">🗑️</div>
+    <h3>Eliminar proyecto</h3>
+    <p>¿Segura que quieres eliminar<br/><span class="confirm-title-text" id="confirm-project-name"></span>?<br/>Esta acción no se puede deshacer.</p>
+    <div class="confirm-actions">
+      <button class="mbtn mbtn-ghost" onclick="closeConfirm()">Cancelar</button>
+      <button class="mbtn mbtn-danger" onclick="confirmDelete()">Sí, eliminar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">¡Proyecto agregado!</div>
+
+<script>
+const EMOJIS=['📄','🧠','💬','📊','🔬','📝','🌱','💡','🫂','📚','🎯','📋','🧩','💭','🔍','❤️','🌿','⚡','📌','🏥','🧪','🎓','🤝','✨'];
+const TAG_COLOR={'Clínica':'violet','Investigación':'cyan','Educativa':'amber','Social':'pink','Neurociencias':'cyan','Psicometría':'violet','Comunitaria':'green','Laboral':'amber','Otro':'violet'};
+
+/* ── PIN: SHA-256 de tu PIN. El valor abajo = hash de "1234"
+   Para cambiarlo: https://emn178.github.io/online-tools/sha256.html
+   Escribe tu PIN, copia el hash y pégalo aquí abajo ── */
+const PIN_HASH='03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4';
+
+let selectedEmoji=EMOJIS[0],selectedColor='violet',projects=[],pendingDeleteIdx=-1,editorActive=false;
+
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+function setEditorMode(on){
+  editorActive=on;
+  document.body.classList.toggle('editor-mode',on);
+  renderProjects();
+}
+function lockEditor(){setEditorMode(false)}
+
+function openPinModal(){
+  document.getElementById('pin-input').value='';
+  document.getElementById('pin-hint').textContent='';
+  document.getElementById('pin-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('pin-input').focus(),200);
+}
+function closePinModal(){document.getElementById('pin-overlay').classList.remove('open')}
+function handlePinOverlay(e){if(e.target===document.getElementById('pin-overlay'))closePinModal()}
+function clearPinError(){
+  document.getElementById('pin-input').classList.remove('error');
+  document.getElementById('pin-hint').textContent='';
+}
+async function verifyPin(){
+  const val=document.getElementById('pin-input').value;
+  if(!val)return;
+  const hash=await sha256(val);
+  if(hash===PIN_HASH){
+    closePinModal();
+    setEditorMode(true);
+    showToast('¡Modo editor activado! ✏️');
+  } else {
+    const inp=document.getElementById('pin-input');
+    inp.classList.add('error');
+    inp.value='';
+    document.getElementById('pin-hint').textContent='PIN incorrecto, intenta de nuevo';
+    setTimeout(()=>inp.classList.remove('error'),400);
+  }
+}
+
+function initEmojis(){
+  const g=document.getElementById('emoji-grid');g.innerHTML='';
+  EMOJIS.forEach(e=>{
+    const b=document.createElement('button');
+    b.className='emoji-opt'+(e===selectedEmoji?' selected':'');
+    b.textContent=e;b.type='button';
+    b.onclick=()=>{selectedEmoji=e;document.querySelectorAll('.emoji-opt').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')};
+    g.appendChild(b);
+  });
+}
+function selectColor(el){document.querySelectorAll('.color-dot').forEach(d=>d.classList.remove('selected'));el.classList.add('selected');selectedColor=el.dataset.color}
+function openModal(){
+  if(!editorActive)return;
+  selectedEmoji=EMOJIS[0];selectedColor='violet';
+  ['input-title','input-desc','input-url'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('input-tag').value='Clínica';
+  document.querySelectorAll('.color-dot').forEach(d=>d.classList.remove('selected'));
+  document.querySelector('.color-dot[data-color="violet"]').classList.add('selected');
+  initEmojis();
+  document.getElementById('modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('input-title').focus(),200);
+}
+function closeModal(){document.getElementById('modal-overlay').classList.remove('open')}
+function handleOverlayClick(e){if(e.target===document.getElementById('modal-overlay'))closeModal()}
+
+function askDelete(idx,e){
+  e.preventDefault();e.stopPropagation();
+  pendingDeleteIdx=idx;
+  const t=projects[idx].title;
+  document.getElementById('confirm-project-name').textContent=t.length>40?t.slice(0,40)+'…':t;
+  document.getElementById('confirm-overlay').classList.add('open');
+}
+function closeConfirm(){document.getElementById('confirm-overlay').classList.remove('open');pendingDeleteIdx=-1}
+function handleConfirmOverlay(e){if(e.target===document.getElementById('confirm-overlay'))closeConfirm()}
+function confirmDelete(){
+  if(pendingDeleteIdx<0)return;
+  projects.splice(pendingDeleteIdx,1);
+  closeConfirm();renderProjects();showToast('Proyecto eliminado 🗑️');
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();closeConfirm();closePinModal()}
+});
+
+function addProject(){
+  const title=document.getElementById('input-title').value.trim();
+  if(!title){const i=document.getElementById('input-title');i.style.borderColor='#F040A0';i.focus();setTimeout(()=>i.style.borderColor='',2000);return}
+  const tag=document.getElementById('input-tag').value;
+  projects.push({icon:selectedEmoji,color:selectedColor,title,desc:document.getElementById('input-desc').value.trim(),tag,tagColor:TAG_COLOR[tag]||'violet',url:document.getElementById('input-url').value.trim()||'#'});
+  renderProjects();closeModal();showToast('¡Proyecto agregado! ✨');
+}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function renderProjects(){
+  const grid=document.getElementById('projects-grid');
+  grid.innerHTML='';
+  projects.forEach((p,i)=>{
+    const card=document.createElement('a');
+    card.href=p.url;card.target=p.url!=='#'?'_blank':'_self';card.rel='noopener noreferrer';
+    card.className='project-card';card.style.position='relative';card.style.animationDelay=(i*0.07)+'s';
+    card.innerHTML=`<div class="project-card-top"><div class="project-icon icon-${p.color}">${p.icon}</div></div><div class="project-title">${esc(p.title)}</div>${p.desc?`<div class="project-desc">${esc(p.desc)}</div>`:''}<div class="project-card-footer"><span class="project-tag tag-${p.tagColor}">${esc(p.tag)}</span><div style="display:flex;align-items:center;gap:6px"></div></div>`;
+    const footer=card.querySelector('.project-card-footer > div');
+    const del=document.createElement('button');
+    del.className='delete-btn';del.title='Eliminar proyecto';
+    del.innerHTML=`<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 12,4"/><path d="M5 4V3a1 1 0 011-1h2a1 1 0 011 1v1"/><path d="M3 4l.8 8a1 1 0 001 .9h4.4a1 1 0 001-.9L11 4"/></svg>`;
+    del.onclick=(e)=>askDelete(i,e);
+    const arrow=document.createElement('div');
+    arrow.className='project-arrow';
+    arrow.innerHTML=`<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 6h8M6 2l4 4-4 4"/></svg>`;
+    footer.appendChild(del);
+    footer.appendChild(arrow);
+    grid.appendChild(card);
+  });
+  if(editorActive){
+    const btn=document.createElement('button');btn.className='add-card';btn.onclick=openModal;
+    btn.innerHTML='<div class="add-icon">+</div><span>Agregar proyecto</span>';
+    grid.appendChild(btn);
+  }
+  const n=projects.length;
+  document.getElementById('project-count').textContent=n===0?'Sin proyectos aún':n===1?'1 proyecto':n+' proyectos';
+  document.getElementById('stat-projects').textContent=n;
+}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2800)}
+renderProjects();
+</script>
+
