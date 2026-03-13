@@ -13,7 +13,7 @@
   --teal:#1a6b6b; --teal-light:#2d9e9e;
   --rust:#9b3a1a; --sage:#5a7a52;
   --lavender:#6b5b8a; --slate:#3a4a5c;
-  --gold:#e8c547; --muted:#7a6e5e; --border:#d4c9b0;
+  --gold:#e8c547; --muted:#4a3c28; --border:#d4c9b0;
   --font-display:'Playfair Display',serif;
   --font-body:'DM Sans',sans-serif;
   --font-mono:'DM Mono',monospace;
@@ -102,9 +102,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(245,240,232
 .phases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
 .phase-card{border-top:4px solid;padding:2rem 1.5rem;background:white;box-shadow:0 2px 20px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
 .phase-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
-.phase-card:nth-child(1){border-color:var(--amber)}.phase-card:nth-child(1) .ph-name{color:var(--amber-deep)}
-.phase-card:nth-child(2){border-color:var(--teal)}.phase-card:nth-child(2) .ph-name{color:var(--teal)}
-.phase-card:nth-child(3){border-color:var(--rust)}.phase-card:nth-child(3) .ph-name{color:var(--rust)}
+.phase-card:nth-child(1){border-color:var(--amber)}.phase-card:nth-child(1) .ph-name{color:#8a5a00}
+.phase-card:nth-child(2){border-color:var(--teal)}.phase-card:nth-child(2) .ph-name{color:#0f5050}
+.phase-card:nth-child(3){border-color:var(--rust)}.phase-card:nth-child(3) .ph-name{color:#7a2a10}
 .ph-period{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.12em;color:var(--muted);margin-bottom:.5rem}
 .ph-name{font-family:var(--font-display);font-size:1.3rem;font-weight:900;margin-bottom:1rem;line-height:1.2}
 .ph-desc{font-size:.88rem;line-height:1.7;color:#4a4030}
@@ -123,18 +123,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(245,240,232
 .aph-name{font-family:var(--font-display);font-size:1.05rem;font-weight:900;color:white;line-height:1.2}
 .aph-num{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.12em;color:rgba(255,255,255,.7);background:rgba(0,0,0,.35);padding:.2rem .4rem}
 .abar{height:5px;width:100%;flex-shrink:0}
-.avb{padding:1.4rem 1.5rem 1.5rem;flex:1;display:flex;flex-direction:column}
+.avb{padding:1.4rem 1.5rem 1.5rem;flex:1;display:flex;flex-direction:column;background:white}
 .ameta{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;flex-wrap:wrap;gap:.3rem}
-.adates{font-family:var(--font-mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em}
+.adates{font-family:var(--font-mono);font-size:.68rem;color:#4a3820 !important;letter-spacing:.06em}
 .atheory{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border:1px solid;border-radius:2px}
-.aintro{font-family:var(--font-display);font-style:italic;font-size:.92rem;line-height:1.55;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);color:#3a3020}
-.apt{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.7rem}
+.aintro{font-family:var(--font-display);font-style:italic;font-size:.92rem;line-height:1.55;margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid var(--border);color:#1a1208 !important}
+.apt{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:#4a3820 !important;font-weight:700;margin-bottom:.7rem}
 .apl{list-style:none;display:flex;flex-direction:column;gap:.5rem;flex:1}
-.apl li{display:flex;gap:.6rem;font-size:.83rem;line-height:1.55;align-items:flex-start}
+.apl li{display:flex;gap:.6rem;font-size:.83rem;line-height:1.55;align-items:flex-start;color:#1a1208 !important}
+.apl li div{color:#1a1208 !important}
+.apl li strong{color:#1a1208 !important}
 .adot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:.45rem}
-.acont{margin-top:1rem;padding:.9rem 1rem;border-left:3px solid;background:var(--cream)}
-.acl{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.25rem;opacity:.6}
-.act{font-size:.82rem;line-height:1.55;font-style:italic}
+.acont{margin-top:1rem;padding:.9rem 1rem;border-left:3px solid;background:#f0ebe0}
+.acl{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.25rem;color:#7a5a20 !important;font-weight:700;opacity:1 !important}
+.act{font-size:.82rem;line-height:1.55;font-style:italic;color:#1a1208 !important}
 /* PLACEHOLDER photo */
 .aph-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .aph-placeholder span{font-family:var(--font-display);font-size:5rem;font-weight:900;color:rgba(255,255,255,.2)}
@@ -179,7 +181,106 @@ footer{background:var(--ink);color:var(--paper);padding:3rem 2rem;text-align:cen
 footer .ft{font-family:var(--font-display);font-size:1.5rem;font-weight:900;color:var(--amber);margin-bottom:.5rem}
 footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-/* ── HAMBURGER MENU ── */
+/* ── CONTRAST FIXES ── */
+/* Secciones fondo claro: títulos y párrafos con ink sólido */
+#intro .sec-title,
+#reflexion .sec-title,
+#autores .sec-title,
+#conclusiones .sec-title,
+#equipo .sec-title { color: var(--ink) !important }
+
+#intro .sec-sub,
+#reflexion .sec-sub,
+#autores .sec-sub,
+#conclusiones .sec-sub { color: #4a3f2f !important }
+
+/* Párrafos cuerpo en secciones claras */
+#intro .intro-body p,
+#reflexion p,
+#autores p,
+#conclusiones p { color: #2a2010 }
+
+/* Timeline en fondo crema */
+.tl-title { color: var(--ink) !important; font-weight: 700 }
+.tl-body  { color: #3a3020 !important }
+.tl-year  { color: #5a4a30 !important }
+
+/* Phase cards fondo blanco */
+.ph-period { color: #5a4a30 !important }
+.ph-title  { color: var(--ink) !important }
+.ph-body   { color: #2e2414 !important }
+
+/* Author cards fondo blanco — clases reales */
+.avc-name  { color: var(--ink) !important }
+.avc-dates { color: #5a4a30 !important }
+.apt       { color: #4a3820 !important; font-weight:700 !important }
+.avc-intro { color: #2e2414 !important }
+.avc-post li { color: #2e2414 !important }
+
+/* Clases reales del HTML — ya definidas en base styles arriba */
+
+/* Conclusion cards fondo blanco */
+.cn  { color: #7a6040 !important }
+.ct2 { color: var(--ink) !important }
+.ctext, .ctext p { color: #2a2010 !important }
+.chlt { color: #3a3020 !important; font-style: italic }
+
+/* Pull quote: adaptar según contexto de fondo */
+/* En secciones CLARAS (intro, reflexion, conclusiones) → tinta oscura */
+#intro .pull-quote,
+#reflexion .pull-quote,
+#conclusiones .pull-quote {
+  color: var(--ink) !important;
+  background: rgba(201,135,28,.06) !important
+}
+#intro .pull-quote cite,
+#reflexion .pull-quote cite,
+#conclusiones .pull-quote cite { color: #5a4a30 !important }
+
+/* En secciones OSCURAS (objeto, comparacion, caso) → texto claro */
+#objeto .pull-quote,
+#comparacion .pull-quote,
+#caso .pull-quote {
+  color: rgba(245,240,232,.95) !important;
+  background: rgba(255,255,255,.06) !important
+}
+#objeto .pull-quote cite,
+#comparacion .pull-quote cite,
+#caso .pull-quote cite { color: rgba(245,240,232,.6) !important }
+#objeto .pull-quote::before,
+#comparacion .pull-quote::before,
+#caso .pull-quote::before { opacity: .4 }
+
+/* Eyebrow tags en secciones claras */
+#intro .ey-tag,
+#reflexion .ey-tag,
+#autores .ey-tag,
+#conclusiones .ey-tag { color: #7a6040 !important }
+
+#intro .ey-num,
+#reflexion .ey-num,
+#autores .ey-num,
+#conclusiones .ey-num { color: var(--amber) !important }
+
+/* Secciones oscuras: subir opacidad de textos */
+#objeto p,
+#comparacion p,
+#caso p { color: rgba(245,240,232,.92) !important }
+
+#objeto .sec-sub,
+#comparacion .sec-sub,
+#caso .sec-sub { color: rgba(245,240,232,.7) !important }
+
+/* Referencias oscuras */
+#referencias p { color: rgba(245,240,232,.9) !important }
+
+/* Equipo nombres */
+#equipo div[style*="font-weight:700"] { color: var(--ink) !important }
+
+/* Nav links contraste */
+.nav-links a { color: #2a2010 !important }
+.nav-links a:hover { color: var(--amber) !important }
+.nav-hamburger span { background: #1a1208 !important }
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;z-index:200}
 .nav-hamburger span{display:block;width:24px;height:2px;background:var(--paper);border-radius:2px;transition:all .3s}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -440,8 +541,8 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
 <section id="reflexion"><div class="sec">
   <div class="eyebrow"><span class="ey-num">03</span><span class="ey-rule"></span><span class="ey-tag">Reflexión Histórica</span></div>
   <h2 class="sec-title">Evolución del<br>Conductismo</h2>
-  <p class="sec-sub">Del surgimiento al neoconductismo y la apertura cognitiva</p>
-  <p style="max-width:750px;margin-bottom:2.5rem;font-size:.96rem;line-height:1.8;">El conductismo atravesó más de ochenta años de debates y reformulaciones. Identificamos tres grandes momentos:</p>
+  <p class="sec-sub" style="color:#1a1208 !important;">Del surgimiento al neoconductismo y la apertura cognitiva</p>
+  <p style="max-width:750px;margin-bottom:2.5rem;font-size:.96rem;line-height:1.8;color:#1a1208 !important;">El conductismo atravesó más de ochenta años de debates y reformulaciones. Identificamos tres grandes momentos:</p>
   <div class="phases-grid">
     <div class="phase-card">
       <div class="ph-period">1890 — 1930</div><div class="ph-name">Conductismo Clásico</div>
@@ -459,7 +560,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="ph-chips"><span class="chip">Bandura</span><span class="chip">Terapia TCC</span></div>
     </div>
   </div>
-  <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;margin:4rem 0 2rem;">Línea del Tiempo</h3>
+  <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;margin:4rem 0 2rem;color:#1a1208;">Línea del Tiempo</h3>
   <div class="timeline">
     <div class="tl-item"><div class="tl-dot" style="background:var(--amber)"></div><div class="tl-year">1898 – 1905</div><div class="tl-title">Thorndike — Conexionismo</div><div class="tl-body">Primeros experimentos con animales en cajas problema. Formula la Ley del Efecto como base empírica del reforzamiento.</div></div>
     <div class="tl-item"><div class="tl-dot" style="background:var(--teal)"></div><div class="tl-year">1897 – 1927</div><div class="tl-title">Pavlov y Béjterev — Reflejo condicionado</div><div class="tl-body">Pavlov descubre el condicionamiento clásico. Béjterev desarrolla la reflexología objetiva en Rusia de forma independiente.</div></div>
@@ -610,7 +711,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#c9871c"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1874 – 1949 · Estadounidense</span><span class="atheory" style="color:#8b5e0a;border-color:#c9871c">Conexionismo</span></div>
-        <p class="aintro">Precursor del conductismo, primero en aplicar el método experimental al aprendizaje animal con sus famosas <em>cajas problema</em>.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Precursor del conductismo, primero en aplicar el método experimental al aprendizaje animal con sus famosas <em>cajas problema</em>.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley del Efecto:</strong> las respuestas satisfactorias se fortalecen; las molestas se debilitan.</div></li>
@@ -653,7 +754,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#1a6b6b"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1849 – 1936 · Ruso · Nobel 1904</span><span class="atheory" style="color:#1a6b6b;border-color:#1a6b6b">Cond. Clásico</span></div>
-        <p class="aintro">Fisiólogo que descubrió accidentalmente el reflejo condicionado estudiando la digestión en perros, sentando el paradigma del aprendizaje asociativo.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Fisiólogo que descubrió accidentalmente el reflejo condicionado estudiando la digestión en perros, sentando el paradigma del aprendizaje asociativo.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#1a6b6b"></span><div><strong>EI → RI:</strong> el estímulo incondicionado produce respuesta natural automática.</div></li>
@@ -706,7 +807,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#5a7a52"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1857 – 1927 · Ruso</span><span class="atheory" style="color:#5a7a52;border-color:#5a7a52">Reflexología</span></div>
-        <p class="aintro">Neurólogo que desarrolló la reflexología como ciencia objetiva de la conducta, de forma paralela e independiente a Pavlov.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Neurólogo que desarrolló la reflexología como ciencia objetiva de la conducta, de forma paralela e independiente a Pavlov.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#5a7a52"></span><div>Toda actividad psíquica se reduce a <strong>reflejos observables</strong> del SN.</div></li>
@@ -746,7 +847,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#9b3a1a"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1878 – 1958 · Estadounidense</span><span class="atheory" style="color:#9b3a1a;border-color:#9b3a1a">Cond. Clásico</span></div>
-        <p class="aintro">Fundador oficial del conductismo. Su artículo de 1913 redefinió la psicología como ciencia de la conducta observable.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Fundador oficial del conductismo. Su artículo de 1913 redefinió la psicología como ciencia de la conducta observable.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#9b3a1a"></span><div>La psicología es una <strong>ciencia natural objetiva</strong>; su único objeto es la conducta.</div></li>
@@ -793,7 +894,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#3a4a5c"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1904 – 1990 · Estadounidense</span><span class="atheory" style="color:#3a4a5c;border-color:#3a4a5c">Cond. Operante</span></div>
-        <p class="aintro">El conductista más influyente del siglo XX. Desarrolló el condicionamiento operante y un sistema que abarcó desde la psicología básica hasta la organización social.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">El conductista más influyente del siglo XX. Desarrolló el condicionamiento operante y un sistema que abarcó desde la psicología básica hasta la organización social.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Cond. operante:</strong> la conducta es controlada por sus consecuencias.</div></li>
@@ -830,7 +931,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#5c7a3e"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1886 – 1959 · Estadounidense</span><span class="atheory" style="color:#5c7a3e;border-color:#5c7a3e">Contigüidad</span></div>
-        <p class="aintro">Propuso una teoría minimalista del aprendizaje basada en un único principio: la contigüidad temporal entre estímulo y respuesta.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Propuso una teoría minimalista del aprendizaje basada en un único principio: la contigüidad temporal entre estímulo y respuesta.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#5c7a3e"></span><div><strong>Contigüidad:</strong> E asociado a R tenderá a elicitar esa R en el futuro.</div></li>
@@ -875,7 +976,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#6b5b8a"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1886 – 1959 · Estadounidense</span><span class="atheory" style="color:#6b5b8a;border-color:#6b5b8a">Propositivo</span></div>
-        <p class="aintro">El "conductista disidente". Introdujo variables cognitivas en el análisis conductual y anticipó la psicología cognitiva con sus mapas mentales.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">El "conductista disidente". Introdujo variables cognitivas en el análisis conductual y anticipó la psicología cognitiva con sus mapas mentales.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#6b5b8a"></span><div><strong>Conducta propositiva:</strong> el organismo actúa orientado hacia metas.</div></li>
@@ -914,7 +1015,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#8b4a1a"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1884 – 1952 · Estadounidense</span><span class="atheory" style="color:#8b4a1a;border-color:#8b4a1a">Hip-Deductivo</span></div>
-        <p class="aintro">Intentó matematizar el conductismo construyendo un sistema formal de postulados para predecir la conducta con precisión cuantitativa.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Intentó matematizar el conductismo construyendo un sistema formal de postulados para predecir la conducta con precisión cuantitativa.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#8b4a1a"></span><div><strong>Fuerza del hábito (sHr):</strong> se incrementa con el número de reforzamientos.</div></li>
@@ -952,7 +1053,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#2a5c6a"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1907 – 1967 · Estadounidense</span><span class="atheory" style="color:#2a5c6a;border-color:#2a5c6a">Hull-Spence</span></div>
-        <p class="aintro">Colaborador y refinador de la teoría de Hull. Distinguió con precisión entre aprendizaje y motivación e incorporó el incentivo al modelo formal.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Colaborador y refinador de la teoría de Hull. Distinguió con precisión entre aprendizaje y motivación e incorporó el incentivo al modelo formal.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#2a5c6a"></span><div>Distinción formal entre <strong>aprendizaje (H)</strong> y <strong>motivación (D)</strong>.</div></li>
@@ -991,7 +1092,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#6a3a6a"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1909 – 2002 · Estadounidense</span><span class="atheory" style="color:#6a3a6a;border-color:#6a3a6a">Cond. Aplicado</span></div>
-        <p class="aintro">Amplió el conductismo hacia el conflicto motivacional, el aprendizaje del SNA y sentó las bases del biofeedback clínico moderno.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Amplió el conductismo hacia el conflicto motivacional, el aprendizaje del SNA y sentó las bases del biofeedback clínico moderno.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#6a3a6a"></span><div><strong>Conflicto motivacional:</strong> aproximación-evitación explica dilemas conductuales.</div></li>
@@ -1043,7 +1144,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#8b1a2a"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1925 – 2021 · Canadiense</span><span class="atheory" style="color:#8b1a2a;border-color:#8b1a2a">Aprend. Social</span></div>
-        <p class="aintro">Figura de cierre y puente histórico. Demostró que se puede aprender observando modelos sin reforzamiento directo, integrando cognición y conducta.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Figura de cierre y puente histórico. Demostró que se puede aprender observando modelos sin reforzamiento directo, integrando cognición y conducta.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Aprendizaje observacional:</strong> se aprende viendo la conducta de otros.</div></li>
