@@ -295,8 +295,8 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
   nav .nav-links{display:none;position:fixed;top:56px;left:0;right:0;background:#1a1208;flex-direction:column;align-items:stretch;gap:0;z-index:999;border-top:2px solid var(--amber);box-shadow:0 8px 32px rgba(0,0,0,.5)}
   nav .nav-links.open{display:flex}
   nav .nav-links li{border-bottom:1px solid rgba(255,255,255,.08)}
-  nav .nav-links li a{font-size:1rem;padding:.9rem 2rem;display:block;width:100%;text-align:left;color:var(--paper)}
-  nav .nav-links li a:hover{background:rgba(255,255,255,.07);color:var(--amber)}
+  nav .nav-links li a{font-size:1rem;padding:.9rem 2rem;display:block;width:100%;text-align:left;color:#f5f0e8 !important;letter-spacing:.05em}
+  nav .nav-links li a:hover{background:rgba(255,255,255,.07);color:var(--amber) !important}
   .nav-hamburger{display:flex}
   .nav-hamburger span{background:#1a1208}
 
@@ -437,7 +437,6 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
     <li><a href="#intro">Introducción</a></li>
     <li><a href="#objeto">Objeto</a></li>
     <li><a href="#reflexion">Reflexión</a></li>
-    <li><a href="#comparacion">Comparación</a></li>
     <li><a href="#autores">Autores</a></li>
     <li><a href="#caso">Caso Real</a></li>
     <li><a href="#conclusiones">Conclusiones</a></li>
@@ -459,12 +458,11 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <a href="#intro" class="ci-item"><span class="ci-num">01</span><span class="ci-label">Introducción</span><span class="ci-dot"></span></a>
       <a href="#objeto" class="ci-item"><span class="ci-num">02</span><span class="ci-label">Objeto de Estudio</span><span class="ci-dot"></span></a>
       <a href="#reflexion" class="ci-item"><span class="ci-num">03</span><span class="ci-label">Reflexión Histórica</span><span class="ci-dot"></span></a>
-      <a href="#comparacion" class="ci-item"><span class="ci-num">04</span><span class="ci-label">Comparación de Autores</span><span class="ci-dot"></span></a>
-      <a href="#autores" class="ci-item"><span class="ci-num">05</span><span class="ci-label">Los 11 Autores</span><span class="ci-dot"></span></a>
-      <a href="#caso" class="ci-item"><span class="ci-num">06</span><span class="ci-label">Caso Real</span><span class="ci-dot"></span></a>
-      <a href="#conclusiones" class="ci-item"><span class="ci-num">07</span><span class="ci-label">Conclusiones</span><span class="ci-dot"></span></a>
-      <a href="#referencias" class="ci-item"><span class="ci-num">08</span><span class="ci-label">Referencias</span><span class="ci-dot"></span></a>
-      <a href="#equipo" class="ci-item"><span class="ci-num">09</span><span class="ci-label">Equipo de Trabajo</span><span class="ci-dot"></span></a>
+      <a href="#autores" class="ci-item"><span class="ci-num">04</span><span class="ci-label">Los 11 Autores</span><span class="ci-dot"></span></a>
+      <a href="#caso" class="ci-item"><span class="ci-num">05</span><span class="ci-label">Caso Real</span><span class="ci-dot"></span></a>
+      <a href="#conclusiones" class="ci-item"><span class="ci-num">06</span><span class="ci-label">Conclusiones</span><span class="ci-dot"></span></a>
+      <a href="#referencias" class="ci-item"><span class="ci-num">07</span><span class="ci-label">Referencias</span><span class="ci-dot"></span></a>
+      <a href="#equipo" class="ci-item"><span class="ci-num">08</span><span class="ci-label">Equipo de Trabajo</span><span class="ci-dot"></span></a>
     </div>
   </div>
 </section>
@@ -476,10 +474,8 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
   <p class="sec-sub">El giro hacia la ciencia objetiva de la conducta</p>
   <div class="intro-grid">
     <div class="intro-body">
-      <p class="intro-lead">El conductismo surgió a principios del siglo XX como una corriente dentro de la psicología científica, enfocada en el estudio objetivo y medible de la <strong>conducta externa</strong>.</p>
-      <p>Como señalan Sáiz, M. y Anguera, B. (2013), este enfoque buscaba posicionar la psicología como una ciencia positiva centrada en la actividad públicamente observable; sin embargo, la psicología actual ha evolucionado hacia una visión más integral, interesada no solo en la conducta externa, sino también en los procesos mentales y la cognición humana.</p>
-      <p>Esta transición ha llevado a hablar de una psicología de la mente y la conducta. En esta cartilla se explora el origen y desarrollo del conductismo, destacando las atribuciones clave de autores como Watson y Skinner, quienes sentaron sus bases; Bandura, que lo vinculó al aprendizaje social; Béjterev, con su psicología objetiva apoyada en respuestas fisiológicas; Spence, que amplió el enfoque de Hull; y Hull, Guthrie, Tolman, Thorndike y Pavlov, cada uno con aportes únicos al estudio del aprendizaje y la conducta.</p>
-      <p>El documento se centra en el objeto de estudio del conductismo, analiza el origen y evolución de la corriente —pasando por el neoconductismo y el conductismo transicional—, examina las principales teorías de los autores mencionados, y concluye con una reflexión sobre el impacto actual del conductismo en la psicología.</p>
+      <p class="intro-lead">El conductismo surgió a principios del siglo XX como una corriente dentro de la psicología científica, enfocada en el estudio objetivo y medible de la conducta externa. Como señala Sáiz, M. y Anguera, B. (2013) "este enfoque buscaba posicionar la psicología como una ciencia positiva centrada en la actividad públicamente observable, sin embargo, la psicología actual ha evolucionado hacia una visión más integral, interesada no solo en la conducta externa, sino también en los procesos mentales y la cognición humana". (p.24).</p>
+      <p>Esta transición ha llevado a hablar de una psicología de la mente y la conducta. En esta cartilla se explora el origen y desarrollo del conductismo destacando las atribuciones clave de autores como John Watson y B.F. Skinner quienes sentaron las bases del conductismo, mientras que figuras como Albert Bandura asocia mas hacia el aprendizaje social y teorías cognitivas, su trabajo tiene raíces conductuales. Otros autores como Vladímir Béjterev quien planteó una psicología objetiva apoyada en respuestas fisiológicas basadas ante estímulos. Kenneth Spence. Amplio el enfoque de Hull sobre el aprendizaje y la motivación. Clark Leonard Hull, desarrolla el conductismo deductivo, propone la teoría de la reducción del impulso adoptando matemáticas conducta para exponer la motivación. Edwin Ray Guthrie, quien propuso que el aprendizaje ocurre por la asociación simple de estímulo respuesta. Neal Miller, sus aportes sobre la motivación y el aprendizaje integrando aspectos fisiológicos y conductuales. Edward C. Tolman, introdujo conceptos de mapas cognitivos y aprendizaje latente destaca procesos mentales en el comportamiento. Edward Thorndike, con su ley del efecto planteó que el comportamiento se fortalece o debilita según las consecuencias. Iván Pavlov, se destacó por sus estudios con perros en su teoría propone que los estímulos neutrales se asocian con respuestas automáticas a través del condicionamiento clásico.</p>
       <div class="pillar-strip">
         <div class="pillar"><span class="pi">🔬</span><div class="pn">Objetividad</div><div class="pd">Método experimental como base del saber</div></div>
         <div class="pillar"><span class="pi">👁️</span><div class="pn">Observabilidad</div><div class="pd">Solo la conducta externa es objeto válido</div></div>
@@ -488,7 +484,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       </div>
     </div>
     <div class="intro-aside">
-      <div class="fact-card"><div class="fn">1913</div><div class="fl">Año del manifiesto conductista de Watson</div></div>
+      <div class="fact-card"><div class="fn">1913</div><div class="fl">Año del manifiesto conductista de Watson, donde estableció que la psicología debería ser una ciencia natural y objetiva (López Cruz, 2021).</div></div>
       <div class="fact-card" style="background:var(--teal);"><div class="fn" style="color:var(--gold);">11</div><div class="fl">Teóricos que construyeron esta corriente</div></div>
       <div class="fact-card" style="background:var(--rust);"><div class="fn" style="color:white;">+80</div><div class="fl">Años de desarrollo y evolución teórica</div></div>
     </div>
@@ -507,7 +503,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
     <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:2rem;">
       <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.15em;color:var(--amber);margin-bottom:.8rem;">DEFINICIÓN DEL OBJETO</div>
       <p style="font-size:.92rem;line-height:1.8;color:rgba(245,240,232,.82);">El objeto de estudio del conductismo es la <strong style="color:white;">conducta observable y medible</strong> del organismo en relación con su entorno. Según Töpf (2020), la conducta es toda actividad del organismo susceptible de ser registrada objetivamente, excluyendo estados mentales que no puedan ser directamente verificados.</p>
-      <p style="font-size:.92rem;line-height:1.8;color:rgba(245,240,232,.82);margin-top:.8rem;">Esta delimitación fue radical: Watson (1913, citado en Sáiz y Anguera, 2013) afirmó que la psicología debía abandonar la introspección y centrarse exclusivamente en las relaciones entre estímulos del ambiente y las respuestas del organismo.</p>
+      <p style="font-size:.92rem;line-height:1.8;color:rgba(245,240,232,.82);margin-top:.8rem;">Esta delimitación fue radical: Watson (1913, como se citó en Sáiz y Anguera, 2013) afirmó que la psicología debía abandonar la introspección y centrarse exclusivamente en las relaciones entre estímulos del ambiente y las respuestas del organismo.</p>
     </div>
     <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:2rem;">
       <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.15em;color:var(--teal-light);margin-bottom:.8rem;">APORTE A LA PSICOLOGÍA</div>
@@ -567,101 +563,9 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
     <div class="tl-item"><div class="tl-dot" style="background:var(--rust)"></div><div class="tl-year">1913</div><div class="tl-title">Watson — El Manifiesto</div><div class="tl-body">"La psicología como la ve el conductista" define el programa científico. Experimento del Pequeño Alberto (1920).</div></div>
     <div class="tl-item"><div class="tl-dot" style="background:var(--lavender)"></div><div class="tl-year">1930 – 1950</div><div class="tl-title">Skinner, Hull, Guthrie, Tolman — Neoconductismo</div><div class="tl-body">Condicionamiento operante, teoría matemática del aprendizaje, mapas cognitivos y aprendizaje por contigüidad.</div></div>
     <div class="tl-item"><div class="tl-dot" style="background:var(--sage)"></div><div class="tl-year">1940 – 1960</div><div class="tl-title">Spence y Neal Miller — Refinamiento</div><div class="tl-body">Spence refina el modelo de Hull. Miller demuestra el condicionamiento del SNA y establece las bases del biofeedback.</div></div>
-    <div class="tl-item"><div class="tl-dot" style="background:var(--rust)"></div><div class="tl-year">1963 – 1977</div><div class="tl-title">Bandura — Aprendizaje Social</div><div class="tl-body">El experimento del Muñeco Bobo demuestra el aprendizaje observacional. La autoeficacia abre el conductismo a la cognición.</div></div>
+    <div class="tl-item"><div class="tl-dot" style="background:var(--rust)"></div><div class="tl-year">1963 – 1977</div><div class="tl-title">Bandura — Aprendizaje Social</div><div class="tl-body">El experimento del Muñeco Bobo demuestra el aprendizaje observacional dando evidencia empírica fundamental de cómo el entorno social moldea la conducta a través de procesos vicarios. La autoeficacia abre el conductismo a la cognición.</div></div>
   </div>
 </div></section>
-
-<!-- COMPARACIÓN DOS AUTORES -->
-<section id="comparacion" style="background:var(--ink);color:var(--paper);padding:6rem 0;">
-<div class="sec" style="padding-top:0;padding-bottom:0;">
-  <div class="eyebrow">
-    <span class="ey-num" style="color:var(--amber);">03b</span>
-    <span class="ey-rule" style="background:rgba(255,255,255,.15);"></span>
-    <span class="ey-tag" style="color:rgba(245,240,232,.4);">Análisis Comparativo</span>
-  </div>
-  <h2 class="sec-title" style="color:var(--paper);">Skinner y Bandura:<br>Comparación y Aplicaciones</h2>
-  <p class="sec-sub" style="color:rgba(245,240,232,.55);">Fundamentos teóricos, diferencias y vigencia en la psicología contemporánea</p>
-
-  <!-- Comparison cards side by side -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:2.5rem;overflow:hidden;">
-
-    <div style="background:rgba(58,74,92,.4);border:1px solid rgba(58,74,92,.6);padding:2.5rem;">
-      <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;color:#6a8aac;margin-bottom:.5rem;">AUTOR 01 · NEOCONDUCTISMO</div>
-      <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;color:white;margin-bottom:.3rem;">B.F. Skinner</div>
-      <div style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem;">1904–1990 · Condicionamiento Operante</div>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#6a8aac;margin-bottom:.6rem;">PLANTEAMIENTO CENTRAL</div>
-      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.8);margin-bottom:1.2rem;">Para Skinner (1938, citado en Pérez Álvarez, 2021), la conducta es función de sus consecuencias. El organismo opera sobre el ambiente y las consecuencias —refuerzo o castigo— determinan si la conducta se repetirá o se extinguirá. El ambiente es el agente causal absoluto; los estados internos son irrelevantes para la explicación científica.</p>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#6a8aac;margin-bottom:.6rem;">SUPUESTOS FUNDAMENTALES</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem;">
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#6a8aac;margin-top:.2rem;">▸</span>La conducta es totalmente determinada por el entorno</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#6a8aac;margin-top:.2rem;">▸</span>Los reforzadores positivos son más efectivos que el castigo</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#6a8aac;margin-top:.2rem;">▸</span>El moldeamiento permite adquirir conductas complejas gradualmente</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#6a8aac;margin-top:.2rem;">▸</span>Los programas de reforzamiento variable son los más resistentes a la extinción</li>
-      </ul>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#6a8aac;margin-bottom:.6rem;">APLICACIONES ACTUALES</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Análisis Aplicado de la Conducta (ABA) en autismo</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Sistemas de economía de fichas en aulas y clínicas</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Gamificación en aplicaciones educativas (Duolingo, Kahoot)</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Modificación de conducta en psicología organizacional</li>
-      </ul>
-    </div>
-
-    <div style="background:rgba(139,26,42,.25);border:1px solid rgba(139,26,42,.5);padding:2.5rem;">
-      <div style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.2em;color:#cc6a7a;margin-bottom:.5rem;">AUTOR 02 · CONDUCTISMO SOCIAL</div>
-      <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:900;color:white;margin-bottom:.3rem;">Albert Bandura</div>
-      <div style="font-family:var(--font-mono);font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem;">1925–2021 · Aprendizaje Social y Cognitivo</div>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#cc6a7a;margin-bottom:.6rem;">PLANTEAMIENTO CENTRAL</div>
-      <p style="font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.8);margin-bottom:1.2rem;">Bandura (1977, citado en López Cruz, 2021) propuso que el aprendizaje no requiere reforzamiento directo: basta con observar a un modelo. Las personas aprenden anticipando consecuencias y regulando su conducta según sus creencias de autoeficacia. El determinismo es recíproco: persona, conducta y ambiente se influyen mutuamente.</p>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#cc6a7a;margin-bottom:.6rem;">SUPUESTOS FUNDAMENTALES</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.2rem;">
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#cc6a7a;margin-top:.2rem;">▸</span>El aprendizaje ocurre por observación e imitación de modelos</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#cc6a7a;margin-top:.2rem;">▸</span>La autoeficacia determina el esfuerzo, la persistencia y el logro</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#cc6a7a;margin-top:.2rem;">▸</span>El reforzamiento vicario (ver que otro es recompensado) motiva la imitación</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:#cc6a7a;margin-top:.2rem;">▸</span>Los procesos cognitivos (atención, retención, reproducción) median el aprendizaje</li>
-      </ul>
-
-      <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.15em;color:#cc6a7a;margin-bottom:.6rem;">APLICACIONES ACTUALES</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Terapia cognitivo-conductual (TCC) para ansiedad y depresión</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Programas de autoeficacia en salud (adherencia a tratamientos)</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Formación docente mediante modelado y práctica reflexiva</li>
-        <li style="display:flex;gap:.7rem;font-size:.87rem;color:rgba(255,255,255,.75);"><span style="color:var(--amber);margin-top:.2rem;">★</span>Prevención de violencia escolar y familiar a través de modelos prosociales</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Comparison table -->
-  <div style="font-family:var(--font-mono);font-size:.65rem;letter-spacing:.15em;color:var(--amber);margin-bottom:1rem;">TABLA COMPARATIVA DIRECTA</div>
-  <table style="width:100%;border-collapse:collapse;background:rgba(255,255,255,.03);">
-    <thead>
-      <tr style="background:rgba(255,255,255,.06);">
-        <th style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;color:var(--amber);padding:.9rem 1.2rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);">Dimensión</th>
-        <th style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;color:#6a8aac;padding:.9rem 1.2rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);">Skinner</th>
-        <th style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;color:#cc6a7a;padding:.9rem 1.2rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);">Bandura</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);font-size:.7rem;">Unidad de análisis</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Conducta operante (E→R→Consecuencia)</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Aprendizaje observacional (Modelo→Observador)</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);">Rol del organismo</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Pasivo — responde a contingencias del ambiente</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Activo — selecciona, anticipa, se autorregula</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);">Papel del reforzamiento</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Indispensable para el aprendizaje</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">No es indispensable; puede ser vicario o anticipado</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);">Procesos internos</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Excluidos del análisis científico</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Centrales: autoeficacia, expectativas, cognición</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);border-bottom:1px solid rgba(255,255,255,.05);font-family:var(--font-mono);">Método principal</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Análisis experimental de la conducta individual</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.05);">Experimentación social y autoinforme</td></tr>
-      <tr><td style="padding:.85rem 1.2rem;font-size:.7rem;color:rgba(255,255,255,.5);font-family:var(--font-mono);">Vigencia clínica</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);">ABA, economía de fichas, biofeedback</td><td style="padding:.85rem 1.2rem;font-size:.85rem;color:rgba(255,255,255,.8);">TCC, entrenamiento en autoeficacia, modelado</td></tr>
-    </tbody>
-  </table>
-
-  <blockquote class="pull-quote" style="margin-top:2.5rem;border-color:var(--amber);background:rgba(201,135,28,.08);">
-    "Skinner nos dio las herramientas para modificar la conducta; Bandura nos enseñó que el ser humano también puede modificarse a sí mismo a través de lo que observa y de lo que cree capaz de hacer."
-    <cite>— Síntesis comparativa. En: Pérez Álvarez, M. (2021). Papeles del Psicólogo, 42(1), 10–20.</cite>
-  </blockquote>
-</div>
-</section>
 
 <!-- 04 AUTORES -->
 <section id="autores"><div class="sec">
@@ -672,56 +576,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
   <!-- helper macro as HTML repetition -->
 
   <!-- PAR 1 -->
-  <div class="authors-pair">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#5a3a08"/>
-          <rect width="400" height="230" fill="url(#g1)"/>
-          <defs><radialGradient id="g1" cx="30%" cy="40%"><stop offset="0%" stop-color="#c9871c" stop-opacity=".5"/><stop offset="100%" stop-color="#1a0e00" stop-opacity=".8"/></radialGradient></defs>
-          <!-- grid lines -->
-          <line x1="0" y1="46" x2="400" y2="46" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="0" y1="92" x2="400" y2="92" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="0" y1="138" x2="400" y2="138" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="0" y1="184" x2="400" y2="184" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="80" y1="0" x2="80" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="160" y1="0" x2="160" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="240" y1="0" x2="240" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <line x1="320" y1="0" x2="320" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
-          <!-- cage/box motif -->
-          <rect x="220" y="40" width="140" height="110" rx="4" fill="none" stroke="rgba(201,135,28,.35)" stroke-width="2"/>
-          <rect x="235" y="55" width="110" height="80" rx="2" fill="none" stroke="rgba(201,135,28,.2)" stroke-width="1.5"/>
-          <!-- bars -->
-          <line x1="255" y1="55" x2="255" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
-          <line x1="275" y1="55" x2="275" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
-          <line x1="295" y1="55" x2="295" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
-          <line x1="315" y1="55" x2="315" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
-          <!-- cat silhouette -->
-          <ellipse cx="110" cy="155" rx="38" ry="28" fill="rgba(255,255,255,.07)"/>
-          <ellipse cx="110" cy="118" rx="22" ry="24" fill="rgba(255,255,255,.07)"/>
-          <ellipse cx="100" cy="100" rx="6" ry="9" fill="rgba(255,255,255,.07)" transform="rotate(-15,100,100)"/>
-          <ellipse cx="122" cy="98" rx="6" ry="9" fill="rgba(255,255,255,.07)" transform="rotate(15,122,98)"/>
-          <!-- E→R arrow -->
-          <text x="20" y="210" font-family="monospace" font-size="11" fill="rgba(201,135,28,.6)" letter-spacing="3">E ──── R</text>
-          <!-- big initial -->
-          <text x="330" y="210" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.05)" text-anchor="middle">T</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Edward Thorndike</div><span class="aph-num">01 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#c9871c"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1874 – 1949 · Estadounidense</span><span class="atheory" style="color:#8b5e0a;border-color:#c9871c">Conexionismo</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Precursor del conductismo, primero en aplicar el método experimental al aprendizaje animal con sus famosas <em>cajas problema</em>.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley del Efecto:</strong> las respuestas satisfactorias se fortalecen; las molestas se debilitan.</div></li>
-          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley del Ejercicio:</strong> la práctica repetida fortalece las conexiones E-R.</div></li>
-          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley de la Disposición:</strong> la predisposición del organismo influye en el aprendizaje.</div></li>
-          <li><span class="adot" style="background:#c9871c"></span><div>El aprendizaje es la formación de <strong>conexiones neuronales</strong> entre E y R.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#c9871c"><div class="acl">Aporte</div><div class="act">Sentó las bases empíricas del reforzamiento antes de que el conductismo existiera formalmente.</div></div>
-      </div>
-    </div>
+    <div class="authors-pair" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3rem;">
     <div class="avc">
       <div class="aph">
         <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
@@ -749,12 +604,12 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(45,158,158,.6)" letter-spacing="2">EC ──→ RC</text>
           <text x="330" y="215" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">P</text>
         </svg>
-        <div class="aph-badge"><div class="aph-name">Iván Pavlov</div><span class="aph-num">02 / 11</span></div>
+        <div class="aph-badge"><div class="aph-name">Iván Pavlov</div><span class="aph-num">01 / 11</span></div>
       </div>
       <div class="abar" style="background:#1a6b6b"></div>
       <div class="avb">
-        <div class="ameta"><span class="adates">1849 – 1936 · Ruso · Nobel 1904</span><span class="atheory" style="color:#1a6b6b;border-color:#1a6b6b">Cond. Clásico</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Fisiólogo que descubrió accidentalmente el reflejo condicionado estudiando la digestión en perros, sentando el paradigma del aprendizaje asociativo.</p>
+        <div class="ameta"><span class="adates">1849 – 1936 · Ruso</span><span class="atheory" style="color:#1a6b6b;border-color:#1a6b6b">Cond. Clásico</span></div>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Sus principales aportes se dieron en el campo de la fisiología, en especial con sus estudios sobre los reflejos condicionados, lo que sentó las bases del conductismo.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#1a6b6b"></span><div><strong>EI → RI:</strong> el estímulo incondicionado produce respuesta natural automática.</div></li>
@@ -762,13 +617,143 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <li><span class="adot" style="background:#1a6b6b"></span><div><strong>Extinción:</strong> la RC desaparece si el EC se presenta sin el EI.</div></li>
           <li><span class="adot" style="background:#1a6b6b"></span><div><strong>Recuperación espontánea:</strong> la RC puede reaparecer tras descanso.</div></li>
         </ul>
-        <div class="acont" style="border-color:#1a6b6b"><div class="acl">Aporte</div><div class="act">Estableció el paradigma del condicionamiento clásico como modelo universal del aprendizaje asociativo.</div></div>
+        <div class="acont" style="border-color:#1a6b6b"><div class="acl">Aporte</div><div class="act">Pávlov identificó un tipo de aprendizaje en el que un estímulo inicialmente neutral, al repetirse junto con un estímulo que provoca una respuesta natural, llega a generar esa respuesta por sí solo.</div></div>
+      </div>
+    </div>
+    <div class="avc">
+      <div class="aph">
+        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+          <rect width="400" height="230" fill="#1a2230"/>
+          <defs><linearGradient id="g5" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0d1520" stop-opacity="1"/><stop offset="100%" stop-color="#3a4a5c" stop-opacity=".8"/></linearGradient></defs>
+          <rect width="400" height="230" fill="url(#g5)"/>
+          <!-- Skinner box lever -->
+          <rect x="50" y="60" width="180" height="120" rx="4" fill="none" stroke="rgba(100,130,160,.4)" stroke-width="2"/>
+          <rect x="60" y="70" width="160" height="100" rx="2" fill="rgba(255,255,255,.03)"/>
+          <!-- lever -->
+          <rect x="170" y="90" width="40" height="8" rx="4" fill="rgba(100,130,160,.5)"/>
+          <rect x="205" y="70" width="8" height="32" rx="3" fill="rgba(100,130,160,.4)"/>
+          <!-- food dispenser -->
+          <rect x="80" y="140" width="24" height="20" rx="2" fill="rgba(100,130,160,.35)"/>
+          <!-- rat -->
+          <ellipse cx="130" cy="130" rx="18" ry="10" fill="rgba(255,255,255,.1)"/>
+          <circle cx="148" cy="122" r="8" fill="rgba(255,255,255,.1)"/>
+          <!-- reinforcement bars chart -->
+          <rect x="270" y="160" width="14" height="40" fill="rgba(100,130,160,.35)"/>
+          <rect x="290" y="140" width="14" height="60" fill="rgba(100,130,160,.4)"/>
+          <rect x="310" y="110" width="14" height="90" fill="rgba(100,130,160,.5)"/>
+          <rect x="330" y="85" width="14" height="115" fill="rgba(100,130,160,.6)"/>
+          <rect x="350" y="65" width="14" height="135" fill="rgba(100,130,160,.7)"/>
+          <line x1="265" y1="200" x2="370" y2="200" stroke="rgba(100,130,160,.5)" stroke-width="1.5"/>
+          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(100,130,160,.7)" letter-spacing="2">OPERANT CONDITIONING</text>
+          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">S</text>
+        </svg>
+        <div class="aph-badge"><div class="aph-name">B.F. Skinner</div><span class="aph-num">02 / 11</span></div>
+      </div>
+      <div class="abar" style="background:#3a4a5c"></div>
+      <div class="avb">
+        <div class="ameta"><span class="adates">1904 – 1990 · Estadounidense</span><span class="atheory" style="color:#3a4a5c;border-color:#3a4a5c">Cond. Operante</span></div>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">fue profesor de la Universidad de Minnesota en la que permaneció hasta (1945). "En estos años realiza una cantidad de trabajos de laboratorio con animales, y desarrolló una tecnología automática que le permitió estudiar y registrar el comportamiento.</p>
+        <div class="apt">Postulados</div>
+        <ul class="apl">
+          <li><span class="adot" style="background:#3a4a5c"></span><div>Su experimento fue conocido como la <strong>"caja de Skinner"</strong>. Sáiz, M. y Anguera, B. (2013). (p.333).</div></li>
+        </ul>
+        <div class="acont" style="border-color:#3a4a5c"><div class="acl">Aporte</div><div class="act">También muestra su "proyecto paloma" donde expone las bases del condicionamiento operante "En el cual usó palomas como sujetos entrenándolas para guiar misiles. De acuerdo con Pérez Álvarez, M. (2021) La gran aportación de Skinner está en que sitúa esta distinción en el contexto del aprendizaje, mostrando cómo buena parte de la conducta humana se aprende por moldeamiento en contacto directo con las consecuencias. (p.14).</div></div>
       </div>
     </div>
   </div>
 
-  <!-- PAR 2 -->
-  <div class="authors-pair">
+  <div class="authors-pair" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3rem;">
+    <div class="avc">
+      <div class="aph">
+        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+          <rect width="400" height="230" fill="#4a1a08"/>
+          <defs><radialGradient id="g4" cx="50%" cy="50%"><stop offset="0%" stop-color="#9b3a1a" stop-opacity=".7"/><stop offset="100%" stop-color="#0d0500" stop-opacity=".95"/></radialGradient></defs>
+          <rect width="400" height="230" fill="url(#g4)"/>
+          <!-- manifesto lines -->
+          <line x1="30" y1="50" x2="180" y2="50" stroke="rgba(200,80,30,.3)" stroke-width="1"/>
+          <line x1="30" y1="62" x2="160" y2="62" stroke="rgba(200,80,30,.25)" stroke-width="1"/>
+          <line x1="30" y1="74" x2="175" y2="74" stroke="rgba(200,80,30,.25)" stroke-width="1"/>
+          <line x1="30" y1="86" x2="140" y2="86" stroke="rgba(200,80,30,.2)" stroke-width="1"/>
+          <line x1="30" y1="98" x2="165" y2="98" stroke="rgba(200,80,30,.2)" stroke-width="1"/>
+          <!-- 1913 year big -->
+          <text x="240" y="130" font-family="Georgia,serif" font-size="60" font-weight="900" fill="rgba(155,58,26,.4)">1913</text>
+          <!-- megaphone/manifesto icon -->
+          <path d="M40,130 L40,170 L60,170 L60,130 Z" fill="rgba(200,80,30,.4)"/>
+          <path d="M60,120 L110,100 L110,200 L60,180 Z" fill="rgba(200,80,30,.35)"/>
+          <path d="M110,120 Q130,115 130,130 Q130,145 110,140 Z" fill="none" stroke="rgba(200,80,30,.4)" stroke-width="2"/>
+          <!-- Albert baby motif (small Alberto) -->
+          <circle cx="320" cy="90" r="20" fill="none" stroke="rgba(200,80,30,.3)" stroke-width="1.5"/>
+          <text x="316" y="96" font-family="monospace" font-size="11" fill="rgba(200,80,30,.5)">:)</text>
+          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(200,80,30,.6)" letter-spacing="2">BEHAVIOURISM · 1913</text>
+          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">W</text>
+        </svg>
+        <div class="aph-badge"><div class="aph-name">John B. Watson</div><span class="aph-num">03 / 11</span></div>
+      </div>
+      <div class="abar" style="background:#9b3a1a"></div>
+      <div class="avb">
+        <div class="ameta"><span class="adates">1878 – 1958 · Estadounidense</span><span class="atheory" style="color:#9b3a1a;border-color:#9b3a1a">Cond. Clásico</span></div>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Fundador oficial del conductismo. Filósofo, pedagogo y psicólogo, Ambientalista radical creía que el comportamiento humano no nace con el individuo (instintos), sino que se construye totalmente a través de la interacción con el entorno. Para Watson, aprender es el proceso de formar hábitos mediante la relación entre un estímulo y una respuesta (López Cruz, 2021).</p>
+        <div class="apt">Postulados</div>
+        <ul class="apl">
+          <li><span class="adot" style="background:#9b3a1a"></span><div>La psicología es una <strong>ciencia natural objetiva</strong>; su único objeto es la conducta.</div></li>
+          <li><span class="adot" style="background:#9b3a1a"></span><div>Las emociones son <strong>respuestas aprendidas</strong> a estímulos del ambiente.</div></li>
+          <li><span class="adot" style="background:#9b3a1a"></span><div>El desarrollo es producto del <strong>ambiente</strong>, no de la herencia.</div></li>
+          <li><span class="adot" style="background:#9b3a1a"></span><div>Exp. <strong>Pequeño Alberto</strong> (1920): condicionamiento del miedo en humanos.</div></li>
+        </ul>
+        <div class="acont" style="border-color:#9b3a1a"><div class="acl">Aporte</div><div class="act">Fundó formalmente el conductismo y demostró empíricamente el condicionamiento en humanos. Para John B. Watson, la psicología, el objetivo primordial era crear una ciencia que fuera tan exacta y observable como la química, sustentada únicamente por los comportamientos que pudieran ser vistos. Según López Cruz (2021).</div></div>
+      </div>
+    </div>
+    <div class="avc">
+      <div class="aph">
+        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+          <rect width="400" height="230" fill="#3a0a14"/>
+          <defs><radialGradient id="g11" cx="35%" cy="35%"><stop offset="0%" stop-color="#8b1a2a" stop-opacity=".7"/><stop offset="100%" stop-color="#0d0205" stop-opacity=".95"/></radialGradient></defs>
+          <rect width="400" height="230" fill="url(#g11)"/>
+          <!-- observer figure -->
+          <circle cx="80" cy="90" r="16" fill="rgba(200,60,80,.2)" stroke="rgba(200,60,80,.4)" stroke-width="1.5"/>
+          <line x1="80" y1="106" x2="80" y2="150" stroke="rgba(200,60,80,.3)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="80" y1="120" x2="55" y2="138" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="80" y1="120" x2="105" y2="138" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="80" y1="150" x2="62" y2="180" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="80" y1="150" x2="98" y2="180" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- eyes looking right -->
+          <line x1="96" y1="92" x2="155" y2="100" stroke="rgba(200,60,80,.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- model figure (larger) -->
+          <circle cx="200" cy="80" r="20" fill="rgba(200,60,80,.25)" stroke="rgba(200,60,80,.5)" stroke-width="1.5"/>
+          <line x1="200" y1="100" x2="200" y2="155" stroke="rgba(200,60,80,.4)" stroke-width="4" stroke-linecap="round"/>
+          <line x1="200" y1="120" x2="170" y2="142" stroke="rgba(200,60,80,.4)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="200" y1="120" x2="230" y2="135" stroke="rgba(200,60,80,.4)" stroke-width="3" stroke-linecap="round"/>
+          <!-- imitator figure -->
+          <circle cx="320" cy="90" r="14" fill="rgba(200,60,80,.15)" stroke="rgba(200,60,80,.35)" stroke-width="1.5"/>
+          <line x1="320" y1="104" x2="320" y2="145" stroke="rgba(200,60,80,.25)" stroke-width="3" stroke-linecap="round"/>
+          <line x1="320" y1="118" x2="300" y2="135" stroke="rgba(200,60,80,.25)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="320" y1="118" x2="340" y2="130" stroke="rgba(200,60,80,.25)" stroke-width="2" stroke-linecap="round"/>
+          <!-- arrow observer→model-->
+          <text x="130" y="70" font-family="monospace" font-size="10" fill="rgba(200,60,80,.5)">observa</text>
+          <!-- Bobo doll -->
+          <ellipse cx="210" cy="185" rx="15" ry="20" fill="rgba(200,60,80,.2)" stroke="rgba(200,60,80,.4)" stroke-width="1"/>
+          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(200,60,80,.6)" letter-spacing="2">BOBO DOLL · 1961</text>
+          <text x="380" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">B</text>
+        </svg>
+        <div class="aph-badge"><div class="aph-name">Albert Bandura</div><span class="aph-num">04 / 11</span></div>
+      </div>
+      <div class="abar" style="background:#8b1a2a"></div>
+      <div class="avb">
+        <div class="ameta"><span class="adates">1925 – 2021 · Canadiense</span><span class="atheory" style="color:#8b1a2a;border-color:#8b1a2a">Aprend. Social</span></div>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Psicólogo importante, figura de cierre y puente histórico. Demostró que se puede aprender observando modelos sin reforzamiento directo, integrando cognición y conducta, es reconocido como uno de los psicólogos más influyentes de la época por su papel en la transición del conductismo radical hacia la psicología cognitiva.</p>
+        <div class="apt">Postulados</div>
+        <ul class="apl">
+          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Aprendizaje observacional:</strong> se aprende viendo la conducta de otros.</div></li>
+          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Exp. Bobo Doll (1961-63):</strong> imitación de agresión sin refuerzo directo.</div></li>
+          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Autoeficacia:</strong> la creencia en la propia capacidad determina la conducta.</div></li>
+          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Determinismo recíproco:</strong> persona, conducta y ambiente se influyen mutuamente.</div></li>
+        </ul>
+        <div class="acont" style="border-color:#8b1a2a"><div class="acl">Aporte</div><div class="act">El pensamiento de Bandura constituyó una base fundamental para la Terapia Cognitivo-Conductual, adicional al análisis contemporáneo de la motivación. De acuerdo con Boeree (2006), contribuyó con la Teoría Cognitiva Social, la cual postula que el comportamiento humano se adquiere mayoritariamente mediante la observación, superando las limitaciones del condicionamiento directo. Además, Heffernan (1988) destaca como eje central el determinismo recíproco, referente donde los factores personales, la conducta y el ambiente interactúan en un ciclo de influencia mutua.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="authors-pair" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3rem;">
     <div class="avc">
       <div class="aph">
         <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
@@ -802,107 +787,17 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(90,122,82,.7)" letter-spacing="2">REFLEJO ASOCIATIVO</text>
           <text x="370" y="215" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">B</text>
         </svg>
-        <div class="aph-badge"><div class="aph-name">Vladímir Béjterev</div><span class="aph-num">03 / 11</span></div>
+        <div class="aph-badge"><div class="aph-name">Vladímir Béjterev</div><span class="aph-num">05 / 11</span></div>
       </div>
       <div class="abar" style="background:#5a7a52"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1857 – 1927 · Ruso</span><span class="atheory" style="color:#5a7a52;border-color:#5a7a52">Reflexología</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Neurólogo que desarrolló la reflexología como ciencia objetiva de la conducta, de forma paralela e independiente a Pavlov.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Fue un neurólogo y psicólogo ruso que realizó importantes contribuciones al estudio de los reflejos y su relación con la conducta. Su propuesta se centró en el concepto de reflexología, una perspectiva que buscaba explicar el comportamiento a partir de los reflejos condicionados.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
-          <li><span class="adot" style="background:#5a7a52"></span><div>Toda actividad psíquica se reduce a <strong>reflejos observables</strong> del SN.</div></li>
-          <li><span class="adot" style="background:#5a7a52"></span><div>La psicología debe emplear exclusivamente <strong>métodos objetivos</strong>.</div></li>
-          <li><span class="adot" style="background:#5a7a52"></span><div>Los <strong>reflejos asociativos</strong> son la unidad básica del aprendizaje.</div></li>
-          <li><span class="adot" style="background:#5a7a52"></span><div>La energía nerviosa puede transferirse y asociarse con nuevos estímulos.</div></li>
+          <li><span class="adot" style="background:#5a7a52"></span><div>Béchterev desarrolló experimentos en los que estudiaba las respuestas motoras provocadas por estímulos específicos. A través de estas investigaciones planteó que muchos comportamientos se adquieren mediante la formación de reflejos condicionados, los cuales se producen cuando un estímulo inicialmente neutro se asocia repetidamente con un estímulo que provoca una respuesta automática. De esta manera, el estímulo neutro termina generando la misma respuesta.</div></li>
         </ul>
-        <div class="acont" style="border-color:#5a7a52"><div class="acl">Aporte</div><div class="act">Aportó perspectiva neurológica al objetivismo y anticipó postulados del conductismo americano.</div></div>
-      </div>
-    </div>
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#4a1a08"/>
-          <defs><radialGradient id="g4" cx="50%" cy="50%"><stop offset="0%" stop-color="#9b3a1a" stop-opacity=".7"/><stop offset="100%" stop-color="#0d0500" stop-opacity=".95"/></radialGradient></defs>
-          <rect width="400" height="230" fill="url(#g4)"/>
-          <!-- manifesto lines -->
-          <line x1="30" y1="50" x2="180" y2="50" stroke="rgba(200,80,30,.3)" stroke-width="1"/>
-          <line x1="30" y1="62" x2="160" y2="62" stroke="rgba(200,80,30,.25)" stroke-width="1"/>
-          <line x1="30" y1="74" x2="175" y2="74" stroke="rgba(200,80,30,.25)" stroke-width="1"/>
-          <line x1="30" y1="86" x2="140" y2="86" stroke="rgba(200,80,30,.2)" stroke-width="1"/>
-          <line x1="30" y1="98" x2="165" y2="98" stroke="rgba(200,80,30,.2)" stroke-width="1"/>
-          <!-- 1913 year big -->
-          <text x="240" y="130" font-family="Georgia,serif" font-size="60" font-weight="900" fill="rgba(155,58,26,.4)">1913</text>
-          <!-- megaphone/manifesto icon -->
-          <path d="M40,130 L40,170 L60,170 L60,130 Z" fill="rgba(200,80,30,.4)"/>
-          <path d="M60,120 L110,100 L110,200 L60,180 Z" fill="rgba(200,80,30,.35)"/>
-          <path d="M110,120 Q130,115 130,130 Q130,145 110,140 Z" fill="none" stroke="rgba(200,80,30,.4)" stroke-width="2"/>
-          <!-- Albert baby motif (small Alberto) -->
-          <circle cx="320" cy="90" r="20" fill="none" stroke="rgba(200,80,30,.3)" stroke-width="1.5"/>
-          <text x="316" y="96" font-family="monospace" font-size="11" fill="rgba(200,80,30,.5)">:)</text>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(200,80,30,.6)" letter-spacing="2">BEHAVIOURISM · 1913</text>
-          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">W</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">John B. Watson</div><span class="aph-num">04 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#9b3a1a"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1878 – 1958 · Estadounidense</span><span class="atheory" style="color:#9b3a1a;border-color:#9b3a1a">Cond. Clásico</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Fundador oficial del conductismo. Su artículo de 1913 redefinió la psicología como ciencia de la conducta observable.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#9b3a1a"></span><div>La psicología es una <strong>ciencia natural objetiva</strong>; su único objeto es la conducta.</div></li>
-          <li><span class="adot" style="background:#9b3a1a"></span><div>Las emociones son <strong>respuestas aprendidas</strong> a estímulos del ambiente.</div></li>
-          <li><span class="adot" style="background:#9b3a1a"></span><div>El desarrollo es producto del <strong>ambiente</strong>, no de la herencia.</div></li>
-          <li><span class="adot" style="background:#9b3a1a"></span><div>Exp. <strong>Pequeño Alberto</strong> (1920): condicionamiento del miedo en humanos.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#9b3a1a"><div class="acl">Aporte</div><div class="act">Fundó formalmente el conductismo y demostró empíricamente el condicionamiento en humanos.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAR 3 -->
-  <div class="authors-pair">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#1a2230"/>
-          <defs><linearGradient id="g5" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0d1520" stop-opacity="1"/><stop offset="100%" stop-color="#3a4a5c" stop-opacity=".8"/></linearGradient></defs>
-          <rect width="400" height="230" fill="url(#g5)"/>
-          <!-- Skinner box lever -->
-          <rect x="50" y="60" width="180" height="120" rx="4" fill="none" stroke="rgba(100,130,160,.4)" stroke-width="2"/>
-          <rect x="60" y="70" width="160" height="100" rx="2" fill="rgba(255,255,255,.03)"/>
-          <!-- lever -->
-          <rect x="170" y="90" width="40" height="8" rx="4" fill="rgba(100,130,160,.5)"/>
-          <rect x="205" y="70" width="8" height="32" rx="3" fill="rgba(100,130,160,.4)"/>
-          <!-- food dispenser -->
-          <rect x="80" y="140" width="24" height="20" rx="2" fill="rgba(100,130,160,.35)"/>
-          <!-- rat -->
-          <ellipse cx="130" cy="130" rx="18" ry="10" fill="rgba(255,255,255,.1)"/>
-          <circle cx="148" cy="122" r="8" fill="rgba(255,255,255,.1)"/>
-          <!-- reinforcement bars chart -->
-          <rect x="270" y="160" width="14" height="40" fill="rgba(100,130,160,.35)"/>
-          <rect x="290" y="140" width="14" height="60" fill="rgba(100,130,160,.4)"/>
-          <rect x="310" y="110" width="14" height="90" fill="rgba(100,130,160,.5)"/>
-          <rect x="330" y="85" width="14" height="115" fill="rgba(100,130,160,.6)"/>
-          <rect x="350" y="65" width="14" height="135" fill="rgba(100,130,160,.7)"/>
-          <line x1="265" y1="200" x2="370" y2="200" stroke="rgba(100,130,160,.5)" stroke-width="1.5"/>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(100,130,160,.7)" letter-spacing="2">OPERANT CONDITIONING</text>
-          <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">S</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">B.F. Skinner</div><span class="aph-num">05 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#3a4a5c"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1904 – 1990 · Estadounidense</span><span class="atheory" style="color:#3a4a5c;border-color:#3a4a5c">Cond. Operante</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">El conductista más influyente del siglo XX. Desarrolló el condicionamiento operante y un sistema que abarcó desde la psicología básica hasta la organización social.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Cond. operante:</strong> la conducta es controlada por sus consecuencias.</div></li>
-          <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Refuerzo +/−:</strong> aumentan la conducta por adición o remoción de estímulos.</div></li>
-          <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Programas de reforzamiento:</strong> razón e intervalo fijos o variables.</div></li>
-          <li><span class="adot" style="background:#3a4a5c"></span><div><strong>Moldeamiento:</strong> reforzamiento de aproximaciones sucesivas.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#3a4a5c"><div class="acl">Aporte</div><div class="act">Creó el marco más sistemático del conductismo; base del análisis aplicado del comportamiento.</div></div>
+        <div class="acont" style="border-color:#5a7a52"><div class="acl">Aporte</div><div class="act">Uno de los aportes más relevantes de Béchterev fue su intento de estudiar la psicología desde un enfoque completamente objetivo, utilizando métodos experimentales similares a los de las ciencias naturales. Esto permitió avanzar en la comprensión científica de la conducta y contribuyó a consolidar las bases del conductismo.</div></div>
       </div>
     </div>
     <div class="avc">
@@ -931,7 +826,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <div class="abar" style="background:#5c7a3e"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1886 – 1959 · Estadounidense</span><span class="atheory" style="color:#5c7a3e;border-color:#5c7a3e">Contigüidad</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Propuso una teoría minimalista del aprendizaje basada en un único principio: la contigüidad temporal entre estímulo y respuesta.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Desarrolló una teoría del aprendizaje basada en el principio de contigüidad. Según Guthrie, el aprendizaje ocurre cuando un estímulo y una respuesta se presentan juntos en una misma situación.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#5c7a3e"></span><div><strong>Contigüidad:</strong> E asociado a R tenderá a elicitar esa R en el futuro.</div></li>
@@ -939,13 +834,61 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <li><span class="adot" style="background:#5c7a3e"></span><div>El olvido es reemplazo: nuevos E se asocian a nuevas R.</div></li>
           <li><span class="adot" style="background:#5c7a3e"></span><div>El reforzamiento <strong>no es necesario</strong>; solo importa la contigüidad temporal.</div></li>
         </ul>
-        <div class="acont" style="border-color:#5c7a3e"><div class="acl">Aporte</div><div class="act">Demostró que el aprendizaje puede explicarse con un principio único y parsimonioso.</div></div>
+        <div class="acont" style="border-color:#5c7a3e"><div class="acl">Aporte</div><div class="act">Ofreció una visión particular dentro del conductismo, ya que resaltó la importancia de las asociaciones inmediatas entre estímulos y respuestas y propuso explicaciones sencillas sobre cómo se adquieren y modifican los hábitos.</div></div>
       </div>
     </div>
   </div>
 
-  <!-- PAR 4 -->
-  <div class="authors-pair">
+  <div class="authors-pair" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3rem;">
+    <div class="avc">
+      <div class="aph">
+        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
+          <rect width="400" height="230" fill="#5a3a08"/>
+          <rect width="400" height="230" fill="url(#g1)"/>
+          <defs><radialGradient id="g1" cx="30%" cy="40%"><stop offset="0%" stop-color="#c9871c" stop-opacity=".5"/><stop offset="100%" stop-color="#1a0e00" stop-opacity=".8"/></radialGradient></defs>
+          <!-- grid lines -->
+          <line x1="0" y1="46" x2="400" y2="46" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <line x1="0" y1="92" x2="400" y2="92" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <line x1="0" y1="138" x2="400" y2="138" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <line x1="0" y1="184" x2="400" y2="184" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <line x1="80" y1="0" x2="80" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <line x1="160" y1="0" x2="160" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <line x1="240" y1="0" x2="240" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <line x1="320" y1="0" x2="320" y2="230" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <!-- cage/box motif -->
+          <rect x="220" y="40" width="140" height="110" rx="4" fill="none" stroke="rgba(201,135,28,.35)" stroke-width="2"/>
+          <rect x="235" y="55" width="110" height="80" rx="2" fill="none" stroke="rgba(201,135,28,.2)" stroke-width="1.5"/>
+          <!-- bars -->
+          <line x1="255" y1="55" x2="255" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
+          <line x1="275" y1="55" x2="275" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
+          <line x1="295" y1="55" x2="295" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
+          <line x1="315" y1="55" x2="315" y2="135" stroke="rgba(201,135,28,.2)" stroke-width="1"/>
+          <!-- cat silhouette -->
+          <ellipse cx="110" cy="155" rx="38" ry="28" fill="rgba(255,255,255,.07)"/>
+          <ellipse cx="110" cy="118" rx="22" ry="24" fill="rgba(255,255,255,.07)"/>
+          <ellipse cx="100" cy="100" rx="6" ry="9" fill="rgba(255,255,255,.07)" transform="rotate(-15,100,100)"/>
+          <ellipse cx="122" cy="98" rx="6" ry="9" fill="rgba(255,255,255,.07)" transform="rotate(15,122,98)"/>
+          <!-- E→R arrow -->
+          <text x="20" y="210" font-family="monospace" font-size="11" fill="rgba(201,135,28,.6)" letter-spacing="3">E ──── R</text>
+          <!-- big initial -->
+          <text x="330" y="210" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.05)" text-anchor="middle">T</text>
+        </svg>
+        <div class="aph-badge"><div class="aph-name">Edward Thorndike</div><span class="aph-num">07 / 11</span></div>
+      </div>
+      <div class="abar" style="background:#c9871c"></div>
+      <div class="avb">
+        <div class="ameta"><span class="adates">1874 – 1949 · Estadounidense</span><span class="atheory" style="color:#8b5e0a;border-color:#c9871c">Conexionismo</span></div>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Precursor del conductismo, primero en aplicar el método experimental al aprendizaje animal con sus famosas <em>cajas problema</em>.</p>
+        <div class="apt">Postulados</div>
+        <ul class="apl">
+          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley del Efecto:</strong> las respuestas satisfactorias se fortalecen; las molestas se debilitan.</div></li>
+          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley del Ejercicio:</strong> la práctica repetida fortalece las conexiones E-R.</div></li>
+          <li><span class="adot" style="background:#c9871c"></span><div><strong>Ley de la Disposición:</strong> la predisposición del organismo influye en el aprendizaje.</div></li>
+          <li><span class="adot" style="background:#c9871c"></span><div>El aprendizaje es la formación de <strong>conexiones neuronales</strong> entre E y R.</div></li>
+        </ul>
+        <div class="acont" style="border-color:#c9871c"><div class="acl">Aporte</div><div class="act">Sentó las bases empíricas del reforzamiento antes de que el conductismo existiera formalmente.</div></div>
+      </div>
+    </div>
     <div class="avc">
       <div class="aph">
         <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
@@ -971,7 +914,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(107,91,138,.8)" letter-spacing="2">COGNITIVE MAPS · 1948</text>
           <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">T</text>
         </svg>
-        <div class="aph-badge"><div class="aph-name">Edward C. Tolman</div><span class="aph-num">07 / 11</span></div>
+        <div class="aph-badge"><div class="aph-name">Edward C. Tolman</div><span class="aph-num">08 / 11</span></div>
       </div>
       <div class="abar" style="background:#6b5b8a"></div>
       <div class="avb">
@@ -987,6 +930,9 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
         <div class="acont" style="border-color:#6b5b8a"><div class="acl">Aporte</div><div class="act">Puente fundamental entre conductismo y cognitivismo; el mapa cognitivo revolucionó la psicología del aprendizaje.</div></div>
       </div>
     </div>
+  </div>
+
+  <div class="authors-pair" style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3rem;">
     <div class="avc">
       <div class="aph">
         <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
@@ -1010,12 +956,12 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(139,74,26,.7)" letter-spacing="2">HYP-DEDUCTIVE · E=H×D</text>
           <text x="380" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">H</text>
         </svg>
-        <div class="aph-badge"><div class="aph-name">Clark Leonard Hull</div><span class="aph-num">08 / 11</span></div>
+        <div class="aph-badge"><div class="aph-name">Clark Leonard Hull</div><span class="aph-num">09 / 11</span></div>
       </div>
       <div class="abar" style="background:#8b4a1a"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1884 – 1952 · Estadounidense</span><span class="atheory" style="color:#8b4a1a;border-color:#8b4a1a">Hip-Deductivo</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Intentó matematizar el conductismo construyendo un sistema formal de postulados para predecir la conducta con precisión cuantitativa.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Hull es considerado uno de los teóricos más influyentes del conductismo del siglo XX. Superando dificultades personales significativas incluyendo una fiebre tifoidea que afectó su memoria y la polio que lo dejó con una pierna paralizada, completó su doctorado en la Universidad de Wisconsin en 1918 y desarrolló su obra central en la Universidad de Yale, donde trabajó desde 1929 hasta su muerte.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#8b4a1a"></span><div><strong>Fuerza del hábito (sHr):</strong> se incrementa con el número de reforzamientos.</div></li>
@@ -1023,13 +969,9 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <li><span class="adot" style="background:#8b4a1a"></span><div><strong>E = H × D</strong> (Potencial excitatorio = Hábito × Drive).</div></li>
           <li><span class="adot" style="background:#8b4a1a"></span><div><strong>Reducción del impulso:</strong> el reforzamiento reduce estados de necesidad.</div></li>
         </ul>
-        <div class="acont" style="border-color:#8b4a1a"><div class="acl">Aporte</div><div class="act">Primer intento formal de matematizar el aprendizaje; influyó en décadas de investigación sobre motivación.</div></div>
+        <div class="acont" style="border-color:#8b4a1a"><div class="acl">Aporte</div><div class="act">Su aporte central fue la Teoría Hipotético-Deductiva del Aprendizaje, presentada en su obra fundamental <em>Principles of Behavior</em> (1943). Su ambición fue construir una teoría del comportamiento tan rigurosa como la geometría euclidiana: a partir de postulados y teoremas derivados lógicamente, predecir y explicar cualquier conducta.</div></div>
       </div>
     </div>
-  </div>
-
-  <!-- PAR 5 -->
-  <div class="authors-pair">
     <div class="avc">
       <div class="aph">
         <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
@@ -1048,12 +990,12 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <text x="20" y="222" font-family="monospace" font-size="10" fill="rgba(42,92,106,.7)" letter-spacing="2">HULL-SPENCE · E=H×D×K</text>
           <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">S</text>
         </svg>
-        <div class="aph-badge"><div class="aph-name">Kenneth Spence</div><span class="aph-num">09 / 11</span></div>
+        <div class="aph-badge"><div class="aph-name">Kenneth Spence</div><span class="aph-num">10 / 11</span></div>
       </div>
       <div class="abar" style="background:#2a5c6a"></div>
       <div class="avb">
         <div class="ameta"><span class="adates">1907 – 1967 · Estadounidense</span><span class="atheory" style="color:#2a5c6a;border-color:#2a5c6a">Hull-Spence</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Colaborador y refinador de la teoría de Hull. Distinguió con precisión entre aprendizaje y motivación e incorporó el incentivo al modelo formal.</p>
+        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Es reconocido como uno de los teóricos más rigurosos del neoconductismo por su refinación de la Teoría del Impulso de Hull.</p>
         <div class="apt">Postulados</div>
         <ul class="apl">
           <li><span class="adot" style="background:#2a5c6a"></span><div>Distinción formal entre <strong>aprendizaje (H)</strong> y <strong>motivación (D)</strong>.</div></li>
@@ -1061,9 +1003,12 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <li><span class="adot" style="background:#2a5c6a"></span><div><strong>E = H × D × K</strong> — fórmula extendida de Hull-Spence.</div></li>
           <li><span class="adot" style="background:#2a5c6a"></span><div>La <strong>ansiedad</strong> actúa como drive emocional que modula el aprendizaje.</div></li>
         </ul>
-        <div class="acont" style="border-color:#2a5c6a"><div class="acl">Aporte</div><div class="act">Refinó el modelo de Hull y conectó el conductismo con el estudio científico de la ansiedad.</div></div>
+        <div class="acont" style="border-color:#2a5c6a"><div class="acl">Aporte</div><div class="act">Su aporte central fue demostrar que la motivación —entendida como impulso (D)— interactúa con el hábito aprendido (sHr) para determinar la probabilidad de una respuesta: sEr = sHr × D.</div></div>
       </div>
     </div>
+  </div>
+
+  <div class="authors-pair" style="display:grid;grid-template-columns:1fr;max-width:480px;margin:0 auto 3rem;">
     <div class="avc">
       <div class="aph">
         <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
@@ -1087,7 +1032,7 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(106,58,106,.7)" letter-spacing="2">CONFLICTO · BIOFEEDBACK</text>
           <text x="370" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">M</text>
         </svg>
-        <div class="aph-badge"><div class="aph-name">Neal Miller</div><span class="aph-num">10 / 11</span></div>
+        <div class="aph-badge"><div class="aph-name">Neal Miller</div><span class="aph-num">11 / 11</span></div>
       </div>
       <div class="abar" style="background:#6a3a6a"></div>
       <div class="avb">
@@ -1101,67 +1046,6 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
           <li><span class="adot" style="background:#6a3a6a"></span><div><strong>Biofeedback:</strong> control voluntario de funciones fisiológicas involuntarias.</div></li>
         </ul>
         <div class="acont" style="border-color:#6a3a6a"><div class="acl">Aporte</div><div class="act">Conectó el conductismo con la psicofisiología y abrió nuevas fronteras en la medicina conductual.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAR 6: Bandura solo -->
-  <div class="authors-pair" style="grid-template-columns:1fr 1fr">
-    <div class="avc">
-      <div class="aph">
-        <svg width="100%" height="100%" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0">
-          <rect width="400" height="230" fill="#3a0a14"/>
-          <defs><radialGradient id="g11" cx="35%" cy="35%"><stop offset="0%" stop-color="#8b1a2a" stop-opacity=".7"/><stop offset="100%" stop-color="#0d0205" stop-opacity=".95"/></radialGradient></defs>
-          <rect width="400" height="230" fill="url(#g11)"/>
-          <!-- observer figure -->
-          <circle cx="80" cy="90" r="16" fill="rgba(200,60,80,.2)" stroke="rgba(200,60,80,.4)" stroke-width="1.5"/>
-          <line x1="80" y1="106" x2="80" y2="150" stroke="rgba(200,60,80,.3)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="80" y1="120" x2="55" y2="138" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="80" y1="120" x2="105" y2="138" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="80" y1="150" x2="62" y2="180" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
-          <line x1="80" y1="150" x2="98" y2="180" stroke="rgba(200,60,80,.3)" stroke-width="2.5" stroke-linecap="round"/>
-          <!-- eyes looking right -->
-          <line x1="96" y1="92" x2="155" y2="100" stroke="rgba(200,60,80,.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <!-- model figure (larger) -->
-          <circle cx="200" cy="80" r="20" fill="rgba(200,60,80,.25)" stroke="rgba(200,60,80,.5)" stroke-width="1.5"/>
-          <line x1="200" y1="100" x2="200" y2="155" stroke="rgba(200,60,80,.4)" stroke-width="4" stroke-linecap="round"/>
-          <line x1="200" y1="120" x2="170" y2="142" stroke="rgba(200,60,80,.4)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="200" y1="120" x2="230" y2="135" stroke="rgba(200,60,80,.4)" stroke-width="3" stroke-linecap="round"/>
-          <!-- imitator figure -->
-          <circle cx="320" cy="90" r="14" fill="rgba(200,60,80,.15)" stroke="rgba(200,60,80,.35)" stroke-width="1.5"/>
-          <line x1="320" y1="104" x2="320" y2="145" stroke="rgba(200,60,80,.25)" stroke-width="3" stroke-linecap="round"/>
-          <line x1="320" y1="118" x2="300" y2="135" stroke="rgba(200,60,80,.25)" stroke-width="2" stroke-linecap="round"/>
-          <line x1="320" y1="118" x2="340" y2="130" stroke="rgba(200,60,80,.25)" stroke-width="2" stroke-linecap="round"/>
-          <!-- arrow observer→model-->
-          <text x="130" y="70" font-family="monospace" font-size="10" fill="rgba(200,60,80,.5)">observa</text>
-          <!-- Bobo doll -->
-          <ellipse cx="210" cy="185" rx="15" ry="20" fill="rgba(200,60,80,.2)" stroke="rgba(200,60,80,.4)" stroke-width="1"/>
-          <text x="20" y="215" font-family="monospace" font-size="10" fill="rgba(200,60,80,.6)" letter-spacing="2">BOBO DOLL · 1961</text>
-          <text x="380" y="220" font-family="Georgia,serif" font-size="100" font-weight="900" fill="rgba(255,255,255,.04)" text-anchor="middle">B</text>
-        </svg>
-        <div class="aph-badge"><div class="aph-name">Albert Bandura</div><span class="aph-num">11 / 11</span></div>
-      </div>
-      <div class="abar" style="background:#8b1a2a"></div>
-      <div class="avb">
-        <div class="ameta"><span class="adates">1925 – 2021 · Canadiense</span><span class="atheory" style="color:#8b1a2a;border-color:#8b1a2a">Aprend. Social</span></div>
-        <p class="aintro" style="color:#1a1208 !important;font-style:italic">Figura de cierre y puente histórico. Demostró que se puede aprender observando modelos sin reforzamiento directo, integrando cognición y conducta.</p>
-        <div class="apt">Postulados</div>
-        <ul class="apl">
-          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Aprendizaje observacional:</strong> se aprende viendo la conducta de otros.</div></li>
-          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Exp. Bobo Doll (1961-63):</strong> imitación de agresión sin refuerzo directo.</div></li>
-          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Autoeficacia:</strong> la creencia en la propia capacidad determina la conducta.</div></li>
-          <li><span class="adot" style="background:#8b1a2a"></span><div><strong>Determinismo recíproco:</strong> persona, conducta y ambiente se influyen mutuamente.</div></li>
-        </ul>
-        <div class="acont" style="border-color:#8b1a2a"><div class="acl">Aporte</div><div class="act">Base teórica de la terapia cognitivo-conductual y del estudio moderno de la autoeficacia y la motivación.</div></div>
-      </div>
-    </div>
-    <!-- Cierre visual -->
-    <div style="background:var(--ink);display:flex;align-items:center;justify-content:center;padding:3rem;min-height:300px">
-      <div style="text-align:center">
-        <div style="font-family:var(--font-display);font-size:5rem;font-weight:900;color:var(--amber);line-height:1">11</div>
-        <div style="font-family:var(--font-mono);font-size:.68rem;letter-spacing:.2em;color:rgba(245,240,232,.5);text-transform:uppercase;margin:.6rem 0">Teóricos del Conductismo</div>
-        <div style="width:40px;height:2px;background:var(--amber);margin:.8rem auto"></div>
-        <div style="font-size:.85rem;color:rgba(245,240,232,.5);line-height:1.7;max-width:200px">Cada autor amplió la comprensión científica de la conducta humana y animal.</div>
       </div>
     </div>
   </div>
@@ -1245,32 +1129,56 @@ footer p{font-size:.82rem;color:rgba(245,240,232,.45);margin:.2rem 0}
       <span class="ey-tag" style="color:rgba(245,240,232,.4);">Bibliografía</span>
     </div>
     <h2 class="sec-title" style="color:var(--paper);">Referencias<br>Bibliográficas</h2>
-
     <div style="display:flex;flex-direction:column;gap:1.2rem;margin-top:1rem;">
 
       <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--amber);align-items:flex-start;">
         <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--amber);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">01</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">López Cruz, D. (2021). Edward Lee Thorndike y John Broadus Watson: dos explicaciones del aprendizaje. <em>Educere: Revista Venezolana de Educación, 81</em>, 647–656. <span style="color:var(--teal-light);word-break:break-all;">https://research-ebsco-com.bibliotecavirtual.unad.edu.co/linkprocessor/v2-external?opid=qcagk4&amp;recordId=6azduuaior&amp;url=https%3A%2F%2Fdialnet.unirioja.es%2Fservlet%2Fcatart%3Fcodigo%3D8485441</span></p>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Agudelo, R., & Guerrero (1973). El sistema psicológico de B.F. Skinner. <em>Revista Latinoamericana de Psicología, 5</em>(2), 45–58. <span style="color:var(--teal-light);">https://www.redalyc.org/pdf/805/80550204.pdf</span></p>
       </div>
 
       <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--teal-light);align-items:flex-start;">
         <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--teal-light);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">02</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">Pérez Álvarez, M. (2021). ¿Qué nos importa Skinner, treinta años después? <em>Papeles del Psicólogo, 42</em>(1), 10–20. <span style="color:var(--teal-light);">https://doi.org/10.23923/pap.psicol2020.2940</span></p>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Bandura, A., & National Inst of Mental Health. (1986). <em>Social foundations of thought and action: A social cognitive theory.</em> Prentice-Hall, Inc.</p>
       </div>
 
       <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--rust);align-items:flex-start;">
         <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--rust);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">03</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">Pérez, E. (2023). <em>El conductismo: enfoque clásico de la psicología</em> [Objeto virtual de aprendizaje OVA]. Repositorio Institucional UNAD. <span style="color:var(--teal-light);">https://repository.unad.edu.co/handle/10596/54778</span></p>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Boeree, C. G. (2006). <em>Albert Bandura: 1925-present. Personality Theories.</em> <span style="color:var(--teal-light);">http://webspace.ship.edu/cgboer/bandura.html</span></p>
       </div>
 
       <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--lavender);align-items:flex-start;">
         <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--lavender);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">04</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">Sáiz, M. y Anguera, B. (2013). <em>Historia de la psicología</em>. Editorial UOC. <span style="color:var(--teal-light);word-break:break-all;">https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/56425%20?page=1</span></p>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Heffernan, C. J. (1988). [Reseña del libro <em>Social foundations of thought and action: A social cognitive theory</em>, por A. Bandura]. <em>Behaviour Change, 5</em>(1), 37–38. <span style="color:var(--teal-light);">https://doi.org/10.1017/S081348390000782X</span></p>
       </div>
 
       <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--sage);align-items:flex-start;">
         <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--sage);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">05</span>
-        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.82);">Töpf, J. (2020). <em>Psicología: la conducta humana</em> (ed.). Eudeba. <span style="color:var(--teal-light);word-break:break-all;">https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/153600?page=93</span></p>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">López Cruz, D. (2021). Edward Lee Thorndike y John Broadus Watson: dos explicaciones del aprendizaje. <em>Educere: Revista Venezolana de Educación, 81</em>, 647–656. <span style="color:var(--teal-light);word-break:break-all;">https://research-ebsco-com.bibliotecavirtual.unad.edu.co/linkprocessor/v2-external?opid=qcagk4&amp;recordId=6azduuaior&amp;url=https%3A%2F%2Fdialnet.unirioja.es%2Fservlet%2Fcatart%3Fcodigo%3D8485441</span></p>
+      </div>
+
+      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--amber);align-items:flex-start;">
+        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--amber);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">06</span>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Pellón, R. (2013). Watson, Skinner y algunas disputas dentro del conductismo. <em>Revista Colombiana de Psicología, 22</em>(2), 389–399. <span style="color:var(--teal-light);">https://dialnet.unirioja.es/servlet/articulo?codigo=4703413</span></p>
+      </div>
+
+      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--teal-light);align-items:flex-start;">
+        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--teal-light);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">07</span>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Pérez, E. (2023). <em>El conductismo: enfoque clásico de la psicología</em> [Objeto virtual de aprendizaje OVA]. Repositorio Institucional UNAD. <span style="color:var(--teal-light);">https://repository.unad.edu.co/handle/10596/54778</span></p>
+      </div>
+
+      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--rust);align-items:flex-start;">
+        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--rust);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">08</span>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Pérez Álvarez, M. (2021). ¿Qué nos importa Skinner, treinta años después? <em>Papeles del Psicólogo, 42</em>(1), 10–20. <span style="color:var(--teal-light);">https://doi.org/10.23923/pap.psicol2020.2940</span></p>
+      </div>
+
+      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--lavender);align-items:flex-start;">
+        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--lavender);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">09</span>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Sáiz, M. y Anguera, B. (2013). <em>Historia de la psicología</em>. Editorial UOC. <span style="color:var(--teal-light);word-break:break-all;">https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/56425%20?page=1</span></p>
+      </div>
+
+      <div style="display:flex;gap:1.5rem;padding:1.2rem 1.4rem;background:rgba(255,255,255,.04);border-left:3px solid var(--sage);align-items:flex-start;">
+        <span style="font-family:var(--font-mono);font-size:.65rem;color:var(--sage);letter-spacing:.12em;min-width:24px;margin-top:.15rem;">10</span>
+        <p style="font-size:.88rem;line-height:1.75;color:rgba(245,240,232,.9);">Töpf, J. (2020). <em>Psicología: la conducta humana</em> (ed.). Eudeba. <span style="color:var(--teal-light);word-break:break-all;">https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/153600?page=93</span></p>
       </div>
 
     </div>
