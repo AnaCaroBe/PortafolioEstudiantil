@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klein & Lewin — Línea del Tiempo Comparativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0e0e12;
+  --surface: #16161d;
+  --border: rgba(255,255,255,0.07);
+
+  /* Klein = cobre / psicoanalítico */
+  --k: #c9956c;
+  --k-soft: rgba(201,149,108,0.12);
+  --k-border: rgba(201,149,108,0.3);
+
+  /* Lewin = azul pizarra / gestáltico */
+  --l: #7eb5d4;
+  --l-soft: rgba(126,181,212,0.12);
+  --l-border: rgba(126,181,212,0.3);
+
+  /* Nexo = verde salvia */
+  --n: #8ab89a;
+  --n-soft: rgba(138,184,154,0.12);
+  --n-border: rgba(138,184,154,0.3);
+
+  --text: #e8e4dc;
+  --muted: #666260;
+  --spine: rgba(255,255,255,0.1);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ══ HERO ══ */
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 70% at 25% 50%, rgba(201,149,108,.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 70% at 75% 50%, rgba(126,181,212,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-kicker {
+  font-size: .68rem;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.hero h1 .name-k { color: var(--k); }
+.hero h1 .sep    { color: var(--muted); margin: 0 .6rem; font-style: italic; font-size: .7em; }
+.hero h1 .name-l { color: var(--l); }
+
+.hero-sub {
+  font-size: .88rem;
+  color: var(--muted);
+  max-width: 52ch;
+  margin: 0 auto 2.5rem;
+}
+
+/* ── LEGEND ── */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.leg-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.leg-dot.k { background: var(--k); }
+.leg-dot.l { background: var(--l); }
+.leg-dot.n { background: var(--n); }
+
+/* ── DIVIDER ── */
+.hero::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.15), transparent);
+  margin: 2.5rem auto 0;
+}
+
+/* ══ TIMELINE ══ */
+.tl-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 6rem;
+  position: relative;
+}
+
+/* central spine */
+.spine {
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    var(--spine) 4%,
+    var(--spine) 96%,
+    transparent 100%);
+}
+
+/* Year labels floating on spine */
+.year-label {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.35);
+  font-size: .62rem;
+  letter-spacing: .14em;
+  padding: .18rem .55rem;
+  z-index: 10;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ── HITO ROW ── */
+.hito {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  min-height: 100px;
+  margin-bottom: 8px;
+  align-items: start;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.hito.visible { opacity: 1; transform: translateY(0); }
+
+/* sides */
+.side-l { padding: .75rem 1.25rem .75rem 0; text-align: right; }
+.side-r { padding: .75rem 0 .75rem 1.25rem; text-align: left; }
+.center-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.15rem;
+  position: relative;
+  z-index: 3;
+}
+
+/* NODE */
+.node-ring {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  border: 2px solid;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .3s, box-shadow .3s;
+  flex-shrink: 0;
+}
+.node-ring.k { border-color: var(--k); }
+.node-ring.l { border-color: var(--l); }
+.node-ring.n { border-color: var(--n); }
+
+.node-core {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+}
+.node-core.k { background: var(--k); }
+.node-core.l { background: var(--l); }
+.node-core.n { background: var(--n); }
+
+.hito:hover .node-ring {
+  transform: scale(1.45);
+}
+.hito:hover .node-ring.k { box-shadow: 0 0 14px rgba(201,149,108,.4); }
+.hito:hover .node-ring.l { box-shadow: 0 0 14px rgba(126,181,212,.4); }
+.hito:hover .node-ring.n { box-shadow: 0 0 14px rgba(138,184,154,.4); }
+
+/* CARD */
+.card {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 1.1rem 1.3rem 1.3rem;
+  position: relative;
+  transition: border-color .3s, box-shadow .3s;
+  cursor: default;
+  text-align: left;
+}
+
+/* colour top bar */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.card.k::before { background: linear-gradient(90deg, var(--k), transparent); }
+.card.l::before { background: linear-gradient(90deg, var(--l), transparent); }
+.card.n::before { background: linear-gradient(90deg, var(--n), transparent); }
+
+/* right-aligned cards flip gradient */
+.side-r .card.k::before { background: linear-gradient(270deg, var(--k), transparent); }
+.side-r .card.l::before { background: linear-gradient(270deg, var(--l), transparent); }
+.side-r .card.n::before { background: linear-gradient(270deg, var(--n), transparent); }
+
+.hito:hover .card { border-color: rgba(255,255,255,.14); box-shadow: 0 8px 36px rgba(0,0,0,.5); }
+.hito:hover .card.k { border-color: var(--k-border); }
+.hito:hover .card.l { border-color: var(--l-border); }
+.hito:hover .card.n { border-color: var(--n-border); }
+.hito:hover .card::before { opacity: 1; }
+
+/* horizontal connector */
+.side-l .card::after {
+  content: '';
+  position: absolute;
+  top: calc(1.15rem + 8px);
+  right: -14px;
+  width: 14px;
+  height: 1px;
+}
+.side-r .card::after {
+  content: '';
+  position: absolute;
+  top: calc(1.15rem + 8px);
+  left: -14px;
+  width: 14px;
+  height: 1px;
+}
+.card.k::after { background: rgba(201,149,108,.35); }
+.card.l::after { background: rgba(126,181,212,.35); }
+.card.n::after { background: rgba(138,184,154,.35); }
+
+/* Card content */
+.card-who {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: .35rem;
+}
+.card-who.k { color: var(--k); }
+.card-who.l { color: var(--l); }
+.card-who.n { color: var(--n); }
+
+.card-year {
+  font-size: .65rem;
+  color: var(--muted);
+  letter-spacing: .12em;
+  margin-bottom: .4rem;
+}
+
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: .98rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: .5rem;
+  line-height: 1.3;
+}
+
+.card-body {
+  font-size: .8rem;
+  color: rgba(232,228,220,.58);
+  line-height: 1.75;
+}
+
+.card-tag {
+  display: inline-block;
+  margin-top: .75rem;
+  font-size: .6rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  padding: .18rem .55rem;
+  border: 1px solid;
+  border-radius: 2px;
+}
+.card-tag.k { color: var(--k); border-color: var(--k-border); }
+.card-tag.l { color: var(--l); border-color: var(--l-border); }
+.card-tag.n { color: var(--n); border-color: var(--n-border); }
+
+/* empty side */
+.empty { min-height: 80px; }
+
+/* ══ COMPARISON FOOTER ══ */
+.compare-section {
+  max-width: 1000px;
+  margin: 0 auto 5rem;
+  padding: 0 1.5rem;
+}
+
+.compare-title {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: .5rem;
+}
+
+.compare-sub {
+  text-align: center;
+  font-size: .82rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.cg-header {
+  padding: 1rem 1.5rem;
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.cg-header.k { background: var(--k-soft); color: var(--k); }
+.cg-header.l { background: var(--l-soft); color: var(--l); }
+
+.cg-row {
+  display: contents;
+}
+
+.cg-cell {
+  background: var(--surface);
+  padding: .9rem 1.5rem;
+  font-size: .82rem;
+  color: rgba(232,228,220,.65);
+  line-height: 1.65;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.cg-cell::before {
+  content: attr(data-label);
+  display: block;
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: .35rem;
+}
+
+.cg-cell.k { border-left: 2px solid rgba(201,149,108,.25); }
+.cg-cell.l { border-left: 2px solid rgba(126,181,212,.25); }
+
+/* ══ FOOTER ══ */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 2.5rem;
+  font-size: .75rem;
+  color: var(--muted);
+  letter-spacing: .05em;
+}
+footer strong.k { color: var(--k); }
+footer strong.l { color: var(--l); }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 700px) {
+  .spine { left: 18px; }
+  .hito {
+    display: block;
+    padding-left: 44px;
+    position: relative;
+  }
+  .center-col {
+    position: absolute;
+    left: 8px;
+    top: 1.1rem;
+    padding-top: 0;
+  }
+  .side-l, .side-r { padding: .5rem 0; text-align: left; }
+  .card::after { display: none; }
+  .empty { display: none; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .cg-header:last-of-type { border-top: 1px solid var(--border); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <h1>
+    <span class="name-k">Melanie Klein</span>
+    <span class="sep">&amp;</span>
+    <span class="name-l">Kurt Lewin</span>
+  </h1>
+  <p class="hero-sub">Línea del tiempo comparativa: hitos biográficos, conceptuales y teóricos de dos enfoques fundacionales de la psicología del siglo XX.</p>
+  <div class="legend">
+    <div class="leg-item"><div class="leg-dot k"></div> Melanie Klein · Psicoanálisis</div>
+    <div class="leg-item"><div class="leg-dot l"></div> Kurt Lewin · Gestalt / Psicología Social</div>
+  </div>
+</header>
+
+<!-- TIMELINE -->
+<div class="tl-wrap">
+  <div class="spine"></div>
+
+  <!-- ─── HITO 1 ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card k">
+        <div class="card-who k">Melanie Klein</div>
+        <div class="card-year">1882</div>
+        <div class="card-title">Nacimiento en Viena</div>
+        <div class="card-body">Nace en una familia judía de clase media. La relación ambivalente con su madre marcará su interés posterior por la figura materna y el mundo interno del bebé.</div>
+        <span class="card-tag k">Origen</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring k"><div class="node-core k"></div></div>
+    </div>
+    <div class="side-r empty"></div>
+  </div>
+
+  <!-- ─── HITO 2 ─── -->
+  <div class="hito">
+    <div class="side-l empty"></div>
+    <div class="center-col">
+      <div class="node-ring l"><div class="node-core l"></div></div>
+    </div>
+    <div class="side-r">
+      <div class="card l">
+        <div class="card-who l">Kurt Lewin</div>
+        <div class="card-year">1890</div>
+        <div class="card-title">Nacimiento en Mogilno, Prusia</div>
+        <div class="card-body">Nace en una familia judía rural en Polonia prusiana. Desde joven participa en activismo social y feminista, sembrando su compromiso permanente con la democracia y el cambio social.</div>
+        <span class="card-tag l">Origen</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HITO 3 ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card k">
+        <div class="card-who k">Melanie Klein</div>
+        <div class="card-year">1914 – 1925</div>
+        <div class="card-title">Análisis con Ferenczi y Abraham · Formación psicoanalítica</div>
+        <div class="card-body">Ferenczi la introduce al trabajo con niños. Abraham le transmite la comprensión de la agresión y el duelo. Estos análisis son el cimiento de sus conceptos sobre el mundo interno y las relaciones objetales.</div>
+        <span class="card-tag k">Formación</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring k"><div class="node-core k"></div></div>
+    </div>
+    <div class="side-r empty"></div>
+  </div>
+
+  <!-- ─── HITO 4 ─── -->
+  <div class="hito">
+    <div class="side-l empty"></div>
+    <div class="center-col">
+      <div class="node-ring l"><div class="node-core l"></div></div>
+    </div>
+    <div class="side-r">
+      <div class="card l">
+        <div class="card-who l">Kurt Lewin</div>
+        <div class="card-year">1914 – 1921</div>
+        <div class="card-title">Primera Guerra Mundial · Descripción topológica del campo</div>
+        <div class="card-body">Sirve como artillero y es herido en combate. En el frente redacta su primera descripción topológica del campo de batalla, anticipando lo que será la Teoría del Campo: el comportamiento como función del entorno percibido.</div>
+        <span class="card-tag l">Experiencia fundante</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HITO 5 · NEXO ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card n">
+        <div class="card-who n">Klein</div>
+        <div class="card-year">1919 · Técnica de juego</div>
+        <div class="card-title">El juego como método: equivalente a la asociación libre</div>
+        <div class="card-body">Klein demuestra que el juego libre del niño permite acceder al inconsciente infantil. El método clínico se centra en el mundo interno, la fantasía y la relación diádica terapeuta-paciente.</div>
+        <span class="card-tag n">Metodología Klein</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring n"><div class="node-core n"></div></div>
+    </div>
+    <div class="side-r">
+      <div class="card n">
+        <div class="card-who n">Lewin</div>
+        <div class="card-year">1921+ · Investigación-acción</div>
+        <div class="card-title">La investigación como transformación: acción y contexto grupal</div>
+        <div class="card-body">Lewin defiende que la investigación debe generar cambio social real. El método combina observación participante, experimentación grupal y retroalimentación. El contexto interaccional es irreducible.</div>
+        <span class="card-tag n">Metodología Lewin</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HITO 6 ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card k">
+        <div class="card-who k">Melanie Klein</div>
+        <div class="card-year">1926</div>
+        <div class="card-title">Londres: fundación de la Escuela Kleiniana</div>
+        <div class="card-body">Ernest Jones la invita a la Sociedad Psicoanalítica Británica. Se instala definitivamente en Londres, donde desarrolla toda su obra madura y forma discípulos como Bion, Segal y Winnicott.</div>
+        <span class="card-tag k">Institucional</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring k"><div class="node-core k"></div></div>
+    </div>
+    <div class="side-r empty"></div>
+  </div>
+
+  <!-- ─── HITO 7 ─── -->
+  <div class="hito">
+    <div class="side-l empty"></div>
+    <div class="center-col">
+      <div class="node-ring l"><div class="node-core l"></div></div>
+    </div>
+    <div class="side-r">
+      <div class="card l">
+        <div class="card-who l">Kurt Lewin</div>
+        <div class="card-year">1933</div>
+        <div class="card-title">Exilio a EE.UU. · Ascenso del nazismo</div>
+        <div class="card-body">El ascenso de Hitler lo obliga a emigrar. Trabaja en Cornell, Iowa y el MIT. El exilio y la posterior muerte de su madre en un campo de concentración (1944) profundizan su convicción sobre la urgencia del cambio social democrático.</div>
+        <span class="card-tag l">Exilio y compromiso</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HITO 8 · NEXO ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card n">
+        <div class="card-who n">Klein</div>
+        <div class="card-year">1932 · Psicoanálisis de niños</div>
+        <div class="card-title">El psiquismo como mundo interno de relaciones objetales</div>
+        <div class="card-body">Su obra central sistematiza que el psiquismo se organiza desde el nacimiento en torno a <em>objetos internos</em> (representaciones de otros significativos). La realidad psíquica es un mundo relacional interno, independiente del entorno real.</div>
+        <span class="card-tag n">Eje teórico Klein</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring n"><div class="node-core n"></div></div>
+    </div>
+    <div class="side-r">
+      <div class="card n">
+        <div class="card-who n">Lewin</div>
+        <div class="card-year">1935 · Teoría dinámica</div>
+        <div class="card-title">B = ƒ(P, E): la conducta como función de la persona y el campo</div>
+        <div class="card-body">Publica <em>Una teoría dinámica de la personalidad</em>. La conducta no puede entenderse sin el entorno percibido (espacio vital). El campo de fuerzas psicológicas, no el mundo interno aislado, determina el comportamiento.</div>
+        <span class="card-tag n">Eje teórico Lewin</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HITO 9 ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card k">
+        <div class="card-who k">Melanie Klein</div>
+        <div class="card-year">1934 – 1940</div>
+        <div class="card-title">Posición depresiva · El duelo y la reparación</div>
+        <div class="card-body">La muerte de su hijo Hans (1934) se convierte en teoría: introduce la <em>posición depresiva</em> (1935) y el ensayo sobre el duelo (1940). Integrar la ambivalencia y reparar el daño imaginario al objeto amado son logros psíquicos centrales.</div>
+        <span class="card-tag k">Concepto fundacional</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring k"><div class="node-core k"></div></div>
+    </div>
+    <div class="side-r empty"></div>
+  </div>
+
+  <!-- ─── HITO 10 ─── -->
+  <div class="hito">
+    <div class="side-l empty"></div>
+    <div class="center-col">
+      <div class="node-ring l"><div class="node-core l"></div></div>
+    </div>
+    <div class="side-r">
+      <div class="card l">
+        <div class="card-who l">Kurt Lewin</div>
+        <div class="card-year">1939 – 1944</div>
+        <div class="card-title">Dinámica de grupos · Liderazgo y clima social</div>
+        <div class="card-body">Experimenta los efectos del liderazgo autocrático, democrático y laissez-faire sobre grupos de niños. Demuestra que el clima grupal determina la conducta individual. Funda el Centro de Investigación para la Dinámica de Grupos en el MIT (1944).</div>
+        <span class="card-tag l">Psicología social</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HITO 11 ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card k">
+        <div class="card-who k">Melanie Klein</div>
+        <div class="card-year">1941 – 1945</div>
+        <div class="card-title">Controversial Discussions · Debate con Anna Freud</div>
+        <div class="card-body">El choque con Anna Freud ante la Sociedad Psicoanalítica Británica define las fronteras de la teoría kleiniana: desarrollo temprano, superyó arcaico, análisis del niño sin pedagogía. La Sociedad se divide en tres grupos permanentes.</div>
+        <span class="card-tag k">Debate histórico</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring k"><div class="node-core k"></div></div>
+    </div>
+    <div class="side-r empty"></div>
+  </div>
+
+  <!-- ─── HITO 12 · NEXO ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card n">
+        <div class="card-who n">Klein</div>
+        <div class="card-year">1946 · Identificación proyectiva</div>
+        <div class="card-title">El sujeto en relación: proyección y mundo interno compartido</div>
+        <div class="card-body">La identificación proyectiva muestra que el psiquismo no es un sistema cerrado: partes del self se depositan en el otro. La relación con el objeto externo modela el mundo interno. Aquí Klein se aproxima al peso del vínculo real.</div>
+        <span class="card-tag n">Punto de contacto</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring n"><div class="node-core n"></div></div>
+    </div>
+    <div class="side-r">
+      <div class="card n">
+        <div class="card-who n">Lewin</div>
+        <div class="card-year">1946 · Frontiers in Group Dynamics</div>
+        <div class="card-title">El grupo como campo: el todo es más que la suma de las partes</div>
+        <div class="card-body">Publica su influyente artículo sobre dinámica de grupos. El grupo tiene cualidades emergentes irreductibles a los individuos. Aquí Lewin incorpora cómo las tensiones internas del miembro interactúan con el campo grupal.</div>
+        <span class="card-tag n">Punto de contacto</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HITO 13 ─── -->
+  <div class="hito">
+    <div class="side-l empty"></div>
+    <div class="center-col">
+      <div class="node-ring l"><div class="node-core l"></div></div>
+    </div>
+    <div class="side-r">
+      <div class="card l">
+        <div class="card-who l">Kurt Lewin</div>
+        <div class="card-year">1947</div>
+        <div class="card-title">Muerte y legado: Grupos T y modelo de cambio (Descongelar-Cambiar-Recongelar)</div>
+        <div class="card-body">Muere de infarto a los 56 años. Su modelo de cambio en tres etapas y los Grupos T (T-groups) se difunden masivamente. Su lema — "nada tan práctico como una buena teoría" — sigue orientando la psicología organizacional y social contemporánea.</div>
+        <span class="card-tag l">Legado</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── HITO 14 ─── -->
+  <div class="hito">
+    <div class="side-l">
+      <div class="card k">
+        <div class="card-who k">Melanie Klein</div>
+        <div class="card-year">1957 – 1960</div>
+        <div class="card-title">Envidia y Gratitud · Cierre de una obra</div>
+        <div class="card-body">Su obra más polémica: la envidia primaria como manifestación de la pulsión de muerte. Trabaja hasta el final. Fallece en 1960. Su escuela sigue activa; Bion, Segal y Rosenfeld continúan y profundizan su legado teórico y clínico.</div>
+        <span class="card-tag k">Legado</span>
+      </div>
+    </div>
+    <div class="center-col">
+      <div class="node-ring k"><div class="node-core k"></div></div>
+    </div>
+    <div class="side-r empty"></div>
+  </div>
+
+</div><!-- /tl-wrap -->
+
+<!-- ══ TABLA COMPARATIVA ══ -->
+<div class="compare-section">
+
+  <h2 class="compare-title">Comparación de Enfoques</h2>
+  <p class="compare-sub">Relaciones, influencias y diferencias centrales entre el psicoanálisis kleiniano y la psicología gestáltico-social de Lewin.</p>
+
+  <div class="compare-grid">
+
+    <div class="cg-header k">Melanie Klein · Psicoanálisis de Relaciones Objetales</div>
+    <div class="cg-header l">Kurt Lewin · Gestalt / Psicología Social</div>
+
+    <div class="cg-cell k" data-label="Objeto de estudio">El mundo interno: fantasías, objetos internos, mecanismos de defensa primitivos. El psiquismo como escenario de relaciones entre el yo y sus objetos.</div>
+    <div class="cg-cell l" data-label="Objeto de estudio">El campo psicológico: conducta como función de la persona y su entorno percibido. El espacio vital como totalidad de fuerzas que determinan la acción.</div>
+
+    <div class="cg-cell k" data-label="Unidad de análisis">La díada (bebé-madre, paciente-analista). La relación con el objeto, real o fantaseado, es constitutiva del psiquismo.</div>
+    <div class="cg-cell l" data-label="Unidad de análisis">El individuo en su campo (P + E). El grupo como sistema emergente irreductible a sus miembros individuales.</div>
+
+    <div class="cg-cell k" data-label="Método">Técnica de juego con niños; asociación libre con adultos. Interpretación de transferencia y fantasía inconsciente. Caso único en profundidad.</div>
+    <div class="cg-cell l" data-label="Método">Investigación-acción. Experimentos con grupos. Observación participante. Retroalimentación (feedback) como herramienta de cambio. Rigor experimental.</div>
+
+    <div class="cg-cell k" data-label="Concepción del sujeto">Sujeto marcado por pulsiones de vida y muerte desde el nacimiento. La agresión y el amor son fuerzas internas primarias que dan forma al psiquismo.</div>
+    <div class="cg-cell l" data-label="Concepción del sujeto">Sujeto en tensión con su campo. El comportamiento no puede entenderse fuera del entorno: B = ƒ(P, E). El contexto social y grupal es constitutivo.</div>
+
+    <div class="cg-cell k" data-label="Concepción del cambio">El cambio psíquico ocurre mediante la elaboración de la posición depresiva, la reparación y la integración de la ambivalencia en el trabajo analítico.</div>
+    <div class="cg-cell l" data-label="Concepción del cambio">El cambio social y organizacional requiere: Descongelar → Cambiar → Recongelar. La participación grupal democrática es el motor del cambio real.</div>
+
+    <div class="cg-cell k" data-label="Convergencia con el otro">Klein comparte con Lewin el énfasis en la totalidad: el psiquismo no es suma de síntomas aislados sino un mundo organizado de relaciones. Ambos rechazan el elementalismo.</div>
+    <div class="cg-cell l" data-label="Convergencia con el otro">Lewin comparte con Klein el interés por las tensiones internas (necesidades, valencias) y el reconocimiento de que el malestar individual se expresa en la dinámica relacional y grupal.</div>
+
+    <div class="cg-cell k" data-label="Diferencia central">Klein sitúa la causa del comportamiento en el mundo interno y en los objetos fantaseados. El entorno real importa, pero es secundario frente a la realidad psíquica.</div>
+    <div class="cg-cell l" data-label="Diferencia central">Lewin sitúa la causa en el campo presente (aquí y ahora). El pasado solo importa en tanto está representado en el espacio vital actual. El entorno es inseparable del sujeto.</div>
+
+    <div class="cg-cell k" data-label="Influencia histórica">Fundó la psicología clínica de orientación relacional y objetal. Sus conceptos (escisión, identificación proyectiva, posición depresiva) son base de la clínica con psicosis, borderline y desarrollo temprano.</div>
+    <div class="cg-cell l" data-label="Influencia histórica">Fundó la psicología social moderna, la psicología organizacional, el desarrollo de grupos y la investigación-acción. Su influencia alcanza el management, la educación y el trabajo comunitario.</div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <small style="display:block; opacity:.7; line-height:2;">
+    Klein, M. (1932). <em>El psicoanálisis de niños.</em> Paidós. <br>
+    Klein, M. (1957). <em>Envidia y gratitud.</em> Paidós. <br>
+    Lewin, K. (1935). <em>Una teoría dinámica de la personalidad.</em> McGraw-Hill. <br>
+    Lewin, K. (1948). <em>Resolving Social Conflicts.</em> Harper. <br>
+    Segal, H. (1964). <em>Introducción a la obra de Melanie Klein.</em> Paidós. <br>
+    Talarn, A. (2016). <em>Psicoanálisis al alcance de todos.</em> Herder Editorial.
+    <a href="https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/45689" style="color:var(--k); text-decoration:none;" target="_blank">https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/45689</a>
+    <br>
+    Sáiz, M. y Anguera, B. (2013). <em>Historia de la psicología.</em> Editorial UOC.
+    <a href="https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/56425?page=1" style="color:var(--l); text-decoration:none;" target="_blank">https://elibro-net.bibliotecavirtual.unad.edu.co/es/ereader/unad/56425?page=1</a>
+  </small>
+</footer>
+
+<script>
+const items = document.querySelectorAll('.hito');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+items.forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.04}s`;
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
