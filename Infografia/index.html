@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #fff;
+    width: 794px;
+    min-height: 1123px;
+  }
+
+  .page {
+    width: 794px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, #5B2D8E 0%, #8B4BB8 60%, #B07DD4 100%);
+    padding: 26px 36px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content:'';
+    position:absolute;
+    right:-60px; top:-60px;
+    width:240px; height:240px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.04);
+    border:2px solid rgba(255,255,255,0.08);
+  }
+  .badge {
+    display:inline-block;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.3);
+    color:#fff;
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    padding:3px 10px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  .header h1 {
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+    font-weight:900;
+    color:#fff;
+    line-height:1.1;
+    margin-bottom:6px;
+  }
+  .header h1 span { color:#F2D78A; }
+  .header-sub {
+    font-size:12px;
+    color:rgba(255,255,255,0.72);
+    margin-bottom:14px;
+  }
+  .chips { display:flex; gap:8px; flex-wrap:wrap; }
+  .chip {
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.22);
+    color:#fff;
+    padding:3px 12px;
+    border-radius:20px;
+    font-size:9.5px;
+    font-weight:500;
+  }
+
+  /* ── BODY ── */
+  .body { padding: 18px 28px 14px; display: flex; flex-direction: column; gap: 14px; }
+
+  /* ── SECCIÓN TÍTULO ── */
+  .sec-title {
+    font-family:'Playfair Display',serif;
+    font-size:12.5px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:8px;
+  }
+  .sec-title::after {
+    content:'';
+    flex:1;
+    height:1px;
+    background:currentColor;
+    opacity:0.2;
+  }
+
+  /* ── FILA PRINCIPAL ── */
+  .row { display:flex; gap:12px; }
+
+  /* ── 1. CAMBIOS FÍSICOS ── */
+  .cambios-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+  }
+  .cambio-card {
+    background:#EAF5EE;
+    border-radius:8px;
+    padding:8px 8px;
+    border-left:3px solid #4A8C6A;
+  }
+  .cambio-icon { font-size:14px; margin-bottom:2px; }
+  .cambio-t { font-size:9px; font-weight:600; color:#1A3A2A; margin-bottom:2px; text-transform:uppercase; letter-spacing:0.3px; }
+  .cambio-d { font-size:9px; color:#3A3A3A; line-height:1.45; }
+
+  /* ── 2. COLUMNAS ADULTEZ / VEJEZ ── */
+  .col-av {
+    flex:1;
+    border-radius:10px;
+    padding:10px 12px;
+  }
+  .col-av.adultez { background:#FBF0D0; border-left:3px solid #C8962A; }
+  .col-av.vejez   { background:#EAD8F0; border-left:3px solid #4A2050; }
+  .col-av h4 { font-size:10px; font-weight:700; margin-bottom:2px; }
+  .col-av .age { font-size:8.5px; font-weight:500; opacity:0.65; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.4px; }
+  .col-av ul { list-style:none; display:flex; flex-direction:column; gap:4px; }
+  .col-av ul li { font-size:9px; color:#3A3A3A; line-height:1.4; padding-left:12px; position:relative; }
+  .col-av ul li::before { content:''; position:absolute; left:0; top:5px; width:5px; height:5px; border-radius:50%; background:currentColor; }
+
+  /* ── 3. SALUD ── */
+  .salud-row { display:flex; gap:8px; }
+  .salud-box {
+    flex:1;
+    border-radius:8px;
+    padding:9px 11px;
+  }
+  .salud-box h4 { font-size:9.5px; font-weight:700; margin-bottom:5px; }
+  .salud-box ul { list-style:none; display:flex; flex-direction:column; gap:3px; }
+  .salud-box ul li { font-size:9px; color:#3A3A3A; line-height:1.4; padding-left:11px; position:relative; }
+  .salud-box ul li::before { content:'—'; position:absolute; left:0; font-size:8px; top:0; }
+
+  /* ── 4. SEXUALIDAD ── */
+  .sex-row { display:flex; gap:8px; }
+  .sex-card {
+    flex:1;
+    border-radius:8px;
+    padding:9px 11px;
+    border:1px solid;
+  }
+  .sex-card h4 { font-size:9.5px; font-weight:700; margin-bottom:4px; }
+  .sex-card p  { font-size:9px; color:#3A3A3A; line-height:1.5; }
+
+  /* ── 5. ENF. CRÓNICAS ── */
+  .enf-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+  }
+  .enf-card {
+    border-radius:8px;
+    padding:8px 9px;
+  }
+  .enf-card .enf-name { font-size:9px; font-weight:700; margin-bottom:3px; }
+  .enf-card .enf-desc { font-size:8.5px; line-height:1.4; }
+
+  /* ── 6. ENVEJECIMIENTO ── */
+  .teo-grid {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+  }
+  .teo-card {
+    background:#fff;
+    border:1px solid #d0e8d8;
+    border-top:3px solid;
+    border-radius:8px;
+    padding:8px 9px;
+  }
+  .teo-card .teo-n  { font-size:8px; font-weight:700; letter-spacing:1px; text-transform:uppercase; opacity:0.55; margin-bottom:2px; }
+  .teo-card .teo-t  { font-size:9.5px; font-weight:600; margin-bottom:3px; color:#1A1A1A; }
+  .teo-card .teo-d  { font-size:8.5px; color:#444; line-height:1.45; }
+
+  /* ── DATO DESTACADO ── */
+  .dato {
+    background:linear-gradient(135deg,#3D1A6E,#6B3FA0);
+    border-radius:10px;
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:#fff;
+  }
+  .dato-num {
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    font-weight:900;
+    color:#E8CFFE;
+    line-height:1;
+    flex-shrink:0;
+  }
+  .dato-txt { font-size:10.5px; line-height:1.7; opacity:0.95; }
+  .dato-txt strong { color:#E8CFFE; }
+
+  /* ── FRANJA DATOS CUANTITATIVOS ── */
+  .datos-franja {
+    background: #F5F0FC;
+    border: 1.5px solid rgba(91,45,142,0.15);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .datos-franja-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #5B2D8E;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .datos-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+  .dato-mini {
+    background: #fff;
+    border-radius: 8px;
+    padding: 9px 8px;
+    text-align: center;
+    border-top: 3px solid;
+  }
+  .dato-mini-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 3px;
+  }
+  .dato-mini-label {
+    font-size: 8px;
+    color: #555;
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background:#1A3A2A;
+    color:rgba(255,255,255,0.6);
+    padding:10px 28px;
+    font-size:7.5px;
+    line-height:1.8;
+  }
+  .footer strong { color:#fff; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Dimensión <span>Biológica</span> en la Adultez y Vejez</h1>
+    <p class="header-sub">Cambios físicos · Salud · Sexualidad · Enfermedades crónicas · Envejecimiento</p>
+    <div class="chips">
+      <div class="chip">Adultez temprana (18–40 años)</div>
+      <div class="chip">Adultez media (40–65 años)</div>
+      <div class="chip">Vejez (65 años en adelante)</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- 1. CAMBIOS FÍSICOS -->
+    <div>
+      <div class="sec-title" style="color:#1A3A2A;">🧬 Cambios físicos</div>
+      <div class="cambios-grid">
+        <div class="cambio-card">
+          <div class="cambio-icon">🦴</div>
+          <div class="cambio-t">Óseo-muscular</div>
+          <div class="cambio-d">Pérdida ósea (osteoporosis) y muscular (sarcopenia). Mayor riesgo de fracturas.</div>
+        </div>
+        <div class="cambio-card">
+          <div class="cambio-icon">🫀</div>
+          <div class="cambio-t">Cardiovascular</div>
+          <div class="cambio-d">Menor gasto cardíaco, arterias rígidas, presión arterial elevada.</div>
+        </div>
+        <div class="cambio-card">
+          <div class="cambio-icon">🧠</div>
+          <div class="cambio-t">Sistema nervioso</div>
+          <div class="cambio-d">Reducción neuronal, menor velocidad de conducción y memoria de trabajo.</div>
+        </div>
+        <div class="cambio-card">
+          <div class="cambio-icon">👁️</div>
+          <div class="cambio-t">Sentidos</div>
+          <div class="cambio-d">Presbicia, presbiacusia, menor gusto, olfato y sensibilidad táctil.</div>
+        </div>
+        <div class="cambio-card">
+          <div class="cambio-icon">🫁</div>
+          <div class="cambio-t">Respiratorio</div>
+          <div class="cambio-d">Menor capacidad pulmonar y elasticidad. Intercambio gaseoso menos eficiente.</div>
+        </div>
+        <div class="cambio-card">
+          <div class="cambio-icon">🌿</div>
+          <div class="cambio-t">Piel y apariencia</div>
+          <div class="cambio-d">Pérdida de colágeno, arrugas, manchas y canas. Piel más fina y seca.</div>
+        </div>
+        <div class="cambio-card">
+          <div class="cambio-icon">⚙️</div>
+          <div class="cambio-t">Metabolismo</div>
+          <div class="cambio-d">Desaceleración basal. Mayor tendencia al sobrepeso y grasa abdominal.</div>
+        </div>
+        <div class="cambio-card">
+          <div class="cambio-icon">🔬</div>
+          <div class="cambio-t">Inmunológico</div>
+          <div class="cambio-d">Inmunosenescencia: menor defensa ante infecciones y menor eficacia vacunal.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. ADULTEZ vs VEJEZ + SALUD -->
+    <div class="row">
+
+      <!-- Adultez vs Vejez -->
+      <div style="flex:1.1">
+        <div class="sec-title" style="color:#C8962A;">📅 Adultez media vs. Vejez</div>
+        <div style="display:flex;gap:8px;">
+          <div class="col-av adultez">
+            <h4 style="color:#9C4A2A;">Adultez media</h4>
+            <div class="age" style="color:#C8962A;">40 – 65 años</div>
+            <ul style="color:#9C4A2A;">
+              <li>Declive hormonal gradual</li>
+              <li>Menopausia / andropausia</li>
+              <li>Primeras alteraciones visuales y auditivas</li>
+              <li>Metabolismo más lento</li>
+              <li>Cese de capacidad reproductiva</li>
+              <li>Enfermedades crónicas incipientes</li>
+            </ul>
+          </div>
+          <div class="col-av vejez">
+            <h4 style="color:#4A2050;">Vejez</h4>
+            <div class="age" style="color:#7A5090;">65 años en adelante</div>
+            <ul style="color:#4A2050;">
+              <li>Pérdida acelerada de masa ósea y muscular</li>
+              <li>Comorbilidad frecuente</li>
+              <li>Mayor dependencia funcional</li>
+              <li>Riesgo de demencias</li>
+              <li>Inmunosenescencia pronunciada</li>
+              <li>Alteraciones del sueño</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Salud -->
+      <div style="flex:0.9">
+        <div class="sec-title" style="color:#185FA5;">🏥 Salud</div>
+        <div class="salud-row">
+          <div class="salud-box" style="background:#D5E8F5;border-left:3px solid #185FA5;">
+            <h4 style="color:#0C447C;">🛡️ Factores protectores</h4>
+            <ul>
+              <li>Actividad física regular</li>
+              <li>Dieta equilibrada</li>
+              <li>Control médico periódico</li>
+              <li>No fumar, poco alcohol</li>
+              <li>Redes de apoyo social</li>
+              <li>Estimulación cognitiva</li>
+            </ul>
+          </div>
+          <div class="salud-box" style="background:#F5DDD5;border-left:3px solid #9C4A2A;">
+            <h4 style="color:#9C4A2A;">⚠️ Factores de riesgo</h4>
+            <ul>
+              <li>Sedentarismo</li>
+              <li>Alimentación inadecuada</li>
+              <li>Estrés crónico</li>
+              <li>Aislamiento social</li>
+              <li>Tabaquismo y alcoholismo</li>
+              <li>Sin chequeos preventivos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 3. SEXUALIDAD + DATO -->
+    <div class="row">
+      <div style="flex:1.4">
+        <div class="sec-title" style="color:#8B3060;">💜 Sexualidad</div>
+        <div class="sex-row">
+          <div class="sex-card" style="background:#FDF0F7;border-color:rgba(180,80,120,0.3);">
+            <h4 style="color:#8B3060;">👩 En la mujer</h4>
+            <p>La <strong>menopausia</strong> (45–55 años) implica el cese de la menstruación por agotamiento folicular. Disminuyen estrógenos causando sequedad vaginal, sofocos y cambios en la respuesta sexual, que se modifica pero no desaparece.</p>
+          </div>
+          <div class="sex-card" style="background:#EEF4FD;border-color:rgba(60,100,180,0.25);">
+            <h4 style="color:#2E4580;">👨 En el hombre</h4>
+            <p>La <strong>andropausia</strong> es gradual. Disminuye la testosterona, hay menor velocidad de erección y mayor tiempo refractario. La capacidad sexual puede mantenerse hasta edades muy avanzadas con ajustes.</p>
+          </div>
+          <div class="sex-card" style="background:#EAF5EE;border-color:rgba(45,96,72,0.25);">
+            <h4 style="color:#1A3A2A;">💚 Perspectiva integral</h4>
+            <p>La sexualidad en la vejez es un <strong>derecho y dimensión del bienestar</strong>. El deseo y la satisfacción sexual no tienen fecha de vencimiento. La intimidad y el afecto pueden mantenerse toda la vida.</p>
+          </div>
+        </div>
+      </div>
+      <div style="flex:0.6; display:flex; flex-direction:column; justify-content:center;">
+        <div class="dato">
+          <div class="dato-num">80%</div>
+          <div class="dato-txt">De los mayores de 65 años tiene <strong>al menos una enfermedad crónica</strong>. El 50% tiene dos o más simultáneas (multimorbilidad).</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ENFERMEDADES CRÓNICAS -->
+    <div>
+      <div class="sec-title" style="color:#9C4A2A;">🩺 Enfermedades crónicas frecuentes</div>
+      <div class="enf-grid">
+        <div class="enf-card" style="background:#FDECEA;">
+          <div class="enf-name" style="color:#8B2020;">Hipertensión arterial</div>
+          <div class="enf-desc" style="color:#5A2020;">Presión elevada sostenida por arteriosclerosis. Principal factor de riesgo cardiovascular.</div>
+        </div>
+        <div class="enf-card" style="background:#FDECEA;">
+          <div class="enf-name" style="color:#8B2020;">Diabetes tipo 2</div>
+          <div class="enf-desc" style="color:#5A2020;">Resistencia a la insulina asociada al sedentarismo, obesidad y envejecimiento pancreático.</div>
+        </div>
+        <div class="enf-card" style="background:#FFF3E0;">
+          <div class="enf-name" style="color:#804000;">Osteoporosis</div>
+          <div class="enf-desc" style="color:#5A3000;">Pérdida de densidad ósea. Más frecuente en mujeres postmenopáusicas por caída de estrógenos.</div>
+        </div>
+        <div class="enf-card" style="background:#FFF3E0;">
+          <div class="enf-name" style="color:#804000;">Artritis / artrosis</div>
+          <div class="enf-desc" style="color:#5A3000;">Degeneración del cartílago articular: dolor, rigidez y limitación de movimiento.</div>
+        </div>
+        <div class="enf-card" style="background:#FDECEA;">
+          <div class="enf-name" style="color:#8B2020;">Enf. cardiovasculares</div>
+          <div class="enf-desc" style="color:#5A2020;">Primera causa de mortalidad en adultos mayores. Incluye coronariopatías e insuficiencia cardíaca.</div>
+        </div>
+        <div class="enf-card" style="background:#EEF0FD;">
+          <div class="enf-name" style="color:#2A3080;">Demencias / Alzheimer</div>
+          <div class="enf-desc" style="color:#1A2060;">Deterioro cognitivo progresivo. El riesgo se duplica cada 5 años tras los 65.</div>
+        </div>
+        <div class="enf-card" style="background:#FFF3E0;">
+          <div class="enf-name" style="color:#804000;">EPOC</div>
+          <div class="enf-desc" style="color:#5A3000;">Obstrucción crónica del flujo de aire. Asociada a tabaquismo y contaminación ambiental.</div>
+        </div>
+        <div class="enf-card" style="background:#EEF0FD;">
+          <div class="enf-name" style="color:#2A3080;">Depresión y ansiedad</div>
+          <div class="enf-desc" style="color:#1A2060;">Base neurobiológica. Frecuente y subdiagnosticada en adultos mayores.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. TEORÍAS DEL ENVEJECIMIENTO -->
+    <div>
+      <div class="sec-title" style="color:#1A3A2A;">🌿 Proceso de envejecimiento: principales teorías</div>
+      <div class="teo-grid">
+        <div class="teo-card" style="border-top-color:#2D6048;">
+          <div class="teo-n" style="color:#2D6048;">Teoría 01</div>
+          <div class="teo-t">Genética / telómeros</div>
+          <div class="teo-d">Los telómeros se acortan con cada división celular. Al agotarse, la célula entra en senescencia (Límite de Hayflick).</div>
+        </div>
+        <div class="teo-card" style="border-top-color:#C8962A;">
+          <div class="teo-n" style="color:#C8962A;">Teoría 02</div>
+          <div class="teo-t">Estrés oxidativo</div>
+          <div class="teo-d">Los radicales libres dañan ADN, proteínas y membranas celulares de forma acumulativa, explicando el deterioro biológico.</div>
+        </div>
+        <div class="teo-card" style="border-top-color:#185FA5;">
+          <div class="teo-n" style="color:#185FA5;">Teoría 03</div>
+          <div class="teo-t">Neuroendocrina</div>
+          <div class="teo-d">El eje hipotálamo-hipófisis regula el envejecimiento. La caída de GH, estrógenos y testosterona desencadena cambios sistémicos.</div>
+        </div>
+        <div class="teo-card" style="border-top-color:#4A2050;">
+          <div class="teo-n" style="color:#4A2050;">Teoría 04</div>
+          <div class="teo-t">Inmunológica</div>
+          <div class="teo-d">El sistema inmune pierde capacidad de distinguir lo propio de lo extraño: inmunosenescencia y mayor autoinmunidad.</div>
+        </div>
+        <div class="teo-card" style="border-top-color:#9C4A2A;">
+          <div class="teo-n" style="color:#9C4A2A;">Teoría 05</div>
+          <div class="teo-t">Desgaste celular</div>
+          <div class="teo-d">Acumulación de errores en la replicación del ADN que el organismo no puede reparar completamente. Pérdida de homeostasis.</div>
+        </div>
+        <div class="teo-card" style="border-top-color:#4A8C6A;">
+          <div class="teo-n" style="color:#4A8C6A;">OMS</div>
+          <div class="teo-t">Envejecimiento activo</div>
+          <div class="teo-d">Optimizar salud, participación y seguridad. La actividad física, social y cognitiva puede ralentizar el deterioro biológico.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FRANJA DATOS CUANTITATIVOS -->
+  <div style="padding: 0 28px 14px;">
+    <div class="datos-franja">
+      <div class="datos-franja-title">📊 Datos y cifras clave</div>
+      <div class="datos-row">
+        <div class="dato-mini" style="border-top-color:#9C4A2A;">
+          <div class="dato-mini-num" style="color:#9C4A2A;">30%</div>
+          <div class="dato-mini-label">de pérdida de masa muscular entre los 40 y 80 años (sarcopenia)</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#185FA5;">
+          <div class="dato-mini-num" style="color:#185FA5;">-1%</div>
+          <div class="dato-mini-label">de densidad ósea por año tras la menopausia en mujeres</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#2D6048;">
+          <div class="dato-mini-num" style="color:#2D6048;">150 min</div>
+          <div class="dato-mini-label">de actividad física semanal recomendada por la OMS para adultos mayores</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#5B2D8E;">
+          <div class="dato-mini-num" style="color:#5B2D8E;">×2</div>
+          <div class="dato-mini-label">el riesgo de Alzheimer se duplica cada 5 años después de los 65</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#C8962A;">
+          <div class="dato-mini-num" style="color:#C8962A;">50%</div>
+          <div class="dato-mini-label">de reducción del gasto cardíaco máximo entre los 20 y los 80 años</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#8B3060;">
+          <div class="dato-mini-num" style="color:#8B3060;">45–55</div>
+          <div class="dato-mini-label">años: edad promedio de aparición de la menopausia en mujeres</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#185FA5;">
+          <div class="dato-mini-num" style="color:#185FA5;">20%</div>
+          <div class="dato-mini-label">de capacidad pulmonar se pierde entre los 20 y los 70 años</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#9C4A2A;">
+          <div class="dato-mini-num" style="color:#9C4A2A;">3 de 4</div>
+          <div class="dato-mini-label">muertes en mayores de 60 años son causadas por enfermedades crónicas</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#2D6048;">
+          <div class="dato-mini-num" style="color:#2D6048;">+25 años</div>
+          <div class="dato-mini-label">de esperanza de vida ganada en el siglo XX gracias a avances en salud pública</div>
+        </div>
+        <div class="dato-mini" style="border-top-color:#5B2D8E;">
+          <div class="dato-mini-num" style="color:#5B2D8E;">60%</div>
+          <div class="dato-mini-label">de los casos de demencia corresponden al tipo Alzheimer (OMS, 2021)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Referencias:</strong> Lizaso Elgarresta, I., Acha Morcillo, J. &amp; Arruabarrena, L. R. (2018). <em>Desarrollo biológico y cognitivo en el ciclo vital.</em> Difusora Larousse - Ediciones Pirámide. Parte 4, p. 447. https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/123058 &nbsp;|&nbsp;
+    Papalia, D. E. &amp; Martorell, G. (2021). <em>Desarrollo humano.</em> McGraw Hill Interamericana. Partes 6–8. https://www-ebooks7-24-com.bibliotecavirtual.unad.edu.co/?il=42025 &nbsp;|&nbsp;
+    Triadó, C. &amp; Celdrán, M. (2019). <em>Desarrollo adulto y envejecimiento</em> (2.ª ed.). Difusora Larousse - Alianza Editorial. https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/217915 &nbsp;|&nbsp; UNAD · Colombia · 2025–2026
+  </div>
+
+</div>
+</body>
+</html>
