@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trayectos de Vida — Revista Digital UNAD</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde:   #1A3A2A;
+  --verde2:  #2D6048;
+  --verde3:  #4A8C6A;
+  --verde4:  #C8E8D8;
+  --morado:  #5B2D8E;
+  --morado2: #8B4BB8;
+  --morado3: #D4B8F0;
+  --dorado:  #C8962A;
+  --dorado2: #F2D78A;
+  --cream:   #FAF7F0;
+  --blanco:  #FFFFFF;
+  --texto:   #1A1A1A;
+  --texto2:  #3A3A3A;
+  --texto3:  #666666;
+  --borde:   rgba(0,0,0,0.08);
+
+  /* dimensiones */
+  --bio-c:   #2D6048;  --bio-bg:  #EAF5EE;
+  --cog-c:   #185FA5;  --cog-bg:  #E6F1FB;
+  --emo-c:   #8B3060;  --emo-bg:  #FDE8F0;
+  --soc-c:   #C8962A;  --soc-bg:  #FBF0D0;
+  --ide-c:   #5B2D8E;  --ide-bg:  #F0E8FC;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--texto);line-height:1.7;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(26,58,42,0.96);
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 36px;height:54px;
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;
+  font-size:15px;font-weight:700;color:#fff;
+  letter-spacing:0.5px;
+}
+.nav-links{display:flex;gap:6px;}
+.nav-links a{
+  color:rgba(255,255,255,0.75);
+  font-size:11px;font-weight:500;
+  text-decoration:none;
+  padding:5px 11px;border-radius:20px;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.nav-links a:hover{background:rgba(255,255,255,0.15);color:#fff;}
+
+/* ── SECCIONES BASE ── */
+section{padding:80px 0 60px;}
+.container{max-width:960px;margin:0 auto;padding:0 32px;}
+
+/* ── 1. PORTADA ── */
+#portada{
+  min-height:100vh;padding:0;
+  background:linear-gradient(160deg,var(--verde) 0%,var(--verde2) 45%,var(--morado) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;text-align:center;
+}
+.portada-deco{
+  position:absolute;inset:0;pointer-events:none;
+}
+.portada-deco span{
+  position:absolute;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,0.07);
+}
+.portada-deco span:nth-child(1){width:500px;height:500px;top:-120px;right:-120px;}
+.portada-deco span:nth-child(2){width:300px;height:300px;bottom:-80px;left:-60px;}
+.portada-deco span:nth-child(3){width:200px;height:200px;top:40%;left:10%;}
+
+.portada-inner{position:relative;z-index:2;padding:40px 32px;}
+.portada-tag{
+  display:inline-block;
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.25);
+  color:rgba(255,255,255,0.9);
+  font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+  padding:5px 16px;border-radius:20px;margin-bottom:24px;
+}
+.portada-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(42px,7vw,72px);
+  font-weight:900;color:#fff;
+  line-height:1.05;margin-bottom:10px;
+}
+.portada-titulo em{color:var(--dorado2);font-style:italic;}
+.portada-subtitulo{
+  font-size:17px;color:rgba(255,255,255,0.72);
+  font-weight:300;margin-bottom:36px;
+  max-width:560px;margin-left:auto;margin-right:auto;
+}
+.portada-integrantes{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:16px;padding:20px 32px;
+  display:inline-block;margin-bottom:28px;
+  max-width:600px;
+}
+.portada-integrantes h4{
+  font-size:10px;font-weight:600;letter-spacing:2px;
+  text-transform:uppercase;color:var(--dorado2);
+  margin-bottom:12px;
+}
+.integrantes-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4px 24px;text-align:left;
+}
+.integrante{
+  font-size:12px;color:rgba(255,255,255,0.85);
+  display:flex;align-items:center;gap:6px;
+}
+.integrante::before{
+  content:'';width:5px;height:5px;
+  border-radius:50%;background:var(--dorado2);
+  flex-shrink:0;
+}
+.portada-fecha{
+  font-size:12px;color:rgba(255,255,255,0.5);
+  letter-spacing:1px;
+}
+.portada-curso{
+  margin-top:8px;
+  font-size:11px;color:rgba(255,255,255,0.45);
+}
+
+/* SVG humano decorativo */
+.portada-svg{margin:24px auto 28px;opacity:0.9;}
+
+/* ── SEPARADOR ── */
+.sep{
+  height:4px;
+  background:linear-gradient(90deg,var(--verde3),var(--morado2),var(--dorado));
+}
+
+/* ── 2. EDITORIAL ── */
+#editorial{background:var(--blanco);}
+.editorial-grid{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;}
+.editorial-label{
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  transform:rotate(180deg);
+  font-family:'Playfair Display',serif;
+  font-size:64px;font-weight:900;
+  color:var(--verde4);
+  line-height:1;
+  user-select:none;
+}
+.editorial-content{}
+.editorial-tag{
+  display:inline-block;
+  background:var(--verde4);
+  color:var(--verde);
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;margin-bottom:16px;
+}
+.editorial-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:28px;font-weight:700;
+  color:var(--verde);line-height:1.3;margin-bottom:16px;
+}
+.editorial-texto{
+  font-size:14.5px;color:var(--texto2);line-height:1.9;
+  margin-bottom:14px;
+}
+.editorial-firma{
+  margin-top:24px;padding-top:16px;
+  border-top:2px solid var(--verde4);
+  font-size:12px;color:var(--texto3);
+  font-style:italic;
+}
+
+/* ── 3. ÍNDICE ── */
+#indice{background:var(--cream);}
+.indice-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:32px;font-weight:700;color:var(--verde);
+  margin-bottom:32px;
+  padding-bottom:12px;
+  border-bottom:3px solid var(--verde4);
+}
+.indice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.indice-item{
+  background:var(--blanco);
+  border-radius:12px;padding:14px 18px;
+  display:flex;align-items:center;gap:14px;
+  border:1px solid var(--borde);
+  text-decoration:none;color:var(--texto);
+  transition:all .2s;
+}
+.indice-item:hover{
+  transform:translateX(6px);
+  box-shadow:0 4px 16px rgba(0,0,0,0.08);
+  border-color:var(--verde3);
+}
+.indice-num{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:900;
+  color:var(--verde4);
+  min-width:32px;
+}
+.indice-text h4{font-size:13px;font-weight:600;color:var(--verde);margin-bottom:2px;}
+.indice-text p{font-size:11px;color:var(--texto3);}
+
+/* ── SECCIONES DIMENSIONES ── */
+.dim-section{background:var(--blanco);}
+.dim-section:nth-child(even){background:var(--cream);}
+
+.dim-header{
+  border-radius:16px;padding:28px 32px;margin-bottom:28px;
+  display:flex;align-items:center;gap:20px;
+}
+.dim-icon-big{font-size:48px;flex-shrink:0;}
+.dim-header-text h2{
+  font-family:'Playfair Display',serif;
+  font-size:26px;font-weight:700;margin-bottom:4px;
+}
+.dim-header-text p{font-size:13px;opacity:0.8;line-height:1.6;}
+
+.dim-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.dim-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:16px;}
+.dim-card{
+  background:var(--blanco);border-radius:12px;
+  padding:16px 15px;border:1px solid var(--borde);
+}
+.dim-card h4{font-size:12px;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.4px;}
+.dim-card p{font-size:12px;color:var(--texto2);line-height:1.65;}
+
+.dim-quote{
+  border-left:4px solid;border-radius:0 12px 12px 0;
+  padding:14px 20px;margin:16px 0;
+  font-size:13px;color:var(--texto2);font-style:italic;line-height:1.8;
+}
+.dim-quote strong{font-style:normal;}
+
+.recom-box{
+  border-radius:12px;padding:18px 20px;margin-top:16px;
+}
+.recom-box h4{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.recom-list{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.recom-item{
+  background:rgba(255,255,255,0.6);
+  border-radius:8px;padding:8px 11px;
+  font-size:11.5px;color:var(--texto2);
+  display:flex;gap:7px;align-items:flex-start;
+}
+.recom-item span{flex-shrink:0;font-size:13px;}
+
+/* ── ETIQUETA ADULTO/VEJEZ ── */
+.etapa-pills{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.pill{
+  padding:3px 12px;border-radius:20px;
+  font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;
+}
+
+/* ── TABLA COMPARATIVA ── */
+.tabla-comp{width:100%;border-collapse:collapse;border-radius:12px;overflow:hidden;margin:16px 0;}
+.tabla-comp thead tr{background:var(--verde);color:#fff;}
+.tabla-comp thead th{padding:11px 14px;font-size:12px;font-weight:600;text-align:left;}
+.tabla-comp tbody tr:nth-child(even){background:var(--cream);}
+.tabla-comp tbody tr:nth-child(odd){background:#fff;}
+.tabla-comp tbody td{padding:10px 14px;font-size:12px;color:var(--texto2);border-bottom:1px solid var(--borde);}
+
+/* ── DATOS NUMÉRICOS ── */
+.datos-strip{
+  display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;
+}
+.dato-chip{
+  flex:1;min-width:120px;
+  background:#fff;border-radius:10px;padding:12px 10px;
+  text-align:center;border:1px solid var(--borde);
+  border-top:3px solid;
+}
+.dato-chip .num{
+  font-family:'Playfair Display',serif;
+  font-size:22px;font-weight:900;line-height:1.1;margin-bottom:3px;
+}
+.dato-chip .lbl{font-size:9.5px;color:var(--texto3);line-height:1.4;}
+
+/* ── COMPROMISO PSICÓLOGO ── */
+.compromiso-box{
+  background:linear-gradient(135deg,var(--verde),var(--morado));
+  border-radius:16px;padding:28px 28px;color:#fff;margin-top:20px;
+}
+.compromiso-box h3{
+  font-family:'Playfair Display',serif;
+  font-size:18px;font-weight:700;margin-bottom:14px;color:var(--dorado2);
+}
+.compromiso-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.comp-item{
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:10px;padding:12px 14px;
+}
+.comp-item h4{font-size:12px;font-weight:700;color:var(--dorado2);margin-bottom:6px;}
+.comp-item p{font-size:11.5px;opacity:0.88;line-height:1.6;}
+
+/* ── CONCLUSIONES ── */
+#conclusiones{background:var(--verde);color:#fff;}
+.conc-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:28px;font-weight:700;color:var(--dorado2);
+  margin-bottom:28px;
+}
+.conc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.conc-card{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:12px;padding:18px 17px;
+}
+.conc-card .autor{
+  font-size:11px;font-weight:700;color:var(--dorado2);
+  letter-spacing:0.5px;margin-bottom:8px;text-transform:uppercase;
+}
+.conc-card p{font-size:12.5px;line-height:1.75;opacity:0.88;}
+
+/* ── REFERENCIAS ── */
+#referencias{background:var(--cream);}
+.ref-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:24px;font-weight:700;color:var(--verde);margin-bottom:20px;
+}
+.ref-item{
+  background:var(--blanco);border-radius:10px;
+  padding:12px 16px;margin-bottom:8px;
+  border-left:3px solid var(--verde3);
+  font-size:12px;color:var(--texto2);line-height:1.7;
+}
+.ref-item a{color:var(--morado);word-break:break-all;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--texto);color:rgba(255,255,255,0.55);
+  padding:28px 32px;text-align:center;
+  font-size:11px;line-height:2;
+}
+footer strong{color:#fff;}
+
+/* ── SCROLL INDICATOR ── */
+.scroll-hint{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:1px;
+  animation:bounce 2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* RESPONSIVE */
+@media(max-width:680px){
+  .editorial-grid{grid-template-columns:1fr;}
+  .editorial-label{display:none;}
+  .indice-grid,.dim-grid-2,.dim-grid-3,.conc-grid,.compromiso-grid,.recom-list{grid-template-columns:1fr;}
+  .integrantes-grid{grid-template-columns:1fr;}
+  nav{padding:0 16px;}
+  .nav-links a{font-size:10px;padding:4px 8px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Trayectos de Vida</div>
+  <div class="nav-links">
+    <a href="#editorial">Editorial</a>
+    <a href="#indice">Índice</a>
+    <a href="#adultez">Adultez</a>
+    <a href="#vejez">Vejez</a>
+    <a href="#compromiso">Compromiso</a>
+    <a href="#conclusiones">Conclusiones</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     1. PORTADA
+══════════════════════════════════════════ -->
+<section id="portada">
+  <div class="portada-deco">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="portada-inner">
+    <div class="portada-tag">Revista Digital · Psicología y Curso de Vida · Código 402537617</div>
+
+    <!-- Ilustración SVG humana decorativa -->
+    <svg class="portada-svg" width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Figura adulta -->
+      <circle cx="38" cy="22" r="10" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+      <path d="M28 40 Q38 34 48 40 L52 68 Q38 72 24 68 Z" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.4)" stroke-width="1.2"/>
+      <line x1="24" y1="68" x2="20" y2="92" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="52" y1="68" x2="56" y2="92" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-linecap="round"/>
+      <!-- Figura anciana con bastón -->
+      <circle cx="82" cy="22" r="10" fill="rgba(242,215,138,0.3)" stroke="rgba(242,215,138,0.6)" stroke-width="1.5"/>
+      <path d="M72 40 Q82 36 92 40 L94 65 Q82 70 70 65 Z" fill="rgba(242,215,138,0.15)" stroke="rgba(242,215,138,0.5)" stroke-width="1.2"/>
+      <line x1="70" y1="65" x2="66" y2="90" stroke="rgba(242,215,138,0.5)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="94" y1="65" x2="98" y2="90" stroke="rgba(242,215,138,0.5)" stroke-width="2" stroke-linecap="round"/>
+      <!-- bastón -->
+      <line x1="98" y1="90" x2="104" y2="110" stroke="rgba(242,215,138,0.7)" stroke-width="2" stroke-linecap="round"/>
+      <line x1="101" y1="110" x2="107" y2="110" stroke="rgba(242,215,138,0.7)" stroke-width="2" stroke-linecap="round"/>
+      <!-- flecha de tiempo -->
+      <path d="M54 55 Q60 50 66 55" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" marker-end="url(#arr)"/>
+      <defs><marker id="arr" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/></marker></defs>
+    </svg>
+
+    <h1 class="portada-titulo">Trayectos de <em>Vida</em><br>y Cambio</h1>
+    <p class="portada-subtitulo">Del ser adulto al envejecimiento: dimensiones del desarrollo humano en la adultez y la vejez</p>
+
+    <div class="portada-integrantes">
+      <h4>Integrantes del grupo</h4>
+      <div class="integrantes-grid">
+        <div class="integrante">Alejandro Zapata Palacio</div>
+        <div class="integrante">Daly Núñez Babilonia</div>
+        <div class="integrante">Natalia Andrea Santos Piedrahita</div>
+        <div class="integrante">Sara Yineth Escobar Hurtado</div>
+        <div class="integrante" style="grid-column:1/-1;">Ana Carolina Bedoya Cardona</div>
+      </div>
+    </div>
+
+    <div class="portada-fecha">Abril de 2026</div>
+    <div class="portada-curso">Universidad Nacional Abierta y a Distancia — UNAD · ECSAH</div>
+  </div>
+  <div class="scroll-hint">↓ &nbsp; desplázate para leer</div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════════
+     2. EDITORIAL
+══════════════════════════════════════════ -->
+<section id="editorial">
+  <div class="container">
+    <div class="editorial-grid">
+      <div class="editorial-label">Editorial</div>
+      <div class="editorial-content">
+        <div class="editorial-tag">Editorial</div>
+        <h2 class="editorial-titulo">Envejecer con dignidad: una mirada psicológica integral</h2>
+        <p class="editorial-texto">
+          Envejecer no es sinónimo de declive. Es, ante todo, un proceso universal, dinámico y profundamente humano que atraviesa dimensiones biológicas, cognitivas, emocionales, sociales e identitarias. Esta revista digital nace del reconocimiento de que la adultez y la vejez no son el final del ciclo vital, sino etapas plenas de transformaciones, aprendizajes y oportunidades de crecimiento personal.
+        </p>
+        <p class="editorial-texto">
+          En el marco del curso <em>Psicología y Curso de Vida</em> de la UNAD, este grupo de estudiantes asumió el reto de explorar, desde una perspectiva multidimensional, los cambios y desafíos que viven los seres humanos entre los 18 y el final de su existencia. El resultado que el lector tiene en sus manos es el fruto de la investigación individual y del trabajo colaborativo: cinco dimensiones —biológica, cognitiva, emocional, social y cultural, e identidad— que se articulan para comprender la complejidad del ser adulto y del ser que envejece.
+        </p>
+        <p class="editorial-texto">
+          El enfoque de esta revista no es clínico ni reduccionista. Partimos de una visión <strong>biopsicosocial</strong> que reconoce que la calidad de vida en estas etapas depende tanto de factores orgánicos como del entorno familiar, cultural y comunitario en el que cada persona se desarrolla. Apostamos por una psicología comprometida con el bienestar, la prevención y el respeto por la dignidad de cada trayecto de vida.
+        </p>
+        <p class="editorial-texto">
+          Invitamos al lector a recorrer estas páginas con curiosidad y empatía, recordando que cada dato, teoría y reflexión aquí presentados habla, en última instancia, de seres humanos reales: de nuestros mayores, de nosotros mismos en el futuro.
+        </p>
+        <div class="editorial-firma">
+          — El grupo colaborativo · Tarea 3, RAC 2 · Psicología y Curso de Vida (402537617) · UNAD, 2026
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════════
+     3. ÍNDICE
+══════════════════════════════════════════ -->
+<section id="indice">
+  <div class="container">
+    <h2 class="indice-titulo">Contenido de la revista</h2>
+    <div class="indice-grid">
+      <a class="indice-item" href="#adultez">
+        <div class="indice-num">01</div>
+        <div class="indice-text"><h4>Adultez: las 5 dimensiones</h4><p>Biológica · Cognitiva · Emocional · Social · Identidad</p></div>
+      </a>
+      <a class="indice-item" href="#recom-adultez">
+        <div class="indice-num">02</div>
+        <div class="indice-text"><h4>Recomendaciones en la adultez</h4><p>Hábitos, estrategias y recursos para el bienestar</p></div>
+      </a>
+      <a class="indice-item" href="#vejez">
+        <div class="indice-num">03</div>
+        <div class="indice-text"><h4>Vejez: las 5 dimensiones</h4><p>Cambios y desafíos en la tercera edad</p></div>
+      </a>
+      <a class="indice-item" href="#recom-vejez">
+        <div class="indice-num">04</div>
+        <div class="indice-text"><h4>Recomendaciones en la vejez</h4><p>Envejecimiento activo y calidad de vida</p></div>
+      </a>
+      <a class="indice-item" href="#compromiso">
+        <div class="indice-num">05</div>
+        <div class="indice-text"><h4>Compromiso social empático</h4><p>Rol del psicólogo en adultez y vejez</p></div>
+      </a>
+      <a class="indice-item" href="#conclusiones">
+        <div class="indice-num">06</div>
+        <div class="indice-text"><h4>Conclusiones del grupo</h4><p>Reflexiones individuales de cada integrante</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════════
+     4. ADULTEZ — 5 DIMENSIONES
+══════════════════════════════════════════ -->
+<section id="adultez" style="background:#fff;padding:60px 0 20px;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div style="display:inline-block;background:var(--verde4);color:var(--verde);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:12px;">Sección 01</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:var(--verde);margin-bottom:8px;">La Adultez</h2>
+      <p style="font-size:14px;color:var(--texto3);max-width:540px;margin:0 auto;">Etapa que abarca desde los 18 hasta los 65 años aproximadamente, caracterizada por la plenitud productiva, la consolidación de la identidad y el inicio gradual de cambios físicos y cognitivos.</p>
+    </div>
+
+    <!-- DIMENSIÓN BIOLÓGICA -->
+    <div style="margin-bottom:40px;">
+      <div class="dim-header" style="background:var(--bio-bg);">
+        <div class="dim-icon-big">🧬</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--bio-c);">Dimensión Biológica</h2>
+          <p style="color:var(--bio-c);">Cambios físicos, salud, sexualidad, enfermedades crónicas y envejecimiento en la adultez</p>
+        </div>
+      </div>
+      <div class="dim-grid-3">
+        <div class="dim-card">
+          <h4 style="color:var(--bio-c);">🦴 Cambios físicos</h4>
+          <p>Entre los 30 y 40 años inicia la pérdida gradual de masa ósea y muscular. La piel pierde elasticidad, el metabolismo se desacelera y los sentidos comienzan a disminuir su agudeza de forma leve pero progresiva.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--bio-c);">❤️ Salud cardiovascular</h4>
+          <p>La capacidad aeróbica máxima decrece aproximadamente un 1% por año tras los 30. La presión arterial tiende a aumentar y el corazón bombea con menor eficiencia, especialmente bajo estrés físico.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--bio-c);">💜 Sexualidad</h4>
+          <p>En la adultez media (40–65 años) ocurren cambios hormonales significativos: menopausia en mujeres (45–55 años) y andropausia gradual en hombres. La vida sexual puede mantenerse plena con adaptaciones.</p>
+        </div>
+      </div>
+      <div class="datos-strip">
+        <div class="dato-chip" style="border-top-color:var(--bio-c);">
+          <div class="num" style="color:var(--bio-c);">-1%</div>
+          <div class="lbl">densidad ósea/año tras la menopausia</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--bio-c);">
+          <div class="num" style="color:var(--bio-c);">45–55</div>
+          <div class="lbl">años: edad promedio de menopausia</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--bio-c);">
+          <div class="num" style="color:var(--bio-c);">30%</div>
+          <div class="lbl">pérdida muscular entre 40 y 80 años</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--bio-c);">
+          <div class="num" style="color:var(--bio-c);">20%</div>
+          <div class="lbl">capacidad pulmonar perdida entre 20–70 años</div>
+        </div>
+      </div>
+      <div class="dim-quote" style="border-left-color:var(--bio-c);background:var(--bio-bg);">
+        Según Lizaso Elgarresta et al. (2018), el envejecimiento biológico en la adultez es un proceso <strong>universal, progresivo e individual</strong> que no implica enfermedad, sino una transformación gradual de la capacidad funcional del organismo.
+      </div>
+    </div>
+
+    <!-- DIMENSIÓN COGNITIVA -->
+    <div style="margin-bottom:40px;">
+      <div class="dim-header" style="background:var(--cog-bg);">
+        <div class="dim-icon-big">🧠</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--cog-c);">Dimensión Cognitiva</h2>
+          <p style="color:var(--cog-c);">¿Cómo cambia nuestra mente a lo largo de la vida? Memoria, atención e inteligencia en la adultez</p>
+        </div>
+      </div>
+      <div class="dim-grid-3">
+        <div class="dim-card">
+          <h4 style="color:var(--cog-c);">💭 Memoria (adultez 20–65 años)</h4>
+          <p>La memoria de trabajo se mantiene estable: capacidad de retener y manipular información para tareas complejas. La memoria a largo plazo se mantiene fuerte durante la adultez plena.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--cog-c);">🎯 Atención en la adultez</h4>
+          <p>La atención sostenida alcanza su punto máximo. Alta capacidad de multitarea y concentración prolongada en actividades laborales y personales. El procesamiento de información es ágil y eficiente.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--cog-c);">💡 Inteligencia en la adultez</h4>
+          <p>La inteligencia cristalizada (vocabulario, experiencia, conocimiento) aumenta con la edad. Se desarrolla el <em>pensamiento postformal</em>: flexible, contextual y práctico, capaz de integrar contradicciones.</p>
+        </div>
+      </div>
+      <div class="datos-strip">
+        <div class="dato-chip" style="border-top-color:var(--cog-c);">
+          <div class="num" style="color:var(--cog-c);">25–35</div>
+          <div class="lbl">años: pico de velocidad de procesamiento</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--cog-c);">
+          <div class="num" style="color:var(--cog-c);">+60</div>
+          <div class="lbl">años: la I. cristalizada puede seguir creciendo</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--cog-c);">
+          <div class="num" style="color:var(--cog-c);">40%</div>
+          <div class="lbl">de adultos reportan olvidos cotidianos leves tras los 50</div>
+        </div>
+      </div>
+      <div class="dim-quote" style="border-left-color:var(--cog-c);background:var(--cog-bg);">
+        Para Papalia y Martorell (2021), el pensamiento adulto se vuelve más <strong>pragmático, relativista y dialéctico</strong>: la experiencia compensa la velocidad, y la sabiduría emerge como producto del recorrido vital.
+      </div>
+      <div class="dim-card" style="margin-top:12px;">
+        <h4 style="color:var(--cog-c);">🌱 Estimulación cognitiva recomendada en adultez</h4>
+        <p>Aprender nuevas habilidades · Lectura y formación continua · Mantener redes sociales activas · Ejercicio físico regular. Estas prácticas construyen reserva cognitiva que protege el cerebro a largo plazo.</p>
+      </div>
+    </div>
+
+    <!-- DIMENSIÓN EMOCIONAL -->
+    <div style="margin-bottom:40px;">
+      <div class="dim-header" style="background:var(--emo-bg);">
+        <div class="dim-icon-big">💛</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--emo-c);">Dimensión Emocional</h2>
+          <p style="color:var(--emo-c);">La forma en que las personas sienten, entienden y manejan sus emociones durante la adultez y vejez</p>
+        </div>
+      </div>
+      <div class="dim-grid-3">
+        <div class="dim-card">
+          <h4 style="color:var(--emo-c);">🌱 Regulación emocional</h4>
+          <p>Mayor control de las emociones, más calma y estabilidad, mejor manejo del estrés y capacidad de expresar sentimientos de forma adecuada. Los adultos desarrollan mayor habilidad para regular sus emociones en comparación con los jóvenes.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--emo-c);">🤝 Vínculos afectivos</h4>
+          <p>Relaciones con familia, amigos y comunidad basadas en preferencia por vínculos sinceros y cercanos. El apoyo emocional constante y la reducción de la soledad son factores protectores clave del bienestar en estas etapas.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--emo-c);">🧭 Sentido de vida</h4>
+          <p>Reflexión sobre la vida vivida, valoración de logros y aprendizajes, búsqueda de propósito personal y motivación para seguir creciendo. Erikson identifica la <em>generatividad vs. estancamiento</em> como tarea central de la adultez media.</p>
+        </div>
+      </div>
+      <div class="dim-grid-2">
+        <div class="dim-card">
+          <h4 style="color:var(--emo-c);">💎 Autoestima y autoconcepto</h4>
+          <p>La aceptación de sí mismo, el reconocimiento de fortalezas y la seguridad personal influyen directamente en la forma de enfrentar la vejez. Una autoestima saludable es factor protector contra la depresión y el aislamiento.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--emo-c);">✨ Bienestar emocional</h4>
+          <p>Sentirse en paz consigo mismo, manejo adecuado de emociones negativas, disfrute de la vida diaria y relación con la salud mental. El concepto de <em>elder pride</em> (orgullo de envejecer) desafía los estereotipos negativos sobre la vejez.</p>
+        </div>
+      </div>
+      <div class="dim-quote" style="border-left-color:var(--emo-c);background:var(--emo-bg);">
+        Triadó y Celdrán (2019) señalan que el <strong>bienestar emocional en la adultez</strong> no depende únicamente de la ausencia de estrés, sino de la capacidad para dar sentido a las experiencias difíciles y mantener vínculos significativos.
+      </div>
+    </div>
+
+    <!-- DIMENSIÓN SOCIAL Y CULTURAL -->
+    <div style="margin-bottom:40px;">
+      <div class="dim-header" style="background:var(--soc-bg);">
+        <div class="dim-icon-big">🌍</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--soc-c);">Dimensión Social y Cultural</h2>
+          <p style="color:var(--soc-c);">La influencia del entorno social y cultural en el desarrollo humano durante la adultez</p>
+        </div>
+      </div>
+      <div class="dim-grid-2">
+        <div class="dim-card">
+          <h4 style="color:var(--soc-c);">👨‍👩‍👧 Aspectos sociales y culturales</h4>
+          <p>En la adultez, la persona consolida su lugar en la sociedad mediante roles y vínculos significativos: desempeño de roles (trabajo, familia, pareja), participación en la vida social y comunitaria, construcción de redes de apoyo e influencia de normas y expectativas sociales.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--soc-c);">🧩 Impacto psicológico</h4>
+          <p>Formación de la identidad social, desarrollo de la autoestima a partir del reconocimiento social, estrategias de afrontamiento frente a estrés y responsabilidades, y construcción de un sentido de pertenencia a grupos y comunidades significativas.</p>
+        </div>
+      </div>
+      <div class="datos-strip">
+        <div class="dato-chip" style="border-top-color:var(--soc-c);">
+          <div class="num" style="color:var(--soc-c);">65%</div>
+          <div class="lbl">de cuidadores informales de adultos mayores son mujeres en edad adulta</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--soc-c);">
+          <div class="num" style="color:var(--soc-c);">3x</div>
+          <div class="lbl">mayor riesgo de depresión en adultos con aislamiento social</div>
+        </div>
+      </div>
+      <div class="dim-quote" style="border-left-color:var(--soc-c);background:var(--soc-bg);">
+        <strong>"El ser humano se construye en relación con los otros; es en el vínculo donde encuentra sentido, identidad y posibilidades de desarrollo."</strong> — Alejandro Zapata Palacio
+      </div>
+    </div>
+
+    <!-- DIMENSIÓN IDENTIDAD -->
+    <div style="margin-bottom:20px;">
+      <div class="dim-header" style="background:var(--ide-bg);">
+        <div class="dim-icon-big">🔮</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--ide-c);">Dimensión de Identidad</h2>
+          <p style="color:var(--ide-c);">Proyectos vitales, generatividad, revisión de vida y espiritualidad</p>
+        </div>
+      </div>
+      <div class="dim-grid-3">
+        <div class="dim-card">
+          <h4 style="color:var(--ide-c);">🧠 ¿Qué es la identidad?</h4>
+          <p>Es el conjunto de características, pensamientos, emociones y valores que hacen única a cada persona. Se construye a lo largo de la vida a partir de experiencias, relaciones y contexto social, mediante cuatro procesos: exploración, experiencia, reflexión y definición.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--ide-c);">🌟 Elementos clave</h4>
+          <p>La identidad integra el <em>autoconcepto</em> (cómo me percibo), la <em>autoestima</em> (cuánto me valoro), los <em>valores</em> personales, las <em>creencias</em> que guían mi visión del mundo y los <em>roles sociales</em> que desempeño.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--ide-c);">🤝 Factores que influyen</h4>
+          <p>La familia, la educación, las relaciones sociales, la cultura y sociedad y los medios de comunicación moldean la identidad a lo largo del ciclo vital. Su consolidación permite tomar decisiones coherentes, fortalecer la seguridad personal y afrontar cambios.</p>
+        </div>
+      </div>
+      <div class="dim-grid-2">
+        <div class="dim-card">
+          <h4 style="color:var(--ide-c);">🌱 Proyectos vitales y generatividad</h4>
+          <p>Erikson propone que la tarea central de la adultez media es la <em>generatividad</em>: dejar un legado a través de los hijos, la comunidad, el trabajo o la creatividad. El adulto que no lo logra experimenta un sentido de estancamiento y vacío existencial.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--ide-c);">🙏 Espiritualidad y revisión de vida</h4>
+          <p>Muchos adultos atraviesan una "crisis de la mediana edad" que los impulsa a revisar sus decisiones, valores y metas. La espiritualidad —no necesariamente religiosa— emerge como recurso de afrontamiento y búsqueda de trascendencia y propósito.</p>
+        </div>
+      </div>
+      <div class="dim-quote" style="border-left-color:var(--ide-c);background:var(--ide-bg);">
+        <strong>"La identidad no se encuentra, se construye día a día."</strong> — Sara Yineth Escobar Hurtado
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     5. RECOMENDACIONES ADULTEZ
+══════════════════════════════════════════ -->
+<section id="recom-adultez" style="background:var(--cream);padding:50px 0;">
+  <div class="container">
+    <div style="display:inline-block;background:var(--verde4);color:var(--verde);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:14px;">Sección 02</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--verde);margin-bottom:20px;">Recomendaciones útiles en la adultez</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+      <div class="recom-box" style="background:var(--bio-bg);border:1px solid rgba(45,96,72,0.2);">
+        <h4 style="color:var(--bio-c);">🧬 Física y biológica</h4>
+        <div class="recom-list">
+          <div class="recom-item"><span>🏃</span>150 min/semana de actividad física moderada (OMS)</div>
+          <div class="recom-item"><span>🥦</span>Dieta mediterránea rica en calcio y antioxidantes</div>
+          <div class="recom-item"><span>🩺</span>Chequeos preventivos anuales tras los 40</div>
+          <div class="recom-item"><span>🚭</span>Evitar tabaquismo y consumo excesivo de alcohol</div>
+        </div>
+      </div>
+      <div class="recom-box" style="background:var(--cog-bg);border:1px solid rgba(24,95,165,0.2);">
+        <h4 style="color:var(--cog-c);">🧠 Cognitiva y emocional</h4>
+        <div class="recom-list">
+          <div class="recom-item"><span>📖</span>Lectura, aprendizaje continuo y retos mentales</div>
+          <div class="recom-item"><span>🧘</span>Mindfulness y manejo del estrés crónico</div>
+          <div class="recom-item"><span>😴</span>Higiene del sueño: 7–9 horas de calidad</div>
+          <div class="recom-item"><span>🗣️</span>Psicoterapia preventiva en crisis del ciclo vital</div>
+        </div>
+      </div>
+      <div class="recom-box" style="background:var(--soc-bg);border:1px solid rgba(200,150,42,0.2);">
+        <h4 style="color:var(--soc-c);">🌍 Social e identitaria</h4>
+        <div class="recom-list">
+          <div class="recom-item"><span>👥</span>Mantener y cultivar redes de apoyo significativas</div>
+          <div class="recom-item"><span>🎯</span>Construir proyectos de vida con sentido propio</div>
+          <div class="recom-item"><span>⚖️</span>Equilibrio entre vida laboral, familiar y personal</div>
+          <div class="recom-item"><span>🤲</span>Participación en actividades comunitarias</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════════
+     6. VEJEZ — 5 DIMENSIONES
+══════════════════════════════════════════ -->
+<section id="vejez" style="background:#fff;padding:60px 0 20px;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:40px;">
+      <div style="display:inline-block;background:var(--morado3);color:var(--morado);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:12px;">Sección 03</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:34px;font-weight:900;color:var(--morado);margin-bottom:8px;">La Vejez</h2>
+      <p style="font-size:14px;color:var(--texto3);max-width:540px;margin:0 auto;">Etapa que inicia aproximadamente a los 65 años. Lejos de ser un período de mera declinación, la vejez puede ser una etapa de plenitud, sabiduría e integración vital cuando se acompaña de condiciones adecuadas.</p>
+    </div>
+
+    <!-- BIO VEJEZ -->
+    <div style="margin-bottom:40px;">
+      <div class="dim-header" style="background:var(--bio-bg);">
+        <div class="dim-icon-big">🌿</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--bio-c);">Biológica en la vejez</h2>
+          <p style="color:var(--bio-c);">Cambios físicos acelerados, enfermedades crónicas y proceso de envejecimiento avanzado</p>
+        </div>
+      </div>
+
+      <table class="tabla-comp">
+        <thead>
+          <tr><th>Sistema</th><th>Cambio en vejez</th><th>Implicación funcional</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Óseo-muscular</td><td>Osteoporosis severa, sarcopenia pronunciada</td><td>Alto riesgo de caídas y fracturas</td></tr>
+          <tr><td>Cardiovascular</td><td>Gasto cardíaco reducido 50% vs. adulto joven</td><td>Menor tolerancia al esfuerzo físico</td></tr>
+          <tr><td>Nervioso</td><td>Pérdida neuronal, menor neurotransmisión</td><td>Riesgo de demencias y lentitud motora</td></tr>
+          <tr><td>Inmunológico</td><td>Inmunosenescencia pronunciada</td><td>Mayor vulnerabilidad a infecciones</td></tr>
+          <tr><td>Respiratorio</td><td>Pérdida de elasticidad pulmonar</td><td>Menor capacidad de esfuerzo aeróbico</td></tr>
+        </tbody>
+      </table>
+
+      <div class="datos-strip">
+        <div class="dato-chip" style="border-top-color:var(--bio-c);">
+          <div class="num" style="color:var(--bio-c);">80%</div>
+          <div class="lbl">de mayores de 65 tiene al menos 1 enfermedad crónica</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--bio-c);">
+          <div class="num" style="color:var(--bio-c);">50%</div>
+          <div class="lbl">tiene 2 o más enfermedades simultáneas</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--bio-c);">
+          <div class="num" style="color:var(--bio-c);">×2</div>
+          <div class="lbl">el riesgo de Alzheimer se duplica cada 5 años tras los 65</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--bio-c);">
+          <div class="num" style="color:var(--bio-c);">3 de 4</div>
+          <div class="lbl">muertes en >60 años son por enfermedades crónicas (OMS)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COG VEJEZ -->
+    <div style="margin-bottom:40px;">
+      <div class="dim-header" style="background:var(--cog-bg);">
+        <div class="dim-icon-big">💡</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--cog-c);">Cognitiva en la vejez</h2>
+          <p style="color:var(--cog-c);">¿Cómo cambia la mente en la vejez (65+ años)? Memoria, atención, inteligencia y estimulación</p>
+        </div>
+      </div>
+      <div class="dim-grid-3">
+        <div class="dim-card">
+          <h4 style="color:var(--cog-c);">💭 Memoria en vejez</h4>
+          <p>La memoria episódica (eventos recientes) puede declinar. Sin embargo, la <em>memoria semántica</em> (conocimientos) y la <em>memoria procedimental</em> (habilidades) se preservan bien. Distinguir olvidos normales de señales de alerta es fundamental.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--cog-c);">🎯 Atención en vejez</h4>
+          <p>Mayor distractibilidad y dificultad para filtrar estímulos irrelevantes. La atención selectiva requiere más esfuerzo consciente. La multitarea se vuelve más demandante pero no imposible con estrategias adecuadas.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--cog-c);">⚠️ Normal vs. patológico</h4>
+          <p><strong>Normal:</strong> olvidos ocasionales, "tengo la palabra en la punta de la lengua". <strong>Patológico:</strong> desorientación, pérdida de autonomía, cambios de personalidad → señal de alerta que requiere consultar con especialista.</p>
+        </div>
+      </div>
+      <div class="datos-strip">
+        <div class="dato-chip" style="border-top-color:var(--cog-c);">
+          <div class="num" style="color:var(--cog-c);">60%</div>
+          <div class="lbl">de demencias son tipo Alzheimer (OMS, 2021)</div>
+        </div>
+        <div class="dato-chip" style="border-top-color:var(--cog-c);">
+          <div class="num" style="color:var(--cog-c);">55M</div>
+          <div class="lbl">personas con demencia en el mundo actualmente</div>
+        </div>
+      </div>
+      <div class="dim-card" style="margin-top:12px;">
+        <h4 style="color:var(--cog-c);">🌱 Estimulación cognitiva en vejez</h4>
+        <p>Puzzles, juegos de mesa, lectura · Participación social activa · Música y actividades artísticas · Caminatas y ejercicio adaptado. Estas actividades fortalecen la reserva cerebral y retrasan el deterioro cognitivo.</p>
+      </div>
+    </div>
+
+    <!-- EMO VEJEZ -->
+    <div style="margin-bottom:40px;">
+      <div class="dim-header" style="background:var(--emo-bg);">
+        <div class="dim-icon-big">🌸</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--emo-c);">Emocional en la vejez</h2>
+          <p style="color:var(--emo-c);">Integración del yo, duelo, resiliencia y bienestar emocional en la tercera edad</p>
+        </div>
+      </div>
+      <div class="dim-grid-2">
+        <div class="dim-card">
+          <h4 style="color:var(--emo-c);">🕊️ Integridad vs. desesperación</h4>
+          <p>Erikson propone que la tarea final del ciclo vital es alcanzar la <em>integridad del yo</em>: aceptar la propia vida como única e irrepetible. Quienes no lo logran enfrentan desesperación ante la proximidad de la muerte.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--emo-c);">💔 Duelo y pérdidas</h4>
+          <p>La vejez conlleva múltiples pérdidas: cónyuge, amigos, capacidades físicas, rol laboral. El duelo bien acompañado puede transformarse en crecimiento postraumático. La depresión es frecuente pero subdiagnosticada.</p>
+        </div>
+      </div>
+      <div class="dim-quote" style="border-left-color:var(--emo-c);background:var(--emo-bg);">
+        Amezcua y García Domingo (2022) destacan el concepto de <strong>elder pride</strong>: una actitud positiva y activa frente al envejecimiento que desafía los estereotipos negativos y reivindica la vejez como etapa de valor social y personal.
+      </div>
+    </div>
+
+    <!-- SOC VEJEZ -->
+    <div style="margin-bottom:40px;">
+      <div class="dim-header" style="background:var(--soc-bg);">
+        <div class="dim-icon-big">👴👵</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--soc-c);">Social y cultural en la vejez</h2>
+          <p style="color:var(--soc-c);">Transformaciones en roles, redes de apoyo, estereotipos y participación social en la tercera edad</p>
+        </div>
+      </div>
+      <div class="dim-grid-2">
+        <div class="dim-card">
+          <h4 style="color:var(--soc-c);">🔄 Aspectos sociales y culturales</h4>
+          <p>La vejez implica transformaciones en los roles y en la participación social: jubilación y cambio de rol social, posible reducción de redes sociales, mayor dependencia del apoyo familiar y presencia de estereotipos sobre la vejez que limitan la participación.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--soc-c);">🧩 Impacto psicológico</h4>
+          <p>Reconfiguración de la identidad social, cambios en la autoestima según inclusión o exclusión social, afrontamiento de pérdidas (sociales, familiares, físicas) y búsqueda de sentido y adaptación a nuevos contextos vitales.</p>
+        </div>
+      </div>
+      <div class="dim-grid-2" style="margin-top:12px;">
+        <div class="dim-card" style="background:var(--soc-bg);">
+          <h4 style="color:var(--soc-c);">🤲 Redes de apoyo</h4>
+          <p>Las redes de apoyo son fundamentales en la vejez: favorecen el bienestar emocional, fortalecen la autoestima, facilitan la adaptación a cambios y previenen el aislamiento social. El apoyo familiar e institucional es determinante para la calidad de vida.</p>
+        </div>
+        <div class="dim-card" style="background:#FFF3E0;">
+          <h4 style="color:#804000;">⚠️ Estereotipos y sociedad</h4>
+          <p>Los estereotipos sociales sobre la vejez pueden generar: exclusión social, disminución de la autoestima, limitación de oportunidades y afectación de la identidad social. Combatir el edadismo es una responsabilidad ética del psicólogo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- IDE VEJEZ -->
+    <div style="margin-bottom:20px;">
+      <div class="dim-header" style="background:var(--ide-bg);">
+        <div class="dim-icon-big">✨</div>
+        <div class="dim-header-text">
+          <h2 style="color:var(--ide-c);">Identidad en la vejez</h2>
+          <p style="color:var(--ide-c);">Proceso continuo de construcción del sentido de quién se es, a partir de la experiencia acumulada</p>
+        </div>
+      </div>
+      <div class="dim-grid-3">
+        <div class="dim-card">
+          <h4 style="color:var(--ide-c);">📜 Revisión de vida</h4>
+          <p>Butler (1963) describió la <em>revisión de vida</em> como un proceso natural en la vejez: recordar, reinterpretar y reconciliar el pasado para encontrar coherencia e integridad. Permite integrar el pasado con el presente y proyectarse con propósito.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--ide-c);">🕯️ Generatividad y legado</h4>
+          <p>El deseo de dejar un legado —a través de los nietos, la comunidad o los valores transmitidos— favorece la búsqueda de significado y contribuye al bienestar emocional. La generatividad impulsa una actitud positiva y resiliente ante el envejecimiento.</p>
+        </div>
+        <div class="dim-card">
+          <h4 style="color:var(--ide-c);">🌟 Espiritualidad y trascendencia</h4>
+          <p>Tornstam propone la <em>gerotranscendencia</em>: una reorientación hacia lo espiritual y universal en la vejez tardía. La espiritualidad facilita la aceptación de los cambios propios del envejecimiento, promoviendo resiliencia y compromiso social.</p>
+        </div>
+      </div>
+      <div class="dim-quote" style="border-left-color:var(--ide-c);background:var(--ide-bg);">
+        Una identidad consolidada en la vejez facilita la aceptación de los cambios propios del envejecimiento, promoviendo una <strong>actitud más positiva, resiliente y comprometida con el entorno social</strong> (Erikson, 1998; Triadó y Celdrán, 2019).
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     7. RECOMENDACIONES VEJEZ
+══════════════════════════════════════════ -->
+<section id="recom-vejez" style="background:var(--cream);padding:50px 0;">
+  <div class="container">
+    <div style="display:inline-block;background:var(--morado3);color:var(--morado);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:14px;">Sección 04</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--morado);margin-bottom:20px;">Recomendaciones útiles en la vejez</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+      <div class="recom-box" style="background:var(--bio-bg);border:1px solid rgba(45,96,72,0.2);">
+        <h4 style="color:var(--bio-c);">🌿 Envejecimiento activo</h4>
+        <div class="recom-list">
+          <div class="recom-item"><span>🚶</span>Ejercicio suave diario: caminata, yoga, tai chi</div>
+          <div class="recom-item"><span>💊</span>Adherencia al tratamiento de enfermedades crónicas</div>
+          <div class="recom-item"><span>🍎</span>Nutrición adaptada: proteínas, calcio, vitamina D</div>
+          <div class="recom-item"><span>🏠</span>Adaptación del hogar para prevenir caídas</div>
+        </div>
+      </div>
+      <div class="recom-box" style="background:var(--cog-bg);border:1px solid rgba(24,95,165,0.2);">
+        <h4 style="color:var(--cog-c);">🧠 Estimulación cognitiva</h4>
+        <div class="recom-list">
+          <div class="recom-item"><span>🧩</span>Juegos de memoria, sudoku, crucigramas diarios</div>
+          <div class="recom-item"><span>📚</span>Lectura y escritura de memorias o diarios</div>
+          <div class="recom-item"><span>🎨</span>Actividades artísticas y manuales creativas</div>
+          <div class="recom-item"><span>💻</span>Aprendizaje de nuevas tecnologías digitales</div>
+        </div>
+      </div>
+      <div class="recom-box" style="background:var(--ide-bg);border:1px solid rgba(91,45,142,0.2);">
+        <h4 style="color:var(--ide-c);">💜 Bienestar emocional y social</h4>
+        <div class="recom-list">
+          <div class="recom-item"><span>👥</span>Participar en grupos de adultos mayores</div>
+          <div class="recom-item"><span>🌟</span>Proyectos de voluntariado y transmisión de saberes</div>
+          <div class="recom-item"><span>🗣️</span>Acompañamiento psicológico ante duelos y pérdidas</div>
+          <div class="recom-item"><span>🙏</span>Prácticas espirituales o de revisión de vida</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════════
+     8. COMPROMISO SOCIAL EMPÁTICO
+══════════════════════════════════════════ -->
+<section id="compromiso" style="background:#fff;padding:60px 0;">
+  <div class="container">
+    <div style="display:inline-block;background:var(--verde4);color:var(--verde);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:14px;">Sección 05</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--verde);margin-bottom:8px;">Llamado al compromiso social empático</h2>
+    <p style="font-size:14px;color:var(--texto3);margin-bottom:24px;max-width:600px;">Desde el rol del psicólogo, el acompañamiento de la adultez y la vejez exige sensibilidad, formación y un compromiso ético con la dignidad humana.</p>
+
+    <div class="compromiso-box">
+      <h3>🎓 En la adultez</h3>
+      <div class="compromiso-grid">
+        <div class="comp-item">
+          <h4>Prevención y bienestar</h4>
+          <p>El psicólogo debe promover hábitos saludables, gestión del estrés y equilibrio entre los múltiples roles que asume el adulto. La psicología preventiva es más efectiva y menos costosa que la intervención en crisis.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Acompañamiento en crisis</h4>
+          <p>Divorcios, pérdidas laborales, duelos y crisis de sentido requieren acompañamiento profesional. El psicólogo facilita recursos de afrontamiento, reconstrucción de la identidad y resignificación de la experiencia.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Trabajo con familias</h4>
+          <p>El trabajo con la familia nuclear y extensa es fundamental. Los conflictos intergeneracionales, la crianza y el cuidado de padres envejecidos demandan intervención sistémica y comunitaria.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Promoción de la diversidad</h4>
+          <p>El psicólogo comprometido reconoce la diversidad de trayectorias vitales: género, cultura, orientación sexual, condición socioeconómica. La adultez no tiene un único modelo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="compromiso-box" style="margin-top:16px;background:linear-gradient(135deg,var(--morado),var(--dorado));">
+      <h3>🌿 En la vejez</h3>
+      <div class="compromiso-grid">
+        <div class="comp-item">
+          <h4>Lucha contra el edadismo</h4>
+          <p>El psicólogo tiene el deber ético de visibilizar y combatir el edadismo en instituciones, familias y medios. Envejecer no es un fracaso: es una etapa con valor y dignidad propios que merece respeto social.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Acompañamiento al final de vida</h4>
+          <p>La psicología paliativa acompaña al adulto mayor ante el deterioro, la dependencia y la proximidad de la muerte. Facilitar la integridad del yo y la paz interior es una tarea profundamente humanizante.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Apoyo a cuidadores</h4>
+          <p>Los cuidadores informales (frecuentemente familiares) están en riesgo de burnout del cuidador. El psicólogo debe intervenir también con ellos, previniendo el agotamiento y promoviendo el autocuidado.</p>
+        </div>
+        <div class="comp-item">
+          <h4>Envejecimiento activo</h4>
+          <p>Diseñar e implementar programas de estimulación cognitiva, talleres de reminiscencia y grupos de apoyo comunitario son acciones concretas del psicólogo comprometido con la calidad de vida en la vejez.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════════
+     9. CONCLUSIONES
+══════════════════════════════════════════ -->
+<section id="conclusiones">
+  <div class="container">
+    <div style="display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:var(--dorado2);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:16px;">Sección 06</div>
+    <h2 class="conc-titulo">Conclusiones del grupo</h2>
+    <div class="conc-grid">
+      <div class="conc-card">
+        <div class="autor">Alejandro Zapata Palacio</div>
+        <p>El ser humano se construye en relación con los otros; es en el vínculo donde encuentra sentido, identidad y posibilidades de desarrollo. El estudio de la dimensión sociocultural me permitió comprender que el individuo se forma en interacción con su entorno: los contextos sociales influyen profundamente en el bienestar psicológico, y existe una interdependencia entre lo social y lo individual que no puede ignorarse. Como futuro psicólogo, asumo el compromiso de trabajar por entornos más inclusivos y respetuosos de la diversidad de trayectorias vitales en la adultez y la vejez.</p>
+      </div>
+      <div class="conc-card">
+        <div class="autor">Daly Núñez Babilonia</div>
+        <p>La dimensión emocional es muy importante en todas las etapas de la vida, ya que influye en cómo las personas manejan lo que sienten y enfrentan diferentes situaciones. A lo largo de la adultez y la vejez, se vuelve fundamental aprender a regular las emociones, fortalecer los vínculos afectivos y encontrar un sentido de vida. Según lo trabajado en los textos, estos aspectos ayudan a mantener el bienestar psicológico y a afrontar mejor los cambios, como las nuevas responsabilidades o las transformaciones en los roles. Además, cuando una persona logra adaptarse emocionalmente a estas situaciones, puede tener una mejor calidad de vida y un proceso de envejecimiento más positivo.</p>
+      </div>
+      <div class="conc-card">
+        <div class="autor">Natalia Andrea Santos Piedrahita</div>
+        <p>La dimensión cognitiva cambia a lo largo de la vida, alcanzando su mayor desarrollo en la adultez y presentando algunas disminuciones en la vejez. Sin embargo, muchas habilidades se conservan y pueden fortalecerse con estimulación, lo que demuestra que el envejecimiento es un proceso de transformación y no de pérdida total.</p>
+      </div>
+      <div class="conc-card">
+        <div class="autor">Sara Yineth Escobar Hurtado</div>
+        <p>La dimensión de identidad en la adultez y la vejez representa un proceso continuo de construcción y reconstrucción del sentido de quién se es, a partir de las experiencias vividas, los logros alcanzados y los desafíos enfrentados a lo largo del ciclo vital. En estas etapas, la identidad se fortalece mediante la reflexión sobre la propia historia, permitiendo a la persona integrar su pasado con el presente y proyectarse hacia el futuro con mayor sentido de propósito. Asimismo, aspectos como la generatividad, la espiritualidad y los proyectos de vida cobran gran relevancia, ya que favorecen la búsqueda de significado y contribuyen al bienestar emocional. Una identidad consolidada en estas etapas facilita la aceptación de los cambios propios del envejecimiento, promoviendo una actitud más positiva, resiliente y comprometida con el entorno social.</p>
+      </div>
+      <div class="conc-card" style="grid-column:1/-1;">
+        <div class="autor">Ana Carolina Bedoya Cardona</div>
+        <p>La dimensión biológica fue mi aporte individual a esta revista, y su elaboración me enseñó que los cambios físicos del envejecimiento —aunque inevitables— no determinan por sí solos la calidad de vida. Factores como la actividad física, la nutrición, las redes de apoyo y la actitud ante la propia vejez son igualmente determinantes. Esta experiencia colaborativa fortaleció mi comprensión de que la psicología es, esencialmente, una ciencia de lo humano: de sus cambios, sus pérdidas, sus capacidades y su incesante búsqueda de sentido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ══════════════════════════════════════════
+     10. REFERENCIAS
+══════════════════════════════════════════ -->
+<section id="referencias">
+  <div class="container">
+    <h2 class="ref-titulo">Referencias bibliográficas</h2>
+
+    <div class="ref-item">Amezcua, T. &amp; García Domingo, M. (2022). «¿Mayor, yo? ¿Dónde lo pone?» Concepción y atribuciones sociales a la vejez según la autopercepción de las personas mayores del siglo XXI: de la seneficiencia al elder pride. <em>RECERCA. Revista De Pensament I Anàlisi, 27</em>(1). <a href="https://doi.org/10.6035/recerca.5778">https://doi.org/10.6035/recerca.5778</a></div>
+
+    <div class="ref-item">Cudris-Torres, L., Bermúdez-Cuello, J. C., Rojas-Angarita, A. M., Romero-Munive, M. R. &amp; Olivella-López, G. (2020). Familia, cultura y sociedad: factores determinantes del desarrollo humano. <em>Desbordes, 11</em>(1), 47–59. <a href="https://hemeroteca.unad.edu.co/index.php/desbordes/issue/view/376/151">https://hemeroteca.unad.edu.co/index.php/desbordes/issue/view/376/151</a></div>
+
+    <div class="ref-item">García Madruga, J. A. &amp; Delval Merino, J. (2019). <em>Psicología del desarrollo I</em> (2.ª ed.). UNED. Cap. 13. <a href="https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/121366">https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/121366</a></div>
+
+    <div class="ref-item">González López, F. &amp; Latorre Santos, C. (2021). <em>Envejecer en el siglo XXI: visiones multidisciplinarias de la vejez y el envejecimiento.</em> Editorial Universidad del Rosario. <a href="https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/198482">https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/198482</a></div>
+
+    <div class="ref-item">Lizaso Elgarresta, I., Acha Morcillo, J. &amp; Arruabarrena, L. R. (2018). <em>Desarrollo biológico y cognitivo en el ciclo vital.</em> Difusora Larousse – Ediciones Pirámide. (Parte 4, p. 447). <a href="https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/123058">https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/123058</a></div>
+
+    <div class="ref-item">Papalia, D. E. &amp; Martorell, G. (2021). <em>Desarrollo humano.</em> McGraw Hill Interamericana. (Partes 6–8). <a href="https://www-ebooks7-24-com.bibliotecavirtual.unad.edu.co/?il=42025">https://www-ebooks7-24-com.bibliotecavirtual.unad.edu.co/?il=42025</a></div>
+
+    <div class="ref-item">Triadó, C. &amp; Celdrán, M. (2019). <em>Desarrollo adulto y envejecimiento</em> (2.ª ed.). Difusora Larousse – Alianza Editorial. <a href="https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/217915">https://elibro-net.bibliotecavirtual.unad.edu.co/es/lc/unad/titulos/217915</a></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Trayectos de Vida y Cambio — Revista Digital</strong><br>
+  Tarea 3 · Psicología y Curso de Vida (Código 402537617) · UNAD — ECSAH<br>
+  Alejandro Zapata Palacio · Daly Núñez Babilonia · Natalia Andrea Santos Piedrahita · Sara Yineth Escobar Hurtado · Ana Carolina Bedoya Cardona<br>
+  Abril de 2026
+</footer>
+
+</body>
+</html>
