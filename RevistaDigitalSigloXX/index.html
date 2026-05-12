@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revista Digital del Siglo XX — Psicología en Transformación</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper: #F2E8D0;
+  --paper-dark: #E0CFA8;
+  --ink: #1A0E00;
+  --sepia: #7A4E1A;
+  --sepia-dark: #4A2800;
+  --red: #8B1A1A;
+  --gold: #9A7020;
+}
+
+body {
+  background: #1A0E00;
+  background-image: radial-gradient(ellipse at center, #2C1A08 0%, #0D0600 100%);
+  min-height: 100vh;
+  padding: 30px 16px 60px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+/* NAV */
+.nav {
+  max-width: 900px;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  justify-content: center;
+  background: var(--ink);
+  border: 1px solid var(--sepia);
+  padding: 8px 12px;
+}
+.nav a {
+  color: var(--paper-dark);
+  text-decoration: none;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-right: 1px solid rgba(240,220,180,0.2);
+  transition: color 0.2s;
+}
+.nav a:last-child { border-right: none; }
+.nav a:hover { color: #D4A84B; }
+
+/* REVISTA */
+.magazine {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--paper);
+  box-shadow:
+    0 0 0 1px var(--sepia-dark),
+    0 0 0 4px var(--paper-dark),
+    0 0 0 5px var(--sepia-dark),
+    0 20px 80px rgba(0,0,0,0.8);
+}
+
+/* ══════════════════ PORTADA ══════════════════ */
+.cover {
+  background: var(--paper);
+  padding: 0;
+  border-bottom: 5px double var(--sepia-dark);
+}
+
+.cover-top-bar {
+  background: var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 28px;
+  border-bottom: 2px solid var(--sepia);
+}
+.cover-top-bar span {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  color: var(--paper-dark);
+  text-transform: uppercase;
+}
+.cover-top-bar .price {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  color: #D4A84B;
+  font-size: 0.75rem;
+}
+
+.cover-nameplate {
+  text-align: center;
+  padding: 28px 40px 0;
+}
+.cover-kicker {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--sepia);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.cover-kicker::before,
+.cover-kicker::after {
+  content: '';
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--sepia);
+}
+
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  color: var(--ink);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.cover-title-line2 {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--red);
+  margin: 4px 0 0;
+}
+
+.cover-rule-deco {
+  text-align: center;
+  color: var(--sepia-dark);
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  margin: 14px 0;
+}
+
+.cover-edition-band {
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  padding: 7px 40px;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--sepia);
+  border-bottom: 1px solid var(--sepia);
+  margin: 0 40px 28px;
+}
+
+/* Imagen ilustrativa de portada */
+.cover-hero {
+  display: flex;
+  gap: 0;
+  margin: 0 40px;
+  border: 1px solid var(--sepia-dark);
+  height: 220px;
+  overflow: hidden;
+  background: var(--paper-dark);
+}
+.cover-hero-left {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-right: 1px solid var(--sepia-dark);
+  flex-direction: column;
+  text-align: center;
+}
+.cover-hero-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--sepia-dark);
+  opacity: 0.18;
+  line-height: 1;
+  position: absolute;
+}
+.cover-hero-content {
+  position: relative;
+  z-index: 1;
+}
+.cover-hero-icon {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+  opacity: 0.7;
+}
+.cover-hero-caption {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--sepia-dark);
+  line-height: 1.5;
+}
+.cover-hero-right {
+  flex: 3;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cover-hero-teaser-title {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.cover-hero-teaser-item {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  border-bottom: 1px dotted var(--sepia);
+  padding: 6px 0;
+  font-size: 0.82rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+.cover-hero-teaser-item::before {
+  content: '›';
+  color: var(--red);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Integrantes */
+.cover-integrantes {
+  margin: 24px 40px 0;
+  border: 1px solid var(--sepia-dark);
+  border-top: 4px solid var(--sepia-dark);
+}
+.cover-integrantes-header {
+  background: var(--sepia-dark);
+  color: var(--paper);
+  text-align: center;
+  padding: 8px 20px;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.cover-integrantes-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--paper-dark);
+}
+.integrante {
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--sepia);
+  border-right: 1px solid var(--sepia);
+}
+.integrante:nth-child(even) { border-right: none; }
+.integrante:nth-last-child(-n+2) { border-bottom: none; }
+.integrante-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--sepia-dark);
+  opacity: 0.3;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.integrante-name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.8rem;
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cover-grupo {
+  text-align: center;
+  padding: 14px 40px 28px;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--sepia-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cover-grupo strong {
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--paper-dark);
+  border: 1px solid var(--sepia);
+  padding: 4px 14px;
+}
+
+/* ══════════════════ PÁGINAS INTERNAS ══════════════════ */
+.page {
+  border-bottom: 5px double var(--sepia-dark);
+  padding: 0;
+}
+.page:last-of-type { border-bottom: none; }
+
+.page-header {
+  background: var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 28px;
+  border-bottom: 2px solid var(--sepia);
+}
+.page-header span {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--paper-dark);
+  text-transform: uppercase;
+}
+.page-header .page-section {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  color: #D4A84B;
+  font-size: 0.75rem;
+}
+
+.page-label {
+  text-align: center;
+  padding: 20px 40px 0;
+}
+.section-tag {
+  display: inline-block;
+  background: var(--sepia-dark);
+  color: var(--paper);
+  font-family: 'Special Elite', cursive;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  margin-bottom: 8px;
+}
+.section-tag.red { background: var(--red); }
+.section-tag.green { background: #1A4A1A; }
+.section-tag.blue { background: #1A2A5A; }
+.section-tag.gold { background: var(--gold); }
+
+/* Imagen de página */
+.page-img-wrapper {
+  padding: 24px 40px 32px;
+}
+.page-img-wrapper img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--sepia-dark);
+  box-shadow: 4px 4px 16px rgba(0,0,0,0.25);
+}
+
+/* Caption de imagen */
+.img-caption {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--sepia);
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* ══════════════════ FOOTER ══════════════════ */
+.mag-footer {
+  background: var(--ink);
+  padding: 14px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: 'Special Elite', cursive;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(240,220,180,0.4);
+  text-transform: uppercase;
+  border-top: 2px solid var(--sepia-dark);
+}
+
+@media (max-width: 600px) {
+  .cover-top-bar, .cover-grupo { flex-direction: column; gap: 4px; text-align: center; }
+  .cover-nameplate, .cover-edition-band, .cover-integrantes,
+  .cover-hero, .page-img-wrapper { margin-left: 16px; margin-right: 16px; }
+  .cover-edition-band { margin-left: 16px; margin-right: 16px; }
+  .cover-hero { height: auto; flex-direction: column; }
+  .cover-hero-left { height: 100px; }
+  .cover-integrantes-body { grid-template-columns: 1fr; }
+  .integrante:nth-child(even) { border-right: none; }
+  .integrante { border-right: none !important; }
+  .page-img-wrapper { padding: 16px; }
+  .nav a { font-size: 0.6rem; padding: 4px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#portada">Portada</a>
+  <a href="#articulo">Artículo Central</a>
+  <a href="#entrevista">Entrevista</a>
+  <a href="#cronica">Crónica</a>
+  <a href="#publicidad">Publicidad</a>
+</nav>
+
+<div class="magazine">
+
+  <!-- ═══════════════════════════════
+       PORTADA
+  ═══════════════════════════════ -->
+  <section class="cover" id="portada">
+
+    <div class="cover-top-bar">
+      <span>Universidad Nacional Abierta y a Distancia — UNAD</span>
+      <span class="price">Edición Académica · 2026</span>
+      <span>Antecedentes de la Psicología · Cód. 402537616</span>
+    </div>
+
+    <div class="cover-nameplate">
+      <div class="cover-kicker">Publicación Colaborativa Estudiantil</div>
+      <div class="cover-title">Revista Digital<br>del Siglo XX</div>
+      <div class="cover-title-line2">Psicología en Transformación</div>
+    </div>
+
+    <div class="cover-rule-deco">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+    <div class="cover-edition-band">
+      ✦ &nbsp; Edición Especial · Años 1900–1950 · Primera Mitad del Siglo XX &nbsp; ✦
+    </div>
+
+    <!-- Avance de contenidos -->
+    <div style="position:relative;" class="cover-hero">
+      <div class="cover-hero-left">
+        <div class="cover-hero-year">1900</div>
+        <div class="cover-hero-content">
+          <div class="cover-hero-icon">🧠</div>
+          <div class="cover-hero-caption">
+            El siglo que transformó<br>la comprensión del ser humano
+          </div>
+        </div>
+      </div>
+      <div class="cover-hero-right">
+        <div class="cover-hero-teaser-title">En esta edición</div>
+        <div class="cover-hero-teaser-item">
+          <strong>Artículo central:</strong>&nbsp; El surgimiento del conductismo: Una ciencia de la conducta
+        </div>
+        <div class="cover-hero-teaser-item">
+          <strong>Entrevista simulada:</strong>&nbsp; Un encuentro con Alfred Binet — inteligencia, educación y futuro
+        </div>
+        <div class="cover-hero-teaser-item">
+          <strong>Crónica histórica:</strong>&nbsp; La psicología va a la guerra: los Tests Army Alpha y Beta (1917)
+        </div>
+        <div class="cover-hero-teaser-item">
+          <strong>Publicidad de época:</strong>&nbsp; ¡Conozca su mente, domine sus decisiones! — Laboratorio de Psicofísica
+        </div>
+      </div>
+    </div>
+
+    <!-- Integrantes -->
+    <div class="cover-integrantes">
+      <div class="cover-integrantes-header">✦ &nbsp; Equipo Editorial &nbsp; ✦</div>
+      <div class="cover-integrantes-body">
+        <div class="integrante">
+          <div class="integrante-num">01</div>
+          <div class="integrante-name">Ana Carolina Bedoya Cardona</div>
+        </div>
+        <div class="integrante">
+          <div class="integrante-num">02</div>
+          <div class="integrante-name">Paula Lizeth Ortiz Guerrero</div>
+        </div>
+        <div class="integrante">
+          <div class="integrante-num">03</div>
+          <div class="integrante-name">Alejandro Zapata Palacio</div>
+        </div>
+        <div class="integrante">
+          <div class="integrante-num">04</div>
+          <div class="integrante-name">Maria Jose Quintero Morales</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-grupo">
+      <span>Curso: Antecedentes de la Psicología</span>
+      <strong>Grupo: 402537616_67</strong>
+      <span>UNAD · Colombia · 2026</span>
+    </div>
+
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       ARTÍCULO CENTRAL
+  ═══════════════════════════════ -->
+  <section class="page" id="articulo">
+    <div class="page-header">
+      <span>La Voz Progresista · 15 de Mayo de 1932</span>
+      <span class="page-section">§ I — Artículo Central</span>
+      <span>Página 2</span>
+    </div>
+    <div class="page-label">
+      <span class="section-tag red">§ I &nbsp;·&nbsp; Artículo Central</span>
+    </div>
+    <div class="page-img-wrapper">
+      <img src="ArticuloCentral.png" alt="Artículo Central — El Surgimiento del Conductismo: Una Ciencia de la Conducta">
+      <div class="img-caption">El surgimiento del conductismo: Una ciencia de la conducta · La Voz Progresista, 15 de mayo de 1932, p. 7</div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       ENTREVISTA SIMULADA
+  ═══════════════════════════════ -->
+  <section class="page" id="entrevista">
+    <div class="page-header">
+      <span>La Voz Progresista · 15 de Mayo de 1932</span>
+      <span class="page-section">§ II — Entrevista Simulada</span>
+      <span>Página 3</span>
+    </div>
+    <div class="page-label">
+      <span class="section-tag blue">§ II &nbsp;·&nbsp; Entrevista Simulada</span>
+    </div>
+    <div class="page-img-wrapper">
+      <img src="EntrevistaSimulada.png" alt="Entrevista Simulada — Un encuentro con Alfred Binet">
+      <div class="img-caption">Un encuentro con Alfred Binet · El creador de la escala métrica nos habla sobre inteligencia, educación y futuro · La Voz Progresista, 1932</div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       CRÓNICA HISTÓRICA
+  ═══════════════════════════════ -->
+  <section class="page" id="cronica">
+    <div class="page-header">
+      <span>La Voz Progresista · 15 de Mayo de 1932</span>
+      <span class="page-section">§ III — Crónica Histórica</span>
+      <span>Página 4</span>
+    </div>
+    <div class="page-label">
+      <span class="section-tag green">§ III &nbsp;·&nbsp; Crónica de un Evento Histórico</span>
+    </div>
+    <div class="page-img-wrapper">
+      <img src="Cronica.png" alt="Crónica — La Psicología va a la Guerra: Los Tests Army Alpha y Beta">
+      <div class="img-caption">La psicología va a la guerra: Los Tests Army Alpha y Beta · Baltimore, 1917 · La Voz Progresista, 1932</div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════
+       PUBLICIDAD SIMULADA
+  ═══════════════════════════════ -->
+  <section class="page" id="publicidad">
+    <div class="page-header">
+      <span>La Voz Progresista · 15 de Mayo de 1932</span>
+      <span class="page-section">§ IV — Publicidad de Época</span>
+      <span>Página 5</span>
+    </div>
+    <div class="page-label">
+      <span class="section-tag gold">§ IV &nbsp;·&nbsp; Publicidad Simulada de la Época</span>
+    </div>
+    <div class="page-img-wrapper">
+      <img src="PublicidadSimulada.png" alt="Publicidad Simulada — ¡Conozca su mente, domine sus decisiones!">
+      <div class="img-caption">¡Conozca su mente, domine sus decisiones! · Laboratorio de Psicofísica y Cronometría Mental · Universidad de Pensilvania, 1932</div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="mag-footer">
+    <span>Revista Digital del Siglo XX: Psicología en Transformación</span>
+    <span>✦ &nbsp; Años 1900–1950 &nbsp; ✦</span>
+    <span>Grupo 402537616_67 · UNAD · 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
