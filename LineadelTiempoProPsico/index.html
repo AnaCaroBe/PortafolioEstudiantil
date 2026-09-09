@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orígenes de la Psicología Social, Política y Comunitaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#161c26;
+    --ink-soft:#2a3444;
+    --paper:#eee7d6;
+    --paper-dim:#d9d0ba;
+    --social:#2e7d6b;
+    --politica:#8c3a3a;
+    --comunitaria:#b8862f;
+    --line: rgba(238,231,214,0.18);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:56px 24px 80px;
+  }
+  header{
+    margin-bottom:40px;
+  }
+  .kicker{
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--comunitaria);
+    margin:0 0 10px;
+    font-weight:600;
+  }
+  h1{
+    font-family:'Source Serif 4', serif;
+    font-weight:700;
+    font-size:clamp(28px,4.2vw,46px);
+    line-height:1.08;
+    margin:0 0 14px;
+    max-width:760px;
+  }
+  .subtitle{
+    font-size:16px;
+    line-height:1.55;
+    color:var(--paper-dim);
+    max-width:620px;
+    margin:0;
+  }
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:32px;
+  }
+  .chip{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 16px;
+    border-radius:999px;
+    border:1px solid rgba(238,231,214,0.25);
+    background:transparent;
+    color:var(--paper);
+    font-size:14px;
+    font-family:'Inter',sans-serif;
+    cursor:pointer;
+    transition:background .15s ease, border-color .15s ease, opacity .15s ease;
+  }
+  .chip .dot{
+    width:9px;height:9px;border-radius:50%;
+    flex:none;
+  }
+  .chip[data-active="true"]{
+    background:rgba(238,231,214,0.1);
+    border-color:rgba(238,231,214,0.55);
+  }
+  .chip[data-dim="true"]{ opacity:0.35; }
+
+  .timeline{
+    position:relative;
+    margin-top:56px;
+    padding-left:28px;
+  }
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:5px;
+    top:6px;
+    bottom:6px;
+    width:2px;
+    background:linear-gradient(to bottom, rgba(238,231,214,0.05), rgba(238,231,214,0.35) 8%, rgba(238,231,214,0.35) 92%, rgba(238,231,214,0.05));
+  }
+  .item{
+    position:relative;
+    padding:0 0 44px 34px;
+    transition:opacity .25s ease, max-height .25s ease;
+  }
+  .item:last-child{ padding-bottom:4px; }
+  .item.hidden{
+    display:none;
+  }
+  .node{
+    position:absolute;
+    left:-28px;
+    top:4px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    border:2px solid var(--ink);
+    box-shadow:0 0 0 2px currentColor;
+  }
+  .item[data-cat="social"] .node{ background:var(--social); color:var(--social); }
+  .item[data-cat="politica"] .node{ background:var(--politica); color:var(--politica); }
+  .item[data-cat="comunitaria"] .node{ background:var(--comunitaria); color:var(--comunitaria); }
+
+  .year{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:22px;
+    margin:0 0 4px;
+  }
+  .item[data-cat="social"] .year{ color:var(--social); }
+  .item[data-cat="politica"] .year{ color:var(--politica); }
+  .item[data-cat="comunitaria"] .year{ color:var(--comunitaria); }
+
+  .tag{
+    display:inline-block;
+    font-size:11.5px;
+    letter-spacing:.02em;
+    padding:3px 10px;
+    border-radius:999px;
+    margin-bottom:10px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .item[data-cat="social"] .tag{ background:var(--social); }
+  .item[data-cat="politica"] .tag{ background:var(--politica); }
+  .item[data-cat="comunitaria"] .tag{ background:var(--comunitaria); }
+
+  .card{
+    background:var(--ink-soft);
+    border:1px solid rgba(238,231,214,0.08);
+    border-radius:10px;
+    padding:20px 22px;
+  }
+  .card h3{
+    font-family:'Source Serif 4', serif;
+    font-size:19px;
+    margin:0 0 10px;
+    font-weight:600;
+    color:var(--paper);
+  }
+  .card p{
+    margin:0 0 12px;
+    font-size:14.5px;
+    line-height:1.6;
+    color:var(--paper-dim);
+  }
+  .card p:last-child{ margin-bottom:0; }
+  .card .ctx-label{
+    font-size:12px;
+    font-weight:600;
+    color:var(--paper);
+    opacity:.8;
+    margin-bottom:3px;
+    display:block;
+  }
+  footer{
+    margin-top:60px;
+    padding-top:24px;
+    border-top:1px solid rgba(238,231,214,0.12);
+    font-size:13px;
+    color:var(--paper-dim);
+    line-height:1.6;
+  }
+  @media (max-width:600px){
+    .wrap{padding:36px 16px 60px;}
+    .timeline{padding-left:22px;}
+    .item{padding-left:26px;}
+    .node{left:-22px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="kicker">Orígenes de la psicología social, política y comunitaria — Fase 2</p>
+    <h1>Del pensamiento psicosocial a la ciencia comprometida</h1>
+    <p class="subtitle">Doce hitos que trazan cómo la guerra, la dictadura y la crisis del positivismo fueron moldeando tres subdisciplinas con historias entrelazadas pero caminos propios.</p>
+
+    <div class="legend" id="legend">
+      <button class="chip" data-filter="todos" data-active="true">
+        <span class="dot" style="background:var(--paper)"></span> Todos
+      </button>
+      <button class="chip" data-filter="social">
+        <span class="dot" style="background:var(--social)"></span> Psicología Social
+      </button>
+      <button class="chip" data-filter="politica">
+        <span class="dot" style="background:var(--politica)"></span> Psicología Política
+      </button>
+      <button class="chip" data-filter="comunitaria">
+        <span class="dot" style="background:var(--comunitaria)"></span> Psicología Comunitaria
+      </button>
+    </div>
+  </header>
+
+  <div class="timeline" id="timeline">
+
+    <div class="item" data-cat="social">
+      <div class="node"></div>
+      <p class="year">Siglo V a. C.</p>
+      <span class="tag">Social</span>
+      <div class="card">
+        <h3>La sofística griega</h3>
+        <p>Protágoras y los sofistas introducen el relativismo cultural y colocan al hombre —no al mundo— en el centro de la reflexión filosófica.</p>
+        <span class="ctx-label">Contexto histórico</span>
+        <p>Surge en la democracia ateniense, donde el debate público exigía comprender la conducta y el discurso humano.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="social">
+      <div class="node"></div>
+      <p class="year">1885</p>
+      <span class="tag">Social</span>
+      <div class="card">
+        <h3>Wundt y la "Psicología de los pueblos"</h3>
+        <p>Wundt propone una psicología comparativa, histórica y cultural centrada en el lenguaje, el mito y las costumbres como productos de la interacción colectiva.</p>
+        <span class="ctx-label">Contexto epistemológico</span>
+        <p>Conviven aún el organicismo y el naciente interés por lo colectivo, antes de la consolidación del método experimental.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="social">
+      <div class="node"></div>
+      <p class="year">1908</p>
+      <span class="tag">Social</span>
+      <div class="card">
+        <h3>Ross y McDougall</h3>
+        <p>Publican las primeras obras tituladas "Psicología social", basadas en la imitación (Ross) y en los instintos (McDougall), consolidando el interés académico por la disciplina.</p>
+        <span class="ctx-label">Contexto epistemológico</span>
+        <p>Predominan el positivismo y el instintivismo como marcos explicativos válidos de la conducta social.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="politica">
+      <div class="node"></div>
+      <p class="year">1911</p>
+      <span class="tag">Política</span>
+      <div class="card">
+        <h3>Le Bon: una "ciencia para gobernar"</h3>
+        <p>Le Bon plantea la psicología política como herramienta para que los gobernantes eviten errores, apoyada en su teoría de las masas.</p>
+        <span class="ctx-label">Contexto sociopolítico</span>
+        <p>La burguesía europea busca explicar y controlar el comportamiento de las multitudes, vistas como amenaza social.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="politica">
+      <div class="node"></div>
+      <p class="year">1934</p>
+      <span class="tag">Política</span>
+      <div class="card">
+        <h3>Lasswell, fundador de la psicología política</h3>
+        <p>Harold Lasswell es reconocido como pionero en Estados Unidos, con aportes sobre roles políticos y el vínculo entre necesidades psicológicas y poder.</p>
+        <span class="ctx-label">Contexto histórico</span>
+        <p>El período de entreguerras impulsa estudios sobre propaganda, liderazgo y comportamiento de masas.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="comunitaria">
+      <div class="node"></div>
+      <p class="year">1959</p>
+      <span class="tag">Comunitaria</span>
+      <div class="card">
+        <h3>Fals Borda y la investigación-acción participativa</h3>
+        <p>El sociólogo colombiano sienta las bases metodológicas de la IAP, referente clave para la futura psicología comunitaria latinoamericana.</p>
+        <span class="ctx-label">Contexto sociopolítico</span>
+        <p>La desigualdad social profunda en América Latina exige modelos de intervención más activos y participativos.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="comunitaria">
+      <div class="node"></div>
+      <p class="year">1963</p>
+      <span class="tag">Comunitaria</span>
+      <div class="card">
+        <h3>Centros de salud mental comunitaria en EE. UU.</h3>
+        <p>Una decisión política crea estos centros, sentando las bases institucionales que después originarían la Conferencia de Swampscott.</p>
+        <span class="ctx-label">Contexto sociopolítico</span>
+        <p>Estados Unidos se vuelve más consciente de las desigualdades económicas y de acceso a la salud durante los años sesenta.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="comunitaria">
+      <div class="node"></div>
+      <p class="year">1965</p>
+      <span class="tag">Comunitaria</span>
+      <div class="card">
+        <h3>Conferencia de Swampscott</h3>
+        <p>Se usa por primera vez el término "psicología comunitaria" y se sientan las bases oficiales de la disciplina en Estados Unidos.</p>
+        <span class="ctx-label">Contexto histórico</span>
+        <p>Crece la insatisfacción con el modelo médico tradicional, que ignoraba los factores sociales y ambientales de la salud mental.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="social">
+      <div class="node"></div>
+      <p class="year">Finales de los 60 – 70</p>
+      <span class="tag">Social</span>
+      <div class="card">
+        <h3>Crisis de la Psicología Social</h3>
+        <p>La disciplina entra en crisis por la pérdida de validez de los métodos positivistas y la contestación social generalizada.</p>
+        <span class="ctx-label">Contexto sociopolítico y epistemológico</span>
+        <p>El Mayo francés del 68, la crisis energética y la duda sobre el individuo como objeto y sujeto de investigación sacuden el paradigma dominante.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="politica">
+      <div class="node"></div>
+      <p class="year">1978</p>
+      <span class="tag">Política</span>
+      <div class="card">
+        <h3>Sociedad Internacional de Psicología Política</h3>
+        <p>Se funda la sociedad y la revista <em>Political Psychology</em>, dando identidad disciplinar formal al campo.</p>
+        <span class="ctx-label">Contexto histórico</span>
+        <p>Culmina un proceso de consolidación académica tras décadas de estudios dispersos sobre comportamiento político y de masas.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="comunitaria">
+      <div class="node"></div>
+      <p class="year">1979</p>
+      <span class="tag">Comunitaria</span>
+      <div class="card">
+        <h3>XVII Congreso Interamericano de Psicología, Perú</h3>
+        <p>Psicólogos latinoamericanos descubren que trabajaban con modelos comunitarios similares sin saberlo, impulsando el intercambio regional.</p>
+        <span class="ctx-label">Contexto sociopolítico</span>
+        <p>Regímenes dictatoriales y pobreza generalizada en la región empujan intervenciones psicosociales más comprometidas.</p>
+      </div>
+    </div>
+
+    <div class="item" data-cat="politica">
+      <div class="node"></div>
+      <p class="year">Década de 1980</p>
+      <span class="tag">Política</span>
+      <div class="card">
+        <h3>Modelo liberacionista-crítico de Martín-Baró</h3>
+        <p>Ignacio Martín-Baró establece principios como la opción por las mayorías oprimidas y la concientización como ejes de la psicología política latinoamericana.</p>
+        <span class="ctx-label">Contexto sociopolítico</span>
+        <p>Las guerras civiles y la represión política en Centroamérica —especialmente El Salvador— exigen una psicología comprometida con la transformación social.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Fuentes: Marín Sánchez, M. (2012). <em>Introducción a la Psicología Social</em> (pp. 15-30); Sandoval, Y. M. (2022). Psicología política, en <em>Caminando por las veredas de la psicología</em> (pp. 255-279); Musitu Ochoa, G. (2004). Surgimiento y desarrollo de la psicología comunitaria (pp. 17-42).
+  </footer>
+
+</div>
+
+<script>
+  const chips = document.querySelectorAll('.chip');
+  const items = document.querySelectorAll('.item');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const filter = chip.dataset.filter;
+      chips.forEach(c => { c.dataset.active = "false"; c.removeAttribute('data-dim'); });
+      chip.dataset.active = "true";
+      if(filter !== 'todos'){
+        chips.forEach(c => { if(c.dataset.filter !== filter) c.dataset.dim = "true"; });
+      }
+      items.forEach(item => {
+        if(filter === 'todos' || item.dataset.cat === filter){
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
