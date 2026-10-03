@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Colombia 1920–1957 · Línea de tiempo interactiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;0,900;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf6ee; --ink:#20232a; --muted:#696256; --card:#ffffff; --line:#e7ded0;
+  --header1:#1c2430; --header2:#3a2f55;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){ --bg:#13151a; --ink:#ece9e2; --muted:#a39d93; --card:#1c1f26; --line:#2d313a; }
+}
+:root[data-theme="dark"]{ --bg:#13151a; --ink:#ece9e2; --muted:#a39d93; --card:#1c1f26; --line:#2d313a; }
+html{scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Poppins',sans-serif;}
+
+/* progress bar */
+#prog{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:4px;width:0%;
+  background:linear-gradient(90deg,#ff6b5e,#f0a93b,#2f8f7a,#4869c9);z-index:20;transition:width .1s linear}
+
+/* cover */
+.cover{background:radial-gradient(circle at 20% 15%,rgba(255,255,255,.1),transparent 40%),
+  radial-gradient(circle at 85% 80%,rgba(255,255,255,.08),transparent 45%),
+  linear-gradient(135deg,var(--header1),var(--header2));color:#fff;
+  padding:calc(env(safe-area-inset-top,0px) + 36px) 20px 30px;text-align:center;position:relative}
+.cover h1{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(2rem,6vw,3.2rem);margin:0 0 10px;line-height:1.05}
+.cover p{max-width:58ch;margin:0 auto;color:#d4d7e1;font-size:1rem}
+.kicker{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+  padding:5px 14px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.hint{margin-top:18px;font-size:.82rem;color:#b9bdca}
+
+/* mini map */
+.minimap{position:sticky;top:0;z-index:15;background:var(--bg);border-bottom:1px solid var(--line);padding-top:4px}
+.minimap-track{max-width:980px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;padding:12px 16px;scrollbar-width:none}
+.minimap-track::-webkit-scrollbar{display:none}
+.mdot{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;
+  color:var(--muted);font-size:.68rem;font-weight:600;padding:2px 10px;border-radius:10px}
+.mdot i{width:10px;height:10px;border-radius:50%;background:var(--line);display:block}
+.mdot.active{color:var(--ink)}
+.mdot.active i{transform:scale(1.5)}
+
+/* timeline */
+.wrap{max-width:860px;margin:0 auto;padding:30px 16px 60px;position:relative}
+.rail{position:absolute;left:38px;top:10px;bottom:40px;width:3px;background:var(--line);border-radius:3px}
+.node{position:relative;padding-left:76px;margin-bottom:18px;scroll-margin-top:80px}
+.dot{position:absolute;left:18px;top:6px;width:40px;height:40px;border-radius:50%;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;font-size:.78rem;
+  box-shadow:0 0 0 6px var(--bg);}
+details.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(0,0,0,.04);transition:box-shadow .2s}
+details.card[open]{box-shadow:0 6px 20px rgba(0,0,0,.08)}
+summary{list-style:none;cursor:pointer;padding:14px 50px 14px 18px;position:relative;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  width:26px;height:26px;border-radius:50%;background:var(--bg);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--muted);transition:transform .25s}
+details.card[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.year{font-family:'Fraunces',serif;font-weight:700;font-size:1rem}
+.tagp{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:#fff;padding:3px 9px;border-radius:999px}
+summary h2{font-size:1.08rem;margin:4px 0 0;font-weight:700;display:inline}
+.actores{font-size:.82rem;color:var(--muted);margin-top:4px}
+.detail{padding:0 18px 18px 18px;border-top:1px dashed var(--line);margin-top:2px}
+.blk{padding:12px 0 0}
+.blk h3{margin:0 0 4px;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.blk p{margin:0;font-size:.95rem;line-height:1.5}
+.blk.why h3{color:var(--c1)}
+.blk.what h3{color:var(--c1)}
+.blk.conseq h3{color:var(--c1)}
+.cite{display:block;margin-top:10px;font-size:.76rem;color:var(--muted);font-style:italic}
+
+footer{max-width:860px;margin:0 auto;padding:0 20px 50px;color:var(--muted);font-size:.82rem;text-align:center}
+footer .fline{width:40px;height:3px;background:#f0a93b;margin:0 auto 14px;border-radius:3px}
+
+@media (max-width:480px){
+  .rail{left:30px}
+  .node{padding-left:60px}
+  .dot{left:10px;width:34px;height:34px;font-size:.68rem}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<div class="cover">
+  <span class="kicker">Historia crítica · UNAD · Etapa 2</span>
+  <h1>Colombia 1920–1957</h1>
+  <p>De las Bananeras al fin de la dictadura: 9 hechos que explican cómo se fue gestando la inequidad y la violencia en el país.</p>
+  <p class="hint">👉 Toca cada tarjeta para ver por qué surgió, qué pasó y sus consecuencias</p>
+</div>
+
+<nav class="minimap"><div class="minimap-track" id="minimap">
+  <a class="mdot" data-target="n1928" href="#n1928"><i style="background:#e05b4f"></i>1928</a>
+  <a class="mdot" data-target="n1930" href="#n1930"><i style="background:#2f8f7a"></i>1930</a>
+  <a class="mdot" data-target="n1934" href="#n1934"><i style="background:#f0a93b"></i>1934</a>
+  <a class="mdot" data-target="n1938" href="#n1938"><i style="background:#4869c9"></i>1938</a>
+  <a class="mdot" data-target="n1946" href="#n1946"><i style="background:#9a4fc9"></i>1946</a>
+  <a class="mdot" data-target="n1948" href="#n1948"><i style="background:#e05b4f"></i>1948</a>
+  <a class="mdot" data-target="n1948b" href="#n1948b"><i style="background:#2f8f7a"></i>1948-53</a>
+  <a class="mdot" data-target="n1953" href="#n1953"><i style="background:#f0a93b"></i>1953</a>
+  <a class="mdot" data-target="n1957" href="#n1957"><i style="background:#4869c9"></i>1957</a>
+</div></nav>
+
+<div class="wrap">
+<div class="rail"></div>
+
+<!-- 1928 -->
+<div class="node" id="n1928">
+<div class="dot" style="background:#e05b4f">28</div>
+<details class="card" open>
+<summary>
+  <div class="meta"><span class="year">1928</span><span class="tagp" style="background:#e05b4f">Conflicto laboral</span></div>
+  <h2>Masacre de las Bananeras</h2>
+  <div class="actores">👥 Trabajadores bananeros, autoridades y sectores políticos</div>
+</summary>
+<div class="detail" style="--c1:#e05b4f">
+  <div class="blk why"><h3>Por qué surgió</h3><p>Los trabajadores bananeros se declararon en huelga exigiendo mejores condiciones laborales frente a la empresa y el Estado.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>La huelga terminó en una fuerte represión estatal contra los manifestantes.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>El hecho se convirtió en símbolo de los conflictos laborales y sociales de la época.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+<!-- 1930 -->
+<div class="node" id="n1930">
+<div class="dot" style="background:#2f8f7a">30</div>
+<details class="card">
+<summary>
+  <div class="meta"><span class="year">1930</span><span class="tagp" style="background:#2f8f7a">Cambio político</span></div>
+  <h2>Fin de la hegemonía conservadora</h2>
+  <div class="actores">👥 Partido Liberal y Partido Conservador</div>
+</summary>
+<div class="detail" style="--c1:#2f8f7a">
+  <div class="blk why"><h3>Por qué surgió</h3><p>Tras décadas de gobiernos conservadores, crecían en el país las expectativas de cambio y modernización.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>Los liberales regresaron al poder tras años de exclusión política.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>Se abrió una nueva etapa política marcada por reformas y expectativas de modernización del país.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+<!-- 1934-1938 -->
+<div class="node" id="n1934">
+<div class="dot" style="background:#f0a93b">34</div>
+<details class="card">
+<summary>
+  <div class="meta"><span class="year">1934–1938</span><span class="tagp" style="background:#f0a93b">Reforma</span></div>
+  <h2>Revolución en Marcha</h2>
+  <div class="actores">👥 Alfonso López Pumarejo, trabajadores y sectores tradicionales</div>
+</summary>
+<div class="detail" style="--c1:#f0a93b">
+  <div class="blk why"><h3>Por qué surgió</h3><p>Existía la necesidad de modernizar el Estado colombiano y ampliar los derechos de los trabajadores.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>López Pumarejo impulsó un conjunto de reformas sociales, laborales y educativas.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>Generó amplio apoyo popular, pero también una fuerte oposición de los sectores tradicionales del país.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+<!-- 1938-1946 -->
+<div class="node" id="n1938">
+<div class="dot" style="background:#4869c9">38</div>
+<details class="card">
+<summary>
+  <div class="meta"><span class="year">1938–1946</span><span class="tagp" style="background:#4869c9">Transición</span></div>
+  <h2>Moderación y polarización política</h2>
+  <div class="actores">👥 Liberales, conservadores y sectores sociales</div>
+</summary>
+<div class="detail" style="--c1:#4869c9">
+  <div class="blk why"><h3>Por qué surgió</h3><p>El ritmo de las reformas de la etapa anterior generó resistencias que fueron desgastando el proyecto reformista.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>El impulso reformista perdió fuerza dentro del propio gobierno liberal.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>Aumentaron las divisiones ideológicas y la polarización política entre liberales y conservadores.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+<!-- 1946 -->
+<div class="node" id="n1946">
+<div class="dot" style="background:#9a4fc9">46</div>
+<details class="card">
+<summary>
+  <div class="meta"><span class="year">1946</span><span class="tagp" style="background:#9a4fc9">Cambio político</span></div>
+  <h2>Regreso conservador al poder</h2>
+  <div class="actores">👥 Mariano Ospina Pérez, liberales y conservadores</div>
+</summary>
+<div class="detail" style="--c1:#9a4fc9">
+  <div class="blk why"><h3>Por qué surgió</h3><p>El Partido Liberal llegó dividido a las elecciones presidenciales.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>Esa división facilitó el triunfo del candidato conservador, Mariano Ospina Pérez.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>Se intensificaron los enfrentamientos políticos y la violencia bipartidista en el país.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+<!-- 1948 -->
+<div class="node" id="n1948">
+<div class="dot" style="background:#e05b4f">48</div>
+<details class="card">
+<summary>
+  <div class="meta"><span class="year">1948</span><span class="tagp" style="background:#e05b4f">Quiebre histórico</span></div>
+  <h2>Asesinato de Gaitán y estallido de violencia</h2>
+  <div class="actores">👥 Jorge Eliécer Gaitán, sectores populares y Gobierno</div>
+</summary>
+<div class="detail" style="--c1:#e05b4f">
+  <div class="blk why"><h3>Por qué surgió</h3><p>Gaitán había consolidado un fuerte liderazgo popular en medio de la creciente tensión política del país.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>Su asesinato en Bogotá desató la ira popular de manera inmediata.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>Se agravó la violencia política que ya venía creciendo en el país.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+<!-- 1948-1953 -->
+<div class="node" id="n1948b">
+<div class="dot" style="background:#2f8f7a">53</div>
+<details class="card">
+<summary>
+  <div class="meta"><span class="year">1948–1953</span><span class="tagp" style="background:#2f8f7a">Conflicto armado</span></div>
+  <h2>La Violencia</h2>
+  <div class="actores">👥 Liberales, conservadores, campesinos, guerrillas y Estado</div>
+</summary>
+<div class="detail" style="--c1:#2f8f7a">
+  <div class="blk why"><h3>Por qué surgió</h3><p>La confrontación partidista heredada de los años anteriores se extendió y radicalizó por todo el territorio.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>Se desataron homicidios, persecución política y desplazamiento forzado en zonas rurales.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>El país entró en una grave crisis institucional que debilitó la presencia del Estado en el territorio.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+<!-- 1953 -->
+<div class="node" id="n1953">
+<div class="dot" style="background:#f0a93b">53</div>
+<details class="card">
+<summary>
+  <div class="meta"><span class="year">1953</span><span class="tagp" style="background:#f0a93b">Golpe de Estado</span></div>
+  <h2>Gobierno militar de Rojas Pinilla</h2>
+  <div class="actores">👥 Gustavo Rojas Pinilla, Fuerzas Armadas y sectores políticos</div>
+</summary>
+<div class="detail" style="--c1:#f0a93b">
+  <div class="blk why"><h3>Por qué surgió</h3><p>La crisis política y la violencia sin control hacían insostenible el gobierno civil de la época.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>El Ejército tomó el poder; Rojas promovió un discurso de reconciliación y ofreció amnistía a los grupos armados.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>Se logró una desmovilización parcial y temporal, aunque acompañada de censura y mayor concentración de poder.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+<!-- 1957 -->
+<div class="node" id="n1957">
+<div class="dot" style="background:#4869c9">57</div>
+<details class="card">
+<summary>
+  <div class="meta"><span class="year">1957</span><span class="tagp" style="background:#4869c9">Cierre de etapa</span></div>
+  <h2>Caída de Rojas Pinilla</h2>
+  <div class="actores">👥 Rojas Pinilla, liberales, conservadores y Frente Civil</div>
+</summary>
+<div class="detail" style="--c1:#4869c9">
+  <div class="blk why"><h3>Por qué surgió</h3><p>Creció una fuerte oposición política y social frente a la concentración de poder del gobierno militar.</p></div>
+  <div class="blk what"><h3>Qué pasó</h3><p>Esa oposición obligó a Rojas Pinilla a dimitir en mayo de 1957.</p></div>
+  <div class="blk conseq"><h3>Consecuencias</h3><p>Una Junta Militar asumió temporalmente el poder, abriendo paso al posterior pacto del Frente Nacional.</p></div>
+  <span class="cite">(Arias, 2011)</span>
+</div>
+</details>
+</div>
+
+</div>
+
+<footer>
+  <div class="fline"></div>
+  Fuente: Arias, R. (2011). <i>Historia de Colombia contemporánea (1920–2010)</i>. Universidad de los Andes.<br>
+  Historia crítica de la Colombia contemporánea · UNAD · Etapa 2
+</footer>
+
+<script>
+// progress bar
+const prog = document.getElementById('prog');
+function updateProg(){
+  const h = document.documentElement;
+  const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+  prog.style.width = (scrolled||0) + '%';
+}
+document.addEventListener('scroll', updateProg, {passive:true});
+updateProg();
+
+// active minimap dot via IntersectionObserver
+const dots = Array.from(document.querySelectorAll('.mdot'));
+const nodes = dots.map(d => document.getElementById(d.dataset.target));
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const idx = nodes.indexOf(e.target);
+      dots.forEach(d=>d.classList.remove('active'));
+      if(idx>-1) dots[idx].classList.add('active');
+    }
+  });
+},{rootMargin:'-40% 0px -50% 0px'});
+nodes.forEach(n=>{ if(n) io.observe(n); });
+</script>
+</body>
+</html>
